@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+/* * {border:solid 1px black;} */
+/* 모든 요소에 실선 표시 */
+header {width:1583px; background:#EAEAEA;}
+#header_div {width:1200px; margin:0 auto;}
+hr.clear_line {clear:both; border:0;}
+
+#banner_l1 {position:absolute; top:250px; right:1425px; z-index:999;
+		   max-width:150px; max-height:300px;}
+#banner_l2 {position:absolute; top:700px; right:1425px; z-index:999;
+		   max-width:150px; max-height:300px;}
+#banner_r {position:fixed; top:250px; left:1425px; z-index:999;
+		   max-width:150px; max-height:300px;}
+		   
+#top_button {position:fixed; top:calc(100vh - 100px); left:calc(100vw - 80px); z-index:1000; width:40px; height:40px; background:white;
+			 vertical-align:middle; border:solid 1px black; border-radius:10%; text-align:center; font-size:25px; line-height:35px;
+			 color:black; text-decoration:none;}
+
+#logo {float:left; width:250px; height:100px;}
+#guest {display:block; width:1200px; margin:0 auto; text-align:right;} /* 로그인 안함  */
+#guest a {text-decoration:none; color:black;}
+#member {display:none; width:100%;} /* 일반 회원 */
+#member a {text-decoration:none;}
+#admin {display:none; width:100%;} /* 관리자 */
+#admin a {text-decoration:none;}
+
+
+#menu {display:inline-block; width:900px; height:100px; margin-left:50px;
+		 text-align:center; color:white;}
+#menu a {display:inline-block; width:120px; height:50px; margin-top:25px;
+         font-size:20px; font-weight:bold; color:white; text-decoration:none;
+         text-align:center; line-height:50px;}

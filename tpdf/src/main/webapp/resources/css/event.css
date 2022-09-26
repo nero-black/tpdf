@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;}
+
+main {width:1200px; margin:0 auto 0; padding-bottom:150px;}
+hr.clear_line {clear:both; border:0;}
+
+#no_event {width:1198px; height:200px; text-align:center;}
+h3 {display:inline-block; width:1196px; height:60px; font-size:30px; margin:20px 0 20px 0px;} /* 이벤트 없음 */
+#event_add {display:inline-block; width:200px; height:50px; background:yellowgreen; /* 관리자 전용 이벤트 추가 버튼 */ 
+          text-align:center; line-height:30px; font-size:30px; border:solid 1px black; border-radius:10px;}
+#yes_event {width:1198px; height:400px; text-align:center;}
+h1 {display:inline-block; width:1196px; height:60px; font-size:30px; margin-top:20px;} /* 이벤트 진행중 */
+h2 {display:inline-block; width:1196px; height:40px; font-size:20px;} /* 이벤트 진행중 */
+
+#event_user {display:inline-block;} /* 회원 전용 이벤트 참가 폼 */
+#event_user {display:inline-block; width:600px; height:250px; font-size:30px;}
+#event_user label {margin-right:30px;}
+#event_user .betting {margin-top:20px;}
+#event_user .betting_team {width:20px; height:20px;}
+#event_user #betting_point {display:inline-block; width:200px; height:48px; text-align:right; font-size:20px;}
+#event_user button {display:inline-block; width:100px; height:52px; margin-right:30px; background:white; vertical-align:top;
+				   text-align:center; font-size:16px; border:solid 1px gray;}
+#event_set {display:none;} /* 관리자 전용 이벤트 폼 */
+
+#event_admin_form {display:inline-block; width:1196px; height:200px; font-size:30px;
+border:}
+#event_admin_form label {margin-right:30px;}
+#event_admin_form .betting_team {width:20px; height:20px;}
+#event_admin_form #betting_point {width:200px; height:50px; font-size:20px;}
+#event_admin_form form button {width:100px; height:50px; margin-right:50px; font-size:16px;}
+
+
+
+#event {width:1198px;} /* 기존 width:1198px; height:898px; */
+#event table {width:1198px; height:20px; font-size:18px; border-collapse: collapse;} /* 기존 width:1098px; height:700px; */
+#event caption {font-weight:bold; height:30px;}
+#event table th {border:none; border-bottom:solid 2px black; text-align:center; font-size:15px;}
+#event table td {border:none; border-bottom:solid 1px gray; text-align:center;}
+#event table tr:hover {background:rgb(240,240,240);}
+#event table tr:first-child {background-color:white;}
+
+#page {display:inline-block; width:1200px; height:30px;
+	   font-size:18px; color:black; text-align:center; text-decoration:none;}
+

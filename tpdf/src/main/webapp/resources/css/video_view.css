@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;}
+
+pre {font-family:Malgun Gothic;}
+
+main {width:1200px; margin:0 auto;}
+.clear_line {clear:both; border:solid 2px red;}
+#title {display:inline-block; width:1000px; height:30px; padding-left:10px; margin:0 20px 0 100px;}
+#title pre {display:inline-block; width:1000px; height:30px; font-size:20px; font-weight:bold; line-height:30px;}
+
+#source {display:inline-block; width:250px; height:30px; margin:10px 0 0 100px; padding-left:10px;}
+#source pre {display:inline-block; width:250px; height:30px; font-size:20px;}
+
+#wdate {display:inline-block; width:200px; height:30px; font-size:20px; text-align:center;}
+#hit {display:inline-block; width:200px; height:30px; margin:10px 20px 0 189px; font-size:20px; text-align:right;}
+#share {display:inline-block; width:184px; height:25px; margin:10px 0 0 20px; background:white; border:solid 1px gray;
+		font-size:20px; line-height:25px; color:black; text-align:center; text-decoration:none;}
+.mid_line {border:solid 0.5px gray; margin:10px auto 10px auto;}
+#content {width:1000px; font-size:15px; padding:10px 0 50px 10px; margin:30px 0 0 100px;}
+#content pre {white-space:pre-wrap;} /* white-space:pre-wrap을 사용해 옆으로 줄이 너무 길어지지 않게 만듦 */
+#file {width:1000px; padding-left:10px; margin:30px 0 0 100px;}
+#file video {display:inline-block; max-width:1000px; max-height:500px; margin-bottom:20px; border:solid 1px whitesmoke;}
+#list {float:right; display:inline-block; width:100px; height:30px; background:white; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:0 0 20px 10px;}
+#modify {float:right; display:inline-block; width:100px; height:30px; background:white; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:0 0 20px 10px;}
+#remove_idx {display:none;}
+#remove {float:right; display:inline-block; width:100px; height:30px; background:white; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:0 0 20px 10px;}
+

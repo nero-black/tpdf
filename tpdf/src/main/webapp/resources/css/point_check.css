@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;}
+
+main {width:1200px; height:1100px; margin:0 auto;}
+hr.clear_line {clear:both; border:0;}
+
+#point {width:800px; height:1000px; margin:0 auto 20px auto;
+border:solid 1px red;}
+
+#point table {width:600px; height:200px; margin-left:auto; margin-right:auto; text-align:center;}
+
+#return {display:inline-block; width:150px; height:40px; background:orange; border:solid 1px black; border-radius:10px;
+		 margin-left:325px; font-size:20px;}

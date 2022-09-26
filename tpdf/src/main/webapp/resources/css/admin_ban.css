@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;}
+
+main {width:1200px; margin:0 auto;}
+hr.clear_line {clear:both; border:0;}
+
+#list_align_a {float:left; display:inline-block; width:150px; height:30px; background:whitesmoke; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px black;}
+#list_align_b {float:left; display:none; width:150px; height:30px; background:whitesmoke; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px black;}
+          
+#return {float:right; width:150px; height:40px; background:orange; border:solid 1px black; border-radius:10px; margin-bottom:20px;
+		 font-size:20px;}
+
+#ban {width:1198px; padding-bottom:300px;}
+#ban a {font-size:25px; font-weight:bold;}
+#ban table {width:1198px; /* 기존 width:1098px; height:700px */
+			  font-size:20px; border-collapse: collapse;}
+#ban table th {border:none; border-bottom:solid 2px black; text-align:center;}
+#ban table td {border:none; border-bottom:solid 1px gray; text-align:center;}
+.ban_process {width:40px; height:25px; background:red; border:solid 1px black; font-size:15px;}
+
+#page {display:inline-block; width:1200px; height:30px;
+	   font-size:18px; color:black; text-align:center; text-decoration:none;}
+
+#search {width:420px; height:70px; margin-left:380px;}
+#search_type {width:100px; height:30px; margin:15px 0 0 20px;}
+#search_value {width:200px; height:26px; margin-top:15px;}
+#search_submit {width:60px; height:30px; margin-top:15px;}
+
+

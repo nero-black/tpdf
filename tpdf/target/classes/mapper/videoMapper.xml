@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tpdf.shoot.video">
+
+	<!-- <select id="video_insert" parameterType="videoVo"> -->
+	
+	<!-- com.tpdf.shoot.vo.VideoVo를 config-mybatis-config에서 별칭 fileVo로 변경 -->
+	<!-- 부등호 문자열이 들어있는 경우 그 문장 전체를 <![CDATA[내용]]> 과 같이 감싸주어야 한다. -->
+	
+	<select id="video_list_index" resultType="VideoVo">
+	<![CDATA[ select video_idx, title, thumbnail, file, date_format(wdate, '%y-%m-%d') as wdate_d, hit from video_tbl
+	order by video_idx desc limit 0, 5 ]]>
+	</select>
+
+	<select id="video_list" resultType="VideoVo">
+	<![CDATA[ select video_idx, title, thumbnail, file, date_format(wdate, '%y-%m-%d') as wdate_d, hit from video_tbl
+	order by video_idx desc ]]>
+	</select>
+
+	<select id="video_search" parameterType="String" resultType="VideoVo">
+	<![CDATA[ select video_idx, title, thumbnail, file, date_format(wdate, '%y-%m-%d') as wdate_d, hit from video_tbl
+	where title like #{search_value} order by video_idx desc; ]]>
+	</select>
+		
+	<select id="video_one" parameterType="int" resultType="VideoVo">
+	<![CDATA[ select video_idx, title, video_source, file, content, date_format(wdate, '%y-%m-%d') as wdate_d, hit from video_tbl
+	where video_idx=#{video_idx} ]]>
+	</select>
+	
+	<update id="video_view_hit" parameterType="int">
+	update video_tbl set hit = hit+1 where video_idx=#{video_idx}
+	</update>
+	
+	<insert id="video_insert" parameterType="videoVo">
+	insert into video_tbl(title, video_source, content, file)
+	values (#{title}, #{video_source}, #{content}, #{file})
+	</insert>
+	
+	<select id="video_modify" resultType="VideoVo">
+	<![CDATA[ select video_idx, title, video_source, content from video_tbl
+	where video_idx=#{video_idx} ]]>
+	</select>
+	
+	<update id="video_modify_process" parameterType="videoVo">
+	update video_tbl set title = #{title}, video_source = #{video_source}, content = #{content} where video_idx=#{video_idx};
+	</update> <!-- 업데이트 과정 -->
+	
+	<delete id="video_delete" parameterType="videoVo">
+	delete from video_tbl where video_idx=#{video_idx}
+	</delete>
+
+</mapper>	
+
+
+
+

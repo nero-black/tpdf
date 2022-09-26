@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;}
+
+main {width:1200px; margin:0 auto;}
+hr.clear_line {clear:both; border:0;}
+
+#title {width:1000px; height:30px; padding-left:10px; margin:50px 0 20px 100px;
+		font-size:20px; font-weight:bold; line-height:10px;}
+#content {width:1000px; height:180px; font-size:15px; padding:10px 0 0 10px; margin:10px 0 0 100px;}
+
+#link {display:inline-block; width:1000px; height:150px;
+			border:solid 1px gray; margin:30px 0 0 100px; padding-left:10px;}
+
+#live_link {display:inline-block; width:350px; height:30px; margin-left:10px;
+			font-size:20px; line-height:30px;}
+
+#link p {font-size:12px; color:gray; margin-top:10px; padding-left:10px;}
+
+#cancel {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 10px 50px 0;}
+#submit {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke;
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 90px 50px 0;}
+
+          
+          
+          

@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+* {margin:0; padding:0;}
+a {color:black;}
+
+main {width:1200px; margin:0 auto 0;}
+hr.clear_line {clear:both; border:0;}
+
+#hot_video {float:left; width:598px; height:450px; text-decoration:none;}
+#hot_video span {display:inline-block; position:relative; z-index:1; width:550px; height:100px;
+				 font-size:20px; text-decoration:none; margin:10px 0 0 10px;}
+.main_video {display:inline-block; position:relative; top:-110px; z-index:0; width:600px; height:450px;
+			 text-decoration:none;}
+
+.issue_video {float:right; width:598px; height:148px;}
+.sub_video {float:left; width:300px; height:150px; margin-left:60px;}
+.issue_video span {float:left; width:200px; height:80px; text-decoration:none; margin:10px 0 0 10px;}
+.issue_video p {float:left; width:200px; margin:10px 10px 0;}
+
+.mid_line {margin:10px 0 10px; border:0;}
+
+#notice {float:left; width:598px; height:330px;}
+#notice span {display:inline-block; height:40px; font-size:25px; font-weight:bold;}
+#notice span:hover {text-decoration:underline;}
+#notice table {width:588px; font-size:20px; border-collapse: collapse;}
+#notice td {text-align:left;}
+#notice table tr:first-child {border:none; border-top:solid 2px gray;}
+#notice table td {border:none; border-bottom:solid 1px rgb(240,240,240); padding-left:10px;}
+#notice table td:hover {background:rgb(240, 240, 240);}
+#notice table td a {color:black; text-decoration:none;}
+#notice table td a:hover {text-decoration:underline;}
+
+#board {float:left; width:598px; height:330px;}
+#board span {display:inline-block; height:40px; font-size:25px; font-weight:bold;}
+#board span:hover {text-decoration:underline;}
+#board table {width:588px; font-size:20px; border-collapse: collapse;}
+#board td {text-align:left;}
+#board table tr:first-child {border:none; border-top:solid 2px gray;}
+#board table td {border:none; border-bottom:solid 1px rgb(240,240,240); padding-left:10px;}
+#board table td:hover {background:rgb(240, 240, 240);}
+#board table td a {color:black; text-decoration:none;}
+#board table td a:hover {text-decoration:underline;}
+
+#mid_banner {width:1200px; height:150px; text-align:center; margin:10px 0 10px 0;}
+#banner00 {max-width:1000px; max-height:150px;}
+
+#video {text-align:left; margin-bottom:10px;}
+#video span {display:inline-block; height:40px; font-size:25px; font-weight:bold;}
+#video span:hover {text-decoration:underline;}
+#video hr {border:solid 1px gray;}
+#video_list {text-align:center;}
+.video {width:1198px; height:210px;}
+.video a {display:inline-block; margin:10px;}
+.video table {width:200px;}
+.video table:hover {text-decoration:underline;}
+.video table td {width:210px; text-align:center;}
+.video table td img {max-width:200px; max-height:150px;}
+.video table tr {width:250px; font-size:15px;}
+
+#rank {display:inline-block; width:595px; height:200px;  border:solid 1px black;}
+#schedule {display:inline-block; width:595px; height:200px;  border:solid 1px black;}
+
+/* 임시로 가려놓음 */
+#rank table {display:none;}
+#schedule table {display:none;}

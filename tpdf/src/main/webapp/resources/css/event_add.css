@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0;}
+
+main {width:1200px; margin:0 auto 0; padding-bottom:150px;}
+hr.clear_line {clear:both; border:0;}
+
+h1 {margin-top:20px;}
+h3 {font-size:20px; color:red;}
+#team_a, #team_b {width:400px; height:50px; font-size:20px; margin-top:50px;}
+form {font-size:30px; text-align:center;}
+form button {width:100px; height:50px; margin-right:50px; font-size:16px;}
+
+#admin_event_add {text-align:center;}
+
+#event_add {display:inline-block; width:200px; height:50px; background:yellowgreen; margin-top:30px; margin-right:10px;
+          text-align:center; line-height:30px; font-size:30px; border:solid 1px black; border-radius:10px;}
+
+#return {display:inline-block; width:200px; height:50px; background:orange; margin-top:30px;
+          text-align:center; line-height:30px; font-size:30px; border:solid 1px black; border-radius:10px;}

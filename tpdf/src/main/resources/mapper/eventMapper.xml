@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tpdf.shoot.event">
+	
+	<select id="event_list" resultType="EventVo">
+	<![CDATA[ select * from event_info_tbl where process="n" order by event_idx desc limit 0,10 ]]>
+	</select>
+	
+	<select id="event_now" resultType="EventVo">
+	<![CDATA[ select * from event_info_tbl where process="y" order by event_idx desc ]]>
+	</select>
+
+	<insert id="event_add" parameterType="eventVo">
+	insert into event_info_tbl(team_a, team_b) values (#{team_a}, #{team_b})
+	</insert>
+	
+	<select id="member_point" parameterType="int" resultType="int">
+	<![CDATA[ select member_point from member_tbl where member_idx=#{member_idx} ]]>
+	</select>
+	
+	<insert id="event_betting_i" parameterType="eventVo">
+	insert into event_user_tbl(member_idx, betting_team, b_point) values (#{member_idx}, #{betting_team}, #{b_point})
+	</insert>
+	
+<!-- 	<update id="event_betting_u" parameterType="eventVo">
+	insert into event_info_tbl(team_a, team_b) values (#{team_a}, #{team_b})
+	</update> -->
+
+</mapper>
+
+
+
+

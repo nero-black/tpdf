@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+* {margin:0; padding:0;}
+a {color:black;}
+
+main {width:1200px; margin:0 auto;}
+hr.clear_line {clear:both; border:0;}
+
+#sub_menu {background:rgb(175, 175, 175); text-align:center; margin-bottom:30px;}
+#sub_menu a {display:inline-block; width:120px; height:50px;
+			 font-size:20px; font-weight:normal; color:white; text-decoration:none;
+			 text-align:center; line-height:50px;}
+#sub_menu a:nth-child(3) {font-weight:bold;}
+
+#file {float:left; width:718px;} 
+#file iframe {display:inline-block; max-width:704px; max-height:396px; margin:0 0 20px 7px; border:solid 1px whitesmoke;}
+#file img {display:none; width:704px; height:396px; margin:0 0 20px 7px; border:solid 1px whitesmoke;}
+
+#title {display:inline-block; width:704px; height:30px; font-size:20px; font-weight:bold; line-height:30px; margin:0 0 20px 7px;}
+#hit {display:inline-block; height:30px; margin:10px 20px 0 7px; font-size:20px;}
+#wdate {display:inline-block; width:200px; height:30px; font-size:20px; text-align:center;}
+.mid_line {border:solid 0.5px gray; margin:10px auto 10px auto;}
+#content {width:702px; font-size:15px; padding:10px 0 50px 0; margin:30px 0 0 7px;}
+#live_controller {display:inline-block; width:100px; height:30px; background:whitesmoke; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:0 0 20px 10px;}
+
+#point_comment_view {float:right; width:474px;}
+
+#comment {border-collapse:collapse;}
+
+#comment_list th, #comment_list td {padding:5px 0 5px 0;}
+#comment_list th {width:135px; vertical-align:middle;}
+#comment_list td {vertical-align:middle; border:none; border-bottom:solid 1px gray;}
+.comment_remove {display:inline-block; width:15px; height:15px; background:whitesmoke; border:solid 1px gray;
+				 color:black; text-align:center; line-height:15px;}
+.comment_remove a {font-size:15px; text-decoration:none;}
+.comment_date {width:45px; text-align:center;}
+
+#point_comment_insert {width:474px; margin-top:10px;}
+
+form {display:inline-block;}
+#point_comment_name {display:inline-block; vertical-align:top; width:130px; height:40px; padding-left:5px; line-height:40px;}
+#point_comment_content {display:inline-block; width:260px; height:40px;}
+#point_comment_submit {display:inline-block; vertical-align:top; width:60px; height:40px; margin-top:1px;
+					   background:whitesmoke; border:solid 1px gray;}
+
+
+
