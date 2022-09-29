@@ -12,16 +12,17 @@ public class EventVo {
 	private float b_percent_b;
 	private String victory_team;
 	private int v_person; // 베팅 승자 count 값
-	private int v_person_point;
+	private int v_person_point; // 승자 인당 포인트
 	private Date start_date;
-	private Date end_date; 
+	private String target_date;
+	private String end_date; // target_date가 string이므로 db에 변환없이 삽입 (date로 하면 에러남)
 	private String process;
+	private String process_stop; // 베팅 중단 여부
 	private String member_idx; // 회원 번호
 	private int member_point; // 회원 보유 포인트
 	private String betting_team;
 	private int b_point;
 	private Date b_date;
-	
 	
 	
 	public int getEvent_idx() {
@@ -90,10 +91,16 @@ public class EventVo {
 	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
 	}
-	public Date getEnd_date() {
+	public String getTarget_date() {
+		return target_date;
+	}
+	public void setTarget_date(String target_date) {
+		this.target_date = target_date;
+	}
+	public String getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 	public String getProcess() {
@@ -101,6 +108,12 @@ public class EventVo {
 	}
 	public void setProcess(String process) {
 		this.process = process;
+	}
+	public String getProcess_stop() {
+		return process_stop;
+	}
+	public void setProcess_stop(String process_stop) {
+		this.process_stop = process_stop;
 	}
 	public String getMember_idx() {
 		return member_idx;
@@ -132,6 +145,14 @@ public class EventVo {
 	public void setB_date(Date b_date) {
 		this.b_date = b_date;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

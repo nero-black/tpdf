@@ -11,7 +11,9 @@ import org.springframework.web.multipart.MultipartRequest;
 import com.tpdf.shoot.dao.VideoDao;
 import com.tpdf.shoot.vo.VideoVo;
 
-@Service("v_service")
+@Service("v_service") // 해당 클래스를 루트 컨테이너에 빈(Bean)객체로 생성해주는 어노테이션
+// @jnject (미사용) 자동 의존성 주입
+
 public class VideoServiceImpl implements VideoService {
 	// videoListService -> videoServiceImpl권장
 	private VideoDao videoDao;

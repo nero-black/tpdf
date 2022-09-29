@@ -15,54 +15,59 @@
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/event.css">
 <script src="${pageContext.request.contextPath}/resources/js/event.js"></script>
+
 <body>
 <main>
 	<c:if test="${empty eventNow}">
 	<div id="no_event">
 	<h3>진행중인 이벤트가 없습니다.</h3>
+	<c:if test="${loginVO_member_grade == 2}"> <!-- 임시조치. 대소문자 주의! -->
 	<button id="event_add" onclick="location.href='${pageContext.request.contextPath}/event_add.do' ">이벤트 추가</button>
-	</div>
-	<script>
-	window.addEventListener('load', function() {  // 관리자 전용 버튼 감추기1
-		document.getElementById("event_add").style.display= "none"; // 관리자가 아닐 경우 감추기 (현재 주석처리)
-	});
-	</script>
 	</c:if>
+	</c:if>
+	</div>
+
 
 	<c:if test="${!empty eventNow}">
 	<div id="yes_event">
 	<h1>${eventNow.team_a} vs  ${eventNow.team_b}</h1> 
-	<h2>우승팀을 예측하고 포인트를 획득해보세요!</h2>
+	<h2>결과를 예측하고 포인트를 획득해보세요!</h2>
 
+		<c:if test="${loginVO_member_grade == 0 && process == 'n'}"> <!-- 임시조치. 대소문자 주의! -->
+		<h3>(로그인 후 이용하실 수 있습니다.)</h3>
+		</c:if>
+		<c:if test="${loginVO_member_grade == 1 && process == 'n'}"> <!-- 임시조치. 대소문자 주의! -->
 		<div id="event_user">
 		<!-- name값은 controller에서, id값은 자바스크립트쪽에서 사용 -->
 			<form name="event_user_set" id="event_user_set" action="${pageContext.request.contextPath}/event_betting_process.do" method="post">
 			<div class="betting"><label><input type="radio" class="betting_team" name="betting_team" value="${eventNow.team_a}"  required /> ${eventNow.team_a}</label></div>
 			<div class="betting"><label><input type="radio" class="betting_team" name="betting_team" value="${eventNow.team_b}" required /> ${eventNow.team_b}</label></div>
 			<div class="betting">
-			<input type="text" name="member_idx" id="member_idx" value="1"  required />
-			<input type="number" name="betting_point" id="betting_point" value="10" min="10" required />
+			<input type="hidden" name="member_idx" id="member_idx" value="${loginVO_member_idx}"  required /> <!-- 히든으로 감춰줌 -->
+			<input type="number" name="b_point" id="b_point" value="10" min="10" required />
 			<button onclick="event_betting(); return false;">베팅하기</button> <!-- return을 통해 기본값이 false로 되게 해줘야 confirm취소시 전송이 안됨 -->
 			</div>
-			
 		</form>
 		</div>
-	
-		<div id="event_set">
-		<form name="event_admin_set" id="event_admin_set" action="${pageContext.request.contextPath}/event_set_process.do" method="post">
-		<label><input type="radio" class="betting_team" name="betting_team" value="a"  required /> I팀</label>
-		<label><input type="radio" class="betting_team" name="betting_team" value="b" required /> J팀</label>
-		<label><input type="radio" class="betting_team" name="betting_team" value="draw" required /> 무승부</label>
-		<button onclick="confirm('정말로 이벤트를 종료하고\n포인트를 지급하시겠습니까?');">지급하기</button>
-		</form>
-		</div>
-	
+		</c:if>
+		<c:if test="${loginVO_member_grade <= 1 && process == 'y'}"> <!-- 임시조치. 대소문자 주의! -->
+		<h3>베팅이 종료되었습니다.</h3>
+		</c:if>
+		<c:if test="${loginVO_member_grade == 2 && process == 'n'}"> <!-- 임시조치. 대소문자 주의! -->
+			<button id="event_admin_stop" onclick="event_stop()">베팅 종료</button>
+		</c:if>
+		
+		<c:if test="${loginVO_member_grade == 2 && process == 'y'}"> <!-- 임시조치. 대소문자 주의! -->
+			<div id="event_set">
+			<form name="event_admin_set" id="event_admin_set" action="${pageContext.request.contextPath}/event_set_process.do" method="post">
+			<label><input type="radio" class="betting_team" name="victory_team" value="${eventNow.team_a}"  required /> ${eventNow.team_a}</label><br>
+			<label><input type="radio" class="betting_team" name="victory_team" value="${eventNow.team_b}" required /> ${eventNow.team_b}</label><br>
+			<label><input type="radio" class="betting_team" name="victory_team" value="무승부" required /> 무승부</label><br>
+			<button onclick="confirm('정말로 해당 항목에 포인트를 지급하시겠습니까?');">지급하기</button>
+			</form>
+			</div>
+		</c:if>
 	</div>
-	<script>
-	window.addEventListener('load', function() {  // 관리자 전용 버튼 감추기2
-		// document.getElementById("event_add").style.display= "none"; // 진행중인 이벤트가 존재하는 경우 감추기
-	});
-	</script>
 	</c:if>
 	
 	<div id="event">

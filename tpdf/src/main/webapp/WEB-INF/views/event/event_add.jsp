@@ -15,9 +15,8 @@
 	<div id="admin_event_add">
 	<h1>이벤트 추가</h1>
 	<form name="event_add_form" id="event_add_form" action="${pageContext.request.contextPath}/event_add_process.do" method="post">
-	<input type="text" id="team_a" name="team_a" placeholder="첫 번째 팀" required />
-	vs
-	<input type="text" id="team_b" name="team_b" placeholder="두 번째 팀" required />
+	<input type="text" id="team_a" name="team_a" placeholder="첫 번째 항목" required /><br>
+	<input type="text" id="team_b" name="team_b" placeholder="두 번째 항목" required />
 	</form>
 	<br><br>
 	<button id="event_add" onclick="event_add()">이벤트 추가</button>

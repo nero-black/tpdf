@@ -10,7 +10,19 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
+	<annotation-driven>
+		<!-- controller전송시 한글 깨짐 방지 -->
+		<message-converters>
+			<beans:bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<beans:property name="supportedMediaTypes">
+					<beans:list>
+						<beans:value>text/html; charset=UTF-8</beans:value>
+					</beans:list>
+				</beans:property>
+			</beans:bean>
+		</message-converters>
+	<!-- controller전송시 한글 깨짐 방지 끝 -->
+	</annotation-driven>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />

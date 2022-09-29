@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tpdf.shoot.event">
+<mapper namespace="com.tpdf.shoot.service">
 	
 	<select id="event_list" resultType="EventVo">
 	<![CDATA[ select * from event_info_tbl where process="n" order by event_idx desc limit 0,10 ]]>
@@ -17,16 +17,109 @@
 	</insert>
 	
 	<select id="member_point" parameterType="int" resultType="int">
-	<![CDATA[ select member_point from member_tbl where member_idx=#{member_idx} ]]>
+	select member_point from member_tbl where member_idx=#{member_idx}
+	</select>
+	
+	<select id="event_betting_c" parameterType="int" resultType="int">
+	select exists ( select member_idx from event_user_tbl where member_idx=#{member_idx} );
 	</select>
 	
 	<insert id="event_betting_i" parameterType="eventVo">
 	insert into event_user_tbl(member_idx, betting_team, b_point) values (#{member_idx}, #{betting_team}, #{b_point})
 	</insert>
 	
-<!-- 	<update id="event_betting_u" parameterType="eventVo">
-	insert into event_info_tbl(team_a, team_b) values (#{team_a}, #{team_b})
-	</update> -->
+	<update id="event_betting_u" parameterType="eventVo">
+	update member_tbl set member_point = member_point - #{b_point} where member_idx=#{member_idx}
+	</update>
+	
+	<select id="event_betting_stop_c" resultType="int">
+	select exists (select process from event_info_tbl where process='y'and process_stop='y')
+	</select>
+	
+	<update id="event_stop" parameterType="eventVo">
+	update event_info_tbl set process_stop = 'y' where process='y'
+	</update>
+	
+	<update id="event_calc_sum" parameterType="int">
+	update event_info_tbl set process_stop = 'y' where process='y'
+	</update> <!-- 작업중 -->
+	
+	<insert id="event_set_datetime_a" parameterType="int"> <!-- 이벤트 종료 날짜 생성 -->
+	insert into event_endtime_tbl(junk_data) values(0)
+	</insert>
+	
+	<select id="event_set_datetime_b" resultType="String"> <!-- 이벤트 종료 날짜 추출 -->
+	select target_date from event_endtime_tbl
+	</select>
+	
+	<update id="event_set_datetime_c" parameterType="eventVo"> <!-- 이벤트 종료 날짜 삽입 -->
+	update event_info_tbl set end_date = #{target_date} where process='y' and process_stop='y'
+	</update>
+	
+	<delete id="event_set_datetime_d"> <!-- 이벤트 종료 날짜 추출본 삭제 -->
+	delete from event_endtime_tbl
+	</delete>
+	
+	<update id="event_set_victory_team"> <!-- 선택한 승리팀 삽입 -->
+	update event_info_tbl set victory_team = #{victory_team} where process='y' and process_stop='y'
+	</update>
+	
+	<select id="event_set_betting_sum" resultType="int"> <!-- 베팅 포인트 합 계산 -->
+	select sum(b_point) from event_user_tbl
+	</select>
+	
+	<update id="event_set_betting_sum_u" parameterType="eventVo"> <!-- 베팅 포인트 합 적용 -->
+	update event_info_tbl set betting_sum = #{betting_sum} where process='y' and process_stop='y'
+	</update>
+	
+	<select id="event_set_b_person" resultType="int"> <!-- 베팅한 사람 합 계산 -->
+	select count(member_idx) from event_user_tbl
+	</select>
+	
+	<update id="event_set_b_person_u" parameterType="eventVo"> <!-- 베팅한 사람 합 적용 -->
+	update event_info_tbl set b_person = #{b_person} where process='y' and process_stop='y'
+	</update>
+	
+	<select id="event_set_b_person_team_a" resultType="String"> <!-- a종목 이름 -->
+	select team_a from event_info_tbl where process='y' and process_stop='y'
+	</select>
+	
+	<select id="event_set_b_person_team_b" resultType="String"> <!-- b종목 이름 -->
+	select team_b from event_info_tbl where process='y' and process_stop='y'
+	</select>
+	
+	<select id="event_set_b_person_a" resultType="int"> <!-- 베팅한 사람중 a선택한 사람 합 계산 -->
+	select count(betting_team) from event_user_tbl where betting_team=#{team_a}
+	</select>
+	
+	<select id="event_set_b_person_b" resultType="int"> <!-- 베팅한 사람중 b선택한 사람 합 계산 -->
+	select count(betting_team) from event_user_tbl where betting_team=#{team_b}
+	</select>
+	
+	<update id="event_set_b_percent_a" parameterType="eventVo"> <!-- a 배당률 적용 -->
+	update event_info_tbl set b_percent_a = #{b_percent_a} where process='y' and process_stop='y'
+	</update>
+	
+	<update id="event_set_b_percent_b" parameterType="eventVo"> <!-- b 배당률 적용 -->
+	update event_info_tbl set b_percent_b = #{b_percent_b} where process='y' and process_stop='y'
+	</update>
+	
+	<select id="event_set_v_person" resultType="int"> <!-- 베팅한 사람중 승리팀을 선택한 사람의 합 계산 -->
+	select count(betting_team) from event_user_tbl where betting_team=#{victory_team}
+	</select>
+	
+	<update id="event_set_v_person_point" parameterType="eventVo"> <!-- 승자 1인당 포인트 적용 -->
+	update event_info_tbl set v_person_point = #{v_person_point} where process='y' and process_stop='y'
+	</update>
+	
+	<update id="event_set_point" parameterType="eventVo"> <!-- 포인트 지급 -->
+	update member_tbl set member_point = member_point + #{v_person_point}
+	where member_idx in(select member_idx from event_user_tbl where betting_team=#{victory_team});
+	</update>
+	
+	
+	
+	<!-- 다음 이벤트를 위해 process_stop을 n으로 변경 -->
 
 </mapper>
 

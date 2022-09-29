@@ -40,5 +40,17 @@ function event_betting(){
 	}
 }
 
+
+
+function event_stop(){
+	let result = confirm("정말로 이벤트 베팅을 종료하시겠습니까?");
+	
+	if(result == true) {
+		location.href='event_stop.do';
+	} else {
+		return 0;
+	}
+}
+
 // window.onload
 // info.style.backgroundColor= '#00B4DB';
