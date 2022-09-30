@@ -57,9 +57,7 @@ hr.clear_line {clear:both; border:0;}
 .video table td img {max-width:200px; max-height:150px;}
 .video table tr {width:250px; font-size:15px;}
 
-#rank {display:inline-block; width:595px; height:200px;  border:solid 1px black;}
-#schedule {display:inline-block; width:595px; height:200px;  border:solid 1px black;}
+#rank {display:inline-block; width:595px; height:400px;  border:solid 1px black;}
+#schedule {display:inline-block; width:595px; height:400px;  border:solid 1px black;}
 
-/* 임시로 가려놓음 */
-#rank table {display:none;}
-#schedule table {display:none;}
+
