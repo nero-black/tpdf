@@ -14,15 +14,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
-  
- /* alert("test"); */
+/* alert("test"); */
+ 
 
 var v= "";
 $(document).ready(function () {
 	
 		
 	$.ajax({
-	    url:"${pageContext.request.contextPath}/data.do",
+	    url:"${pageContext.request.contextPath}/data3.do",
 	    type : "get",
 	    dataType: "json",
 	    success: function(data) { 
@@ -103,9 +103,6 @@ $(document).ready(function () {
      cursor: pointer;
      font-weight: bold;
   }
-  #league_menu ul {text-align:center;}
-  #league_menu ul li {display:inline-block; }
-  
 </style>
 <body>
   <main>
@@ -115,26 +112,13 @@ $(document).ready(function () {
 		<a href="${pageContext.request.contextPath}/live_video.do">실시간 방송</a>
   	</div>
   	<div id="league_menu">
-	  	<ul>
-	  		<li>
-	  			<a href="${pageContext.request.contextPath}/rank.do">프리미어리그</a> 
-	  		</li>
-	  		<li>
-	  			<a href="${pageContext.request.contextPath}/rank2.do">챔피언스리그</a>
-	  		 </li>
-	  		<li>
-	  			<a href="${pageContext.request.contextPath}/rank3.do">라리가</a>
-	  		</li>
-	  		<li>
-	  			<a href="${pageContext.request.contextPath}/rank4.do">분데스리가</a>
-	  		</li>
-	  		<li>
-	  			<a href="${pageContext.request.contextPath}/rank5.do">세리에</a>
-	  		</li>
-	  	</ul>	
-  	</div>	
+  		<a href="${pageContext.request.contextPath}/rank.do">프리미어리그</a> 
+  		<a href="${pageContext.request.contextPath}/rank2.do">챔피언스리그</a> 
+		<a href="${pageContext.request.contextPath}/rank3.do">라리가</a>
+		<a href="${pageContext.request.contextPath}/rank4.do">분데스리가</a>
+		<a href="${pageContext.request.contextPath}/rank5.do">세리에</a>
+  	</div>
   	<br><br>
-  	
     <div id="rank">
         
         

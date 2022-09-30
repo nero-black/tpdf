@@ -15,7 +15,429 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
 <style>
 * {text-decoration:none;}
+#more{float:right;}
+#font{font-weight:900; border:1px solid black; margin:20px;}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+/* alert("test"); */ 
+var v= "";
+var y= "";
+$(document).ready(function () {	
+	 $.ajax({
+	    url:"${pageContext.request.contextPath}/index_data.do",
+	    type : "get",
+	    dataType: "json",
+	    success: function(data) { 
+	         /* alert("성공");   */
+				
+		       $.each(data.matches, function(index){
+		    	   
+		    		   var x = this.homeTeam.crest;
+		    		   var y = this.awayTeam.crest;
+		    	 
+		    		   
+		    			  if(this.competition.code == "CL"||this.competition.code == "PL"||
+		    					  this.competition.code == "PD"||
+		    					  this.competition.code == "BL1"||
+		    					  this.competition.code == "SA"){
+		    	v1 ="<tr><td>"
+		    	   +this.utcDate.substr(11,5)+"</td><td align='right'>"
+				   +this.homeTeam.name+"&nbsp;"
+				   +"<img src='"+x+"'height=20 width=20>"+"</td><td align='center' class='result_id'>";
+				
+				 //console.log(this.score.fullTime.home);  
+				   
+				if(this.score.fullTime.home != null){   
+					v1 += this.score.fullTime.home+"&nbsp;"+":"+"&nbsp;"
+				   		+this.score.fullTime.away;
+				}else{
+					v1 += "vs"
+					
+				}  	
+				  v1 +="</td><td align='left'>"
+				   +"<img src='"+y+"'height=20 width=20>"+"&nbsp;"
+				   +this.awayTeam.name+"</td></tr>"
+		   
+				   ;
+				   
+		    		
+		    	v= v+v1;
+		    	
+		    			  };
+		       });
+		       
+	    
+		       $("#rank_tbl").html("<table>"
+		  				 +"<thead><tr>"
+		   				 +"<th class='time' scope='col' width='10%' align='center'>시간</th>"
+		   				 +"<th scope='col' width='30%'' align='right'>HOME</th>"
+		   				 +"<th scope='col' width='5%'' align='center'>경기</th>"
+		   				 +"<th scope='col' width='30%'' align='left'>AWAY</th></tr>"
+		   			     +"</thead>"
+		  				 +v+"</table>");
+		  		 
+		  		 
+		  		 $(".table_id").each(function(){
+			       		var rows =$(".table_id:contains('"+$(this).text()+"')");
+			       		if(rows.length > 1){
+			       			rows.eq(0).attr("rowspan", rows.length);
+			       			rows.not(":eq(0)").remove(0);
+			       		}
+			       	});
+		  		
+		  		
+		       },
+		  
+		        
+	      error:function(request,status,error){        
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	    
+	}); 
+	 
+	 $.ajax({
+		    url:"${pageContext.request.contextPath}/PL_data.do",
+		    type : "get",
+		    dataType: "json",
+		    success: function(data) { 
+		    	/* alert("성공"); */
+		       
+			      
+			       $.each(data.standings, function(index){
+			    	 
+			     	
+			    	if(this.type == "TOTAL"){ //타입이 토탈인 것들의 갯수 
+			    	  $.each(data.standings[index].table, function(tindex){		
+			     		 if(this.position <= "10"){
+							 var x = this.team.crest;
+						
+			     		  y1 = "<tr><td align='center'>"+this.position+"</td><td>"
+			     		  +"<img src='"+x+"'height=20 width=20>"+"&nbsp;"+this.team.name+"</td><td>"
+			     		  +this.playedGames+"</td><td>"
+			     		  +this.points+"</td><td>"
+			     		  +this.won+"</td><td>"
+			     		  +this.draw+"</td><td>"
+			     		  +this.lost+"</td><td>"
+			     		  +this.goalsFor+"</td><td>"
+			     		  +this.goalsAgainst+"</td><td>"
+			     		  +this.goalDifference+"</td></tr>";
+			     		  
+			     		  y = y+y1;
+			     		  
+			     		 }
+			     	 	});
+			    	  }   
+			       });
+			      
+			    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+			    			  		+"<th>순위</th>"
+			    			  		+"<th align='left'>팀</th>"
+			    			  		+"<th>경기수</th>"
+			    			  		+"<th>승점</th>"
+			    			  		+"<th>승</th>"
+			    			  		+"<th>무</th>"
+			    			  		+"<th>패</th>"
+			    			  		+"<th>득점</th>"
+			    			  		+"<th>실점</th>"
+			    			  		+"<th>득점차</th>"
+			    			  		
+			    			  				+y+"</table>"); 
+
+			        
+		     
+		    },
+		      error:function(request,status,error){        
+		    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		    
+		});   
+	 
+}); 
+//프리미어리그 
+ $(function (){
+$("#PL_league").click(function () {
+	$("#schedule_tbl").html("");
+	var v = "";
+	$.ajax({
+	    url:"${pageContext.request.contextPath}/data.do",
+	    type : "get",
+	    dataType: "json",
+	    success: function(data) { 
+	       /* alert("성공"); */
+	       
+		      /* alert(data.standings.length); */ //standings의 갯수 3개
+		    //   alert(data.standings.table.position);
+		      
+		   //    alert(data.standings[0].table[0].position);
+		       $.each(data.standings, function(index){
+		    	  /* alert(index); */
+		     	
+		    	if(this.type == "TOTAL"){ //타입이 토탈인 것들의 갯수 
+		    	  $.each(data.standings[index].table, function(tindex){		
+		    		  if(this.position <= "10"){
+						 var x = this.team.crest;
+					/* 	alert(x); */
+		     		
+		     		  v1 = "<tr><td>"+this.position+"</td><td>"
+		     		  +"<img src='"+x+"'height=20 width=20>"+"&nbsp;"+this.team.name+"</td><td>"
+		     		  +this.playedGames+"</td><td>"
+		     		  +this.points+"</td><td>"
+		     		  +this.won+"</td><td>"
+		     		  +this.draw+"</td><td>"
+		     		  +this.lost+"</td><td>"
+		     		  +this.goalsFor+"</td><td>"
+		     		  +this.goalsAgainst+"</td><td>"
+		     		  +this.goalDifference+"</td></tr>";
+		     		  
+		     		  v = v+v1;
+		    		  };
+		     	     	 
+		     	 	});
+		    	  }   
+		       });
+		      
+		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    			  		+"<th>순위</th>"
+		    			  		+"<th align='left'>팀</th>"
+		    			  		+"<th>경기수</th>"
+		    			  		+"<th>승점</th>"
+		    			  		+"<th>승</th>"
+		    			  		+"<th>무</th>"
+		    			  		+"<th>패</th>"
+		    			  		+"<th>득점</th>"
+		    			  		+"<th>실점</th>"
+		    			  		+"<th>득점차</th>"
+		    			  		
+		    			  				+v+"</table>"); 
+
+		        
+	     
+	    },
+	      error:function(request,status,error){        
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	    
+	});  
+		      
+	
+	});
+	
+ }); 
+//라리가
+
+ $(function (){
+$("#PD_league").click(function () {
+	$("#schedule_tbl").html("");
+	var v = "";
+	$.ajax({
+	    url:"${pageContext.request.contextPath}/data3.do",
+	    type : "get",
+	    dataType: "json",
+	    success: function(data) { 
+	       /* alert("성공"); */
+	       
+		      /* alert(data.standings.length); */ //standings의 갯수 3개
+		    //   alert(data.standings.table.position);
+		      
+		   //    alert(data.standings[0].table[0].position);
+		       $.each(data.standings, function(index){
+		    	  /* alert(index); */
+		     	
+		    	if(this.type == "TOTAL"){ //타입이 토탈인 것들의 갯수 
+		    	  $.each(data.standings[index].table, function(tindex){		
+		    		  if(this.position <= "10"){
+						 var x = this.team.crest;
+					/* 	alert(x); */
+		     		
+		     		  v1 = "<tr><td>"+this.position+"</td><td>"
+		     		  +"<img src='"+x+"'height=20 width=20>"+"&nbsp;"+this.team.name+"</td><td>"
+		     		  +this.playedGames+"</td><td>"
+		     		  +this.points+"</td><td>"
+		     		  +this.won+"</td><td>"
+		     		  +this.draw+"</td><td>"
+		     		  +this.lost+"</td><td>"
+		     		  +this.goalsFor+"</td><td>"
+		     		  +this.goalsAgainst+"</td><td>"
+		     		  +this.goalDifference+"</td></tr>";
+		     		  
+		     		  v = v+v1;
+		    		  };
+		     	     	 
+		     	 	});
+		    	  }   
+		       });
+		      
+		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    			  		+"<th>순위</th>"
+		    			  		+"<th align='left'>팀</th>"
+		    			  		+"<th>경기수</th>"
+		    			  		+"<th>승점</th>"
+		    			  		+"<th>승</th>"
+		    			  		+"<th>무</th>"
+		    			  		+"<th>패</th>"
+		    			  		+"<th>득점</th>"
+		    			  		+"<th>실점</th>"
+		    			  		+"<th>득점차</th>"
+		    			  		
+		    			  				+v+"</table>"); 
+
+		        
+	     
+	    },
+	      error:function(request,status,error){        
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	    
+	});  
+		      
+	
+	});
+	
+ }); 
+//분데스
+ $(function (){
+$("#BL1_league").click(function () {
+	$("#schedule_tbl").html("");
+	var v = "";
+	$.ajax({
+	    url:"${pageContext.request.contextPath}/data4.do",
+	    type : "get",
+	    dataType: "json",
+	    success: function(data) { 
+	       /* alert("성공"); */
+	       
+		      /* alert(data.standings.length); */ //standings의 갯수 3개
+		    //   alert(data.standings.table.position);
+		      
+		   //    alert(data.standings[0].table[0].position);
+		       $.each(data.standings, function(index){
+		    	  /* alert(index); */
+		     	
+		    	if(this.type == "TOTAL"){ //타입이 토탈인 것들의 갯수 
+		    	  $.each(data.standings[index].table, function(tindex){		
+		    		  if(this.position <= "10"){
+						 var x = this.team.crest;
+					/* 	alert(x); */
+		     		
+		     		  v1 = "<tr><td>"+this.position+"</td><td>"
+		     		  +"<img src='"+x+"'height=20 width=20>"+"&nbsp;"+this.team.name+"</td><td>"
+		     		  +this.playedGames+"</td><td>"
+		     		  +this.points+"</td><td>"
+		     		  +this.won+"</td><td>"
+		     		  +this.draw+"</td><td>"
+		     		  +this.lost+"</td><td>"
+		     		  +this.goalsFor+"</td><td>"
+		     		  +this.goalsAgainst+"</td><td>"
+		     		  +this.goalDifference+"</td></tr>";
+		     		  
+		     		  v = v+v1;
+		    		  };
+		     	     	 
+		     	 	});
+		    	  }   
+		       });
+		      
+		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    			  		+"<th>순위</th>"
+		    			  		+"<th align='left'>팀</th>"
+		    			  		+"<th>경기수</th>"
+		    			  		+"<th>승점</th>"
+		    			  		+"<th>승</th>"
+		    			  		+"<th>무</th>"
+		    			  		+"<th>패</th>"
+		    			  		+"<th>득점</th>"
+		    			  		+"<th>실점</th>"
+		    			  		+"<th>득점차</th>"
+		    			  		
+		    			  				+v+"</table>"); 
+
+		        
+	     
+	    },
+	      error:function(request,status,error){        
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	    
+	});  
+		      
+	
+	});
+	
+ }); 
+
+//세리에A
+ $(function (){
+$("#SA_league").click(function () {
+	$("#schedule_tbl").html("");
+	var v = "";
+	$.ajax({
+	    url:"${pageContext.request.contextPath}/data5.do",
+	    type : "get",
+	    dataType: "json",
+	    success: function(data) { 
+	       /* alert("성공"); */
+	       
+		      /* alert(data.standings.length); */ //standings의 갯수 3개
+		    //   alert(data.standings.table.position);
+		      
+		   //    alert(data.standings[0].table[0].position);
+		       $.each(data.standings, function(index){
+		    	  /* alert(index); */
+		     	
+		    	if(this.type == "TOTAL"){ //타입이 토탈인 것들의 갯수 
+		    	  $.each(data.standings[index].table, function(tindex){		
+		    		  if(this.position <= "10"){
+						 var x = this.team.crest;
+					/* 	alert(x); */
+		     		
+		     		  v1 = "<tr><td>"+this.position+"</td><td>"
+		     		  +"<img src='"+x+"'height=20 width=20>"+"&nbsp;"+this.team.name+"</td><td>"
+		     		  +this.playedGames+"</td><td>"
+		     		  +this.points+"</td><td>"
+		     		  +this.won+"</td><td>"
+		     		  +this.draw+"</td><td>"
+		     		  +this.lost+"</td><td>"
+		     		  +this.goalsFor+"</td><td>"
+		     		  +this.goalsAgainst+"</td><td>"
+		     		  +this.goalDifference+"</td></tr>";
+		     		  
+		     		  v = v+v1;
+		    		  };
+		     	     	 
+		     	 	});
+		    	  }   
+		       });
+		      
+		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    			  		+"<th>순위</th>"
+		    			  		+"<th align='left'>팀</th>"
+		    			  		+"<th>경기수</th>"
+		    			  		+"<th>승점</th>"
+		    			  		+"<th>승</th>"
+		    			  		+"<th>무</th>"
+		    			  		+"<th>패</th>"
+		    			  		+"<th>득점</th>"
+		    			  		+"<th>실점</th>"
+		    			  		+"<th>득점차</th>"
+		    			  		
+		    			  				+v+"</table>"); 
+
+		        
+	     
+	    },
+	      error:function(request,status,error){        
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	    
+	});  
+		      
+	
+	});
+	
+ }); 
+
+</script>
 <body>
   <main>
       <a id="hot_video" href="#">
@@ -148,92 +570,28 @@
 	</div>
     <hr class="clear_line">
 
-    <div id="rank">
-      <p>순위/득점</p>
-      <table border="1"> 
-        <tr>
-          <th>경기날짜</th>
-          <th>경기시간</th>
-          <th>팀이름1</th>
-          <th>아이콘1</th>
-          <th>점수</th>
-          <th>:</th>
-          <th>점수</th>
-          <th>아이콘2</th>
-          <th>팀이름2</th>
-        </tr>
-        <tr>
-          <td>날짜</td>
-          <td>시간</td>
-          <td>팀</td>
-          <td>아이콘1</td>
-          <td>점수</td>
-          <td>:</td>
-          <td>점수</td>
-          <td>아이콘2</td>
-          <td>팀</td>
-        </tr>
-        <tr>
-          <td>날짜</td>
-          <td>시간</td>
-          <td>팀</td>
-          <td>아이콘1</td>
-          <td>점수</td>
-          <td>:</td>
-          <td>점수</td>
-          <td>아이콘2</td>
-          <td>팀</td>
-        </tr>
-        <tr>
-          <td>날짜</td>
-          <td>시간</td>
-          <td>팀</td>
-          <td>아이콘1</td>
-          <td>점수</td>
-          <td>:</td>
-          <td>점수</td>
-          <td>아이콘2</td>
-          <td>팀</td>
-        </tr>
-      </table>
+   <div id="rank">
+      <a id="font" href="${pageContext.request.contextPath}/rank.do">해외축구 경기일정/결과</a>
+      <a id="more" href="${pageContext.request.contextPath}/rank.do">더보기</a>
+      <div id="rank_tbl">
+      
+      </div>
     </div>
 
     <div id="schedule">
-      <p>일정/결과</p>
-      <table border="1">
-        <tr>
-          <th>경기날짜</th>
-          <th>경기시간</th>
-          <th>팀이름1</th>
-          <th>아이콘1</th>
-          <th>아이콘2</th>
-          <th>팀이름2</th>
-        </tr>
-        <tr>
-          <td>날짜</td>
-          <td>시간</td>
-          <td>팀</td>
-          <td>아이콘1</td>
-          <td>아이콘2</td>
-          <td>팀</td>
-        </tr>
-        <tr>
-          <td>날짜</td>
-          <td>시간</td>
-          <td>팀</td>
-          <td>아이콘1</td>
-          <td>아이콘2</td>
-          <td>팀</td>
-        </tr>
-        <tr>
-          <td>날짜</td>
-          <td>시간</td>
-          <td>팀</td>
-          <td>아이콘1</td>
-          <td>아이콘2</td>
-          <td>팀</td>
-        </tr>
-      </table>
+      <a id="font"  href="${pageContext.request.contextPath}/schedule.do">해외축구 순위표</a>
+      <a id="more" href="${pageContext.request.contextPath}/schedule.do">더보기</a>
+      <br>
+      <div>
+      <a href="#" id="PL_league"  onclick="return false;" >프리미어리그</a>
+      <a href="#" id="PD_league"  onclick="return false;">라리가</a>
+      <a href="#" id="BL1_league" onclick="return false;">분데스리가</a>
+      <a href="#" id="SA_league"  onclick="return false;">세리에 A</a>
+      </div>
+      
+      <div id="schedule_tbl">
+      </div>
+      
     </div>
     <br><br><br>
 <hr class="clear_line">
