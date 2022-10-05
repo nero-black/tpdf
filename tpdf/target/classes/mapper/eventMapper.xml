@@ -108,18 +108,51 @@
 	select count(betting_team) from event_user_tbl where betting_team=#{victory_team}
 	</select>
 	
-	<update id="event_set_v_person_point" parameterType="eventVo"> <!-- 승자 1인당 포인트 적용 -->
-	update event_info_tbl set v_person_point = #{v_person_point} where process='y' and process_stop='y'
+	<update id="event_set_v_person_c" parameterType="eventVo"> <!-- 승리팀을 선택한 사람 수 적용 -->
+	update event_info_tbl set v_person = #{v_person} where process='y' and process_stop='y'
+	</update>
+	
+	<select id="event_set_betting_sum_a" resultType="int"> <!-- 베팅 포인트 합 계산 a팀 -->
+	select sum(b_point) from event_user_tbl where betting_team = #{team_a};
+	</select>
+	
+	<select id="event_set_betting_sum_b" resultType="int"> <!-- 베팅 포인트 합 계산 b팀 -->
+	select sum(b_point) from event_user_tbl where betting_team = #{team_b};
+	</select>
+	
+	<update id="event_set_point_a" parameterType="eventVo"> <!-- 개인 배당률 적용 a -->
+	update event_user_tbl set b_percent = truncate(b_point / #{betting_sum_a}, 2) where betting_team = #{team_a};
+	</update>
+	
+	<update id="event_set_point_b" parameterType="eventVo"> <!-- 개인 배당률 적용 b -->
+	update event_user_tbl set b_percent = truncate(b_point / #{betting_sum_b}, 2) where betting_team = #{team_b};
 	</update>
 	
 	<update id="event_set_point" parameterType="eventVo"> <!-- 포인트 지급 -->
-	update member_tbl set member_point = member_point + #{v_person_point}
-	where member_idx in(select member_idx from event_user_tbl where betting_team=#{victory_team});
+	update member_tbl m, event_user_tbl e set m.member_point = m.member_point + truncate(e.b_percent * #{betting_sum} * 0.95, 0)
+	where e.betting_team = #{victory_team} and m.member_idx = e.member_idx; <!-- 0.95 = 수수료 5% 적용 -->
 	</update>
 	
+	<!-- <select id="temp" resultType="eventVo"> 임시
+	select * from event_user_tbl where betting_team=#{victory_team}
+	</select> -->
 	
+	<delete id="event_end_a"> <!-- 이벤트 참가 회원 테이블 내용 삭제 -->
+	delete from event_user_tbl
+	</delete>
 	
-	<!-- 다음 이벤트를 위해 process_stop을 n으로 변경 -->
+	<insert id="event_end_b1" parameterType="eventVo"> <!-- 이벤트 참가 회원 테이블 null 방지 -->
+	insert into event_user_tbl(betting_team, b_point, b_percent) values(#{team_a}, 0, 0.00)
+	</insert>
+	
+	<insert id="event_end_b2" parameterType="eventVo"> <!-- 이벤트 참가 회원 테이블 null 방지 -->
+	insert into event_user_tbl(betting_team, b_point, b_percent) values(#{team_b}, 0, 0.00)
+	</insert>
+	
+	<update id="event_end_c" parameterType="String"> <!-- 이벤트 종료 -->
+	update event_info_tbl set process='n', process_stop='n'
+	where process='y' and process_stop='y'
+	</update>
 
 </mapper>
 

@@ -7,12 +7,15 @@ public class EventVo {
 	private String team_a;
 	private String team_b;
 	private int betting_sum;
+	private int betting_sum_a; // 항목 베팅 포인트 합
+	private int betting_sum_b;
 	private int b_person; // 베팅 인원
+	private float b_percent; // 본인 배당률
 	private float b_percent_a;
 	private float b_percent_b;
 	private String victory_team;
 	private int v_person; // 베팅 승자 count 값
-	private int v_person_point; // 승자 인당 포인트
+	private int v_person_point; // 승자 인당 포인트 평균
 	private Date start_date;
 	private String target_date;
 	private String end_date; // target_date가 string이므로 db에 변환없이 삽입 (date로 하면 에러남)
@@ -23,6 +26,7 @@ public class EventVo {
 	private String betting_team;
 	private int b_point;
 	private Date b_date;
+	
 	
 	
 	public int getEvent_idx() {
@@ -49,11 +53,29 @@ public class EventVo {
 	public void setBetting_sum(int betting_sum) {
 		this.betting_sum = betting_sum;
 	}
+	public int getBetting_sum_a() {
+		return betting_sum_a;
+	}
+	public void setBetting_sum_a(int betting_sum_a) {
+		this.betting_sum_a = betting_sum_a;
+	}
+	public int getBetting_sum_b() {
+		return betting_sum_b;
+	}
+	public void setBetting_sum_b(int betting_sum_b) {
+		this.betting_sum_b = betting_sum_b;
+	}
 	public int getB_person() {
 		return b_person;
 	}
 	public void setB_person(int b_person) {
 		this.b_person = b_person;
+	}
+	public float getB_percent() {
+		return b_percent;
+	}
+	public void setB_percent(float b_percent) {
+		this.b_percent = b_percent;
 	}
 	public float getB_percent_a() {
 		return b_percent_a;
@@ -145,6 +167,10 @@ public class EventVo {
 	public void setB_date(Date b_date) {
 		this.b_date = b_date;
 	}
+	
+	
+	
+	
 	
 	
 	

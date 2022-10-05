@@ -121,15 +121,48 @@ public interface EventService {
 		return 0;
 	}
 	
-	default EventVo event_set_v_person_point(EventVo eventVo) { // 승자 1인당 포인트 적용
+	default EventVo event_set_v_person_c(EventVo eventVo) { // 승리팀을 선택한 사람 수 적용
+		return null;
+	}
+	
+	default int event_set_betting_sum_a(EventVo eventVo) {
+		return 0;
+	}
+	
+	default int event_set_betting_sum_b(EventVo eventVo) {
+		return 0;
+	}
+	
+	default EventVo event_set_point_a(EventVo eventVo) { // 개인 배당률 적용 a
+		return null;
+	}
+	
+	default EventVo event_set_point_b(EventVo eventVo) { // 개인 배당률 적용 b
 		return null;
 	}
 	
 	default EventVo event_set_point(EventVo eventVo) { // 포인트 지급
 		return null;
 	}
+	
+	default String event_end_a() { // 이벤트 참가 회원 테이블 내용 삭제
+		return null;
+	}
+	
+	default int event_end_b1(EventVo eventVo) { // 이벤트 참가 회원 테이블 null 방지
+		return 0;
+	}
 
+	default int event_end_b2(EventVo eventVo) { // 이벤트 참가 회원 테이블 null 방지
+		return 0;
+	}
 	
+	default String event_end_c() { // 이벤트 종료
+		return null;
+	}
 	
+	/* default List<EventVo> temp(EventVo eventVo) { //
+		return null;
+	} */
 	
 }

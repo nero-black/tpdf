@@ -60,10 +60,10 @@
 		<c:if test="${loginVO_member_grade == 2 && process == 'y'}"> <!-- 임시조치. 대소문자 주의! -->
 			<div id="event_set">
 			<form name="event_admin_set" id="event_admin_set" action="${pageContext.request.contextPath}/event_set_process.do" method="post">
-			<label><input type="radio" class="betting_team" name="victory_team" value="${eventNow.team_a}"  required /> ${eventNow.team_a}</label><br>
-			<label><input type="radio" class="betting_team" name="victory_team" value="${eventNow.team_b}" required /> ${eventNow.team_b}</label><br>
-			<label><input type="radio" class="betting_team" name="victory_team" value="무승부" required /> 무승부</label><br>
-			<button onclick="confirm('정말로 해당 항목에 포인트를 지급하시겠습니까?');">지급하기</button>
+			<label><input type="radio" class="betting_team" name="victory_team" id="victory_team" value="${eventNow.team_a}"  required /> ${eventNow.team_a}</label><br>
+			<label><input type="radio" class="betting_team" name="victory_team" id="victory_team" value="${eventNow.team_b}" required /> ${eventNow.team_b}</label><br>
+			<label><input type="radio" class="betting_team" name="victory_team" id="victory_team" value="무승부" required /> 무승부</label><br>
+			<button onclick="event_end_set(); return false;">지급하기</button>
 			</form>
 			</div>
 		</c:if>
@@ -74,14 +74,14 @@
 	<table>
 		<caption>지난 이벤트 결과 (최근 10개)</caption> 
 	        <tr>
-	        	<th colspan="3">대결팀</th> <th>참가 인원</th> <th>포인트 총액</th> <th>배당률</th> <th>승리팀</th>
-	        	<th>당첨자</th> <th>인당 포인트</th>
+	        	<th colspan="3">대결팀</th> <th>참가 인원</th> <th>포인트 총액</th> <th>비율</th> <th>승리팀</th>
+	        	<th>당첨자</th>
 	        </tr>
 		<% for (EventVo eventVo : eventList ) {	%>
 	        <tr>
 	        	<td><%= eventVo.getTeam_a() %></td> <td>Vs</td> <td><%= eventVo.getTeam_b() %></td>
-	        	<td>999999명</td> <td><%= eventVo.getBetting_sum() %>100000</td> <td><%= eventVo.getB_percent_a() %>00 : <%= eventVo.getB_percent_b() %>00</td>
-	        	<td><%= eventVo.getVictory_team() %>첫 번째팀의 이름을 공개</td> <td><%= eventVo.getV_person_point() %>50000명</td> <td>1000? P</td>
+	        	<td><%= eventVo.getB_person() %>명</td> <td><%= eventVo.getBetting_sum() %></td> <td><%= eventVo.getB_percent_a() %>% : <%= eventVo.getB_percent_b() %>%</td>
+	        	<td><%= eventVo.getVictory_team() %></td> <td><%= eventVo.getV_person() %>명</td>
 	        </tr>
         <% } %>
         </table>

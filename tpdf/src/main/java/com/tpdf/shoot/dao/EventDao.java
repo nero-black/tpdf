@@ -145,13 +145,49 @@ public class EventDao {
 		return sqlSession.selectOne(MAPPER+".event_set_v_person", eventVo);
 		}
 	
-	public EventVo event_set_v_person_point(EventVo eventVo) { // 승자 1인당 포인트 적용
-		return sqlSession.selectOne(MAPPER+".event_set_v_person_point", eventVo);
+	public EventVo event_set_v_person_c(EventVo eventVo) { // 승리팀을 선택한 사람 수 적용
+		return sqlSession.selectOne(MAPPER+".event_set_v_person_c", eventVo);
+		}
+	
+	public int event_set_betting_sum_a(EventVo eventVo) {
+		return sqlSession.selectOne(MAPPER+".event_set_betting_sum_a", eventVo);
+		}
+	
+	public int event_set_betting_sum_b(EventVo eventVo) {
+		return sqlSession.selectOne(MAPPER+".event_set_betting_sum_b", eventVo);
+		}
+	
+	public EventVo event_set_point_a(EventVo eventVo) { // 개인 배당률 적용 a
+		return sqlSession.selectOne(MAPPER+".event_set_point_a", eventVo);
+		}
+	
+	public EventVo event_set_point_b(EventVo eventVo) { // 개인 배당률 적용 b
+		return sqlSession.selectOne(MAPPER+".event_set_point_b", eventVo);
 		}
 	
 	public EventVo event_set_point(EventVo eventVo) { // 포인트 지급
 		return sqlSession.selectOne(MAPPER+".event_set_point", eventVo);
 		}
+	
+	public String event_end_a() { // 이벤트 참가 회원 테이블 내용 삭제
+		return sqlSession.selectOne(MAPPER+".event_end_a");
+		}
+	
+	public int event_end_b1(EventVo eventVo) { // 이벤트 참가 회원 테이블 null 방지1
+		return sqlSession.insert(MAPPER+".event_end_b1", eventVo);
+		}
+	
+	public int event_end_b2(EventVo eventVo) { // 이벤트 참가 회원 테이블 null 방지2
+		return sqlSession.insert(MAPPER+".event_end_b2", eventVo);
+		}
+	
+	public String event_end_c() { // 이벤트 종료
+		return sqlSession.selectOne(MAPPER+".event_end_c");
+		}
+	
+	/* public List<EventVo> temp(EventVo eventVo) { // 임시
+		return sqlSession.selectList(MAPPER+".temp", eventVo);
+		} */
 	
 
 	

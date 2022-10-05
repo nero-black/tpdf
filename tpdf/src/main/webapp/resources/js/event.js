@@ -52,5 +52,23 @@ function event_stop(){
 	}
 }
 
+
+
+function event_end_set(){
+	let result = confirm('정말로 해당 항목에 포인트를 지급하시겠습니까?');
+	
+	if(result == true) {
+	
+	victory_team = document.getElementById('victory_team').value;
+	
+		if (victory_team != null) {
+		document.getElementById('event_add_form').submit();
+		} else {
+		alert('반드시 하나의 항목을 선택해야 합니다.');
+		return false;
+		}	
+	}
+}
+
 // window.onload
 // info.style.backgroundColor= '#00B4DB';
