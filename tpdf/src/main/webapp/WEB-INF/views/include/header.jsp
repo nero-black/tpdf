@@ -53,7 +53,7 @@
 	 <a href="${pageContext.request.contextPath}/index.do"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고" id="logo"></a>
 	
 	 <nav id="menu">
-	   <a href="${pageContext.request.contextPath}/notice_list.do">뉴스</a> |
+	   <a href="/notice/notice_listPageSearch?num=1">뉴스</a> |
 	   <a href="${pageContext.request.contextPath}/board_list.do">게시판</a> |
 	   <a href="${pageContext.request.contextPath}/event_list.do">이벤트</a> |
 	   <a href="${pageContext.request.contextPath}/video_list.do">영상</a> |

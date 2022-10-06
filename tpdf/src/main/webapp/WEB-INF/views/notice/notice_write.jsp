@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시물 수정</title>
+<title>게시물 작성</title>
 </head>
 <style>
 
@@ -34,15 +34,16 @@ hr.clear_line {clear:both; border:0;}
 </style>
 
 <body>
+
 	<form method="post">
 
-	<input type="text" id="title" name="title" placeholder="제목" value="${view.title}"/><br />
+	<input type="text" id="title" name="title" placeholder="제목"/><br />
 	
-	<input type="text" id="writer" name="writer" placeholder="작성자" value="${view.writer}" /><br />
+	<input type="text" id="writer" name="writer" placeholder="작성자"/><br />
 	
-	<textarea cols="50" id="content" rows="9" name="content" placeholder="내용" value="${view.content}"></textarea><br />
+	<textarea cols="50" id="content" rows="9" name="content" placeholder="내용"></textarea><br />
 	
-	<button id="submit" type="submit">완료</button>
+	<button id="submit" type="submit">작성</button>
 	<button id="cancel">취소</button>
 	<br><br><br><br>
 	</form>

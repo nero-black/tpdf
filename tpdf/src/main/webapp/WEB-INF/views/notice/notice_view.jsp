@@ -1,32 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 --> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ShooT :: 비상하는 해외축구 커뮤니티</title>
+<title>게시물 작성</title>
 </head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/notice_view.css">
-<script src="${pageContext.request.contextPath}/resources/js/notice_view.js"></script>
-<body>
-<main>
+<style>
 
-<div id="title">제목</div>
-<div id="writer">작성자작성자작성</div>| <div id="wdate">2022.08.30 00:00</div>
-<div id="hit">조회수: 77,777</div>| <a href="" id="share" onclick="notice_share(this.href); return false;">게시글 공유</a></button>
-<hr class="mid_line">
-<div id="file"><img src="${pageContexst.request.contextPath}/resources/img/hot_video.png" alt="첨부 이미지"></div>
-<div id="content">글 내용입니다. 글 내용입니다. 글 내용입니다. 글 내용입니다. 글 내용입니다. </div>
-</pre>
-<hr class="mid_line">
-<br>
-<button id="remove" onclick="confirm('정말로 삭제하시겠습니까?'); ">삭제</button>
-<button id="modify" onclick="location.href='${pageContext.request.contextPath}/notice_modify.do' ">수정</button>
-<button id="list" onclick="location.href='${pageContext.request.contextPath}/notice_list.do' ">목록</button>
-</main>
-<hr class="clear_line">
+* {margin:0; padding:0;}
+
+main {width:1200px; height:1000px; margin:0 auto;}
+hr.clear_line {clear:both; border:0;}
+
+#title {width:600px; height:30px; padding-left:10px; margin:50px 0 20px 400px;
+		font-size:20px; font-weight:bold; line-height:10px;}
+		
+		
+#writer {width:600px; height:30px; padding-left:10px; margin:20px 0 20px 400px;
+		font-size:20px; font-weight:bold; line-height:10px;}
+
+#content {width:800px; height:480px; font-size:15px; padding:10px 0 0 10px; margin:10px 0 0 400px;}
+
+
+
+#cancel {float:right;  width:100px; height:30px; background:whitesmoke; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 20px 0 0;}
+#submit {float:right;  width:100px; height:30px; background:whitesmoke; 
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 300px 0 0;}
+
+
+</style>
+
+<body>
+	<label>제목</label>
+	${view.title}<br />
+	<label>작성자</label>
+	${view.writer}<br />
+	<label>내용</label>
+	${view.content}<br />
+	
+
+	<br/><br/>
+	
+	<div>
+		<a href="/notice/notice_modify?notice_idx=${view.notice_idx}">게시물 수정</a>
+		<a href="/notice/notice_delete?notice_idx=${view.notice_idx}">게시물 삭제</a>
+	</div>
+	
+	
+	
 </body>
 </html>
-
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->
