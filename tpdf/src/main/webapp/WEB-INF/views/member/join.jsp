@@ -8,13 +8,23 @@
 <title>ShooT :: 비상하는 해외축구 커뮤니티</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/join.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+function id_check() {
+	// window.open('index.do');
+	window.open("index.do", "ID 중복 확인", "width=600px, height=300px");
+}
+</script>
+
+<script src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
 <body>
 
 <div id="join">
 	<form action="${pageContext.request.contextPath}/join_process.do" method="post" id="join_form">
 		<input type="text" id="member_id" name="member_id" placeholder="아이디" required />
-		<a href="${pageContext.request.contextPath}/id_check.do" id="id_check">중복 확인</a>
+		<a href="${pageContext.request.contextPath}/id_check.do" id="id_check" onclick="id_check(); return false;">입력하기</a>
 		<br>
 		<input type="password" id="member_pw" name="member_pw" placeholder="비밀번호" required />
 		<a id="pwc1">비밀번호 불일치</a>
@@ -31,7 +41,7 @@
 		<br>
 		<div id="member_gender">
 		성별: &nbsp; &nbsp;
-		<label id="member_gender_m"><input type="radio" class="member_gender" name="member_gender" value="m" checked /> 남자</label> &nbsp; &nbsp; &nbsp; &nbsp;
+		<label id="member_gender_m"><input type="radio" class="member_gender" name="member_gender" value="m" /> 남자</label> &nbsp; &nbsp; &nbsp; &nbsp;
 		<label id="member_gender_f"><input type="radio" class="member_gender" name="member_gender" value="f" /> 여자</label> &nbsp; &nbsp; &nbsp; 
 		</div>
 		<br>
@@ -41,7 +51,7 @@
 		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소" /> <!-- addr1+addr2 로 처리 필요 -->
 		<br>
 	</form>
-	<button id="submit" onclick="document.getElementById('join_form').submit();">회원가입</button>
+	<button id="submit" onclick="join()">회원가입</button>
 	<button id="return" onclick="history.back()">돌아가기</button>
 </div>
 </body>

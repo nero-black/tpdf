@@ -18,11 +18,18 @@ public class MemberServiceImpl implements MemberService {
 		this.memberDao = memberDao;
 	}
 	
-	
+	// -------------------------
 	
 	@Override
 	public MemberVo login_check(MemberVo memberVo) {
 		return memberDao.login_check(memberVo);
+	}
+	
+	
+	
+	@Override
+	public int join_process(MemberVo memberVo) {
+		return memberDao.join_process(memberVo);
 	}
 
 }

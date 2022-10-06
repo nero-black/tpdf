@@ -19,9 +19,17 @@ public class MemberDao {
 	public MemberDao(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 		}
+	
+	// -------------------------
 		
 	public MemberVo login_check(MemberVo memberVo) {
 		return sqlSession.selectOne(MAPPER+".login_check", memberVo);
+		}
+	
+	
+	
+	public int join_process(MemberVo memberVo) {
+		return sqlSession.insert(MAPPER+".join_process", memberVo);
 		}
 	
 	

@@ -9,6 +9,12 @@
 	<select id="login_check" resultType="MemberVo">
 		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
+	
+	<insert id="join_process" parameterType="MemberVo">
+		insert into member_tbl
+		(member_id, member_pw, member_name, member_gender, member_birth, member_addr, member_email, member_tel) values
+		(#{member_id}, #{member_pw}, #{member_name}, #{member_gender}, #{member_birth}, #{member_addr}, #{member_email}, #{member_tel})
+	</insert> 
 
 </mapper>	
 

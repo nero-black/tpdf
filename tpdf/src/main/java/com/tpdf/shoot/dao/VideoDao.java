@@ -33,7 +33,7 @@ public class VideoDao {
 	
 	public List<VideoVo> video_search(String search_value) {
 		search_value = "%"+search_value+"%";
-		System.out.println("최종값: "+search_value);
+		// System.out.println("최종값: "+search_value);
 		return sqlSession.selectList(MAPPER+".video_search", search_value);
 	}
 	

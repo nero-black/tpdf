@@ -9,5 +9,11 @@ public interface MemberService {
 	default MemberVo login_check(MemberVo memberVo) {
 		return null;
 	}
+	
+	
+	
+	default int join_process(MemberVo memberVo) {
+		return 0;
+	}
 
 }

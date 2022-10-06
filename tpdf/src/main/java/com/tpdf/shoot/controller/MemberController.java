@@ -1,5 +1,6 @@
 package com.tpdf.shoot.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,37 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
+	@GetMapping("/join.do")
+	public String join() {
+		return "member/join";
+	}
+	
+	@RequestMapping("/join_process.do")
+	public String join_process(MemberVo memberVo, HttpServletRequest request, Model model) {
+		
+		// 폼에 들어있는 값 가져와서 출력
+		/*
+		String member_id = request.getParameter("member_id");
+		String member_pw = request.getParameter("member_pw");
+		String member_name = request.getParameter("member_name");
+		String member_email = request.getParameter("member_email");
+		String member_tel = request.getParameter("member_tel");
+		String member_gender = request.getParameter("member_gender");
+		String member_birth = request.getParameter("member_birth");
+		String addr1 = request.getParameter("member_addr1");
+		String addr2 = request.getParameter("member_addr2");
+		String member_addr = addr1 + " " + addr2;
+		System.out.println(member_id +"/"+ member_pw +"/"+ member_name +"/"+ member_email +"/" 
+		+member_tel +"/"+ member_gender +"/"+ member_birth +"/"+ member_addr);
+		*/
+		
+		memberService.join_process(memberVo);
+		return "member/join_process";
+	}	
 	
 	@GetMapping("/login.do")
 	public String login() {
 		return "member/login";
-	}
-	
-	@GetMapping("/join.do")
-	public String join() {
-		return "member/join";
 	}
 	
 	@ResponseBody
@@ -73,11 +96,6 @@ public class MemberController {
 	
 	return request_mapping;
 	}
-	
-	@PostMapping("/join_process.do") // 추후 회원가입때 이곳에 매개변수 넘어가는 과정 처리해주어야 함
-	public String join_process() {
-		return "member/join_process";
-	}	
 	
 	@GetMapping("/find_ippw.do")
 	public String find_ippw() {
