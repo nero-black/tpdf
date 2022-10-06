@@ -16,7 +16,7 @@ public class EventDao {
 	
 	SqlSession sqlSession;
 		
-	private final String MAPPER = "com.tpdf.shoot.service";
+	private final String MAPPER = "com.tpdf.shoot.service.event";
 		
 	@Autowired(required=false)
 	public EventDao(SqlSession sqlSession) {

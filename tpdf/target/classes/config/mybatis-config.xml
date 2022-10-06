@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias alias="videoVo" type="com.tpdf.shoot.vo.VideoVo"/>
 		<typeAlias alias="eventVo" type="com.tpdf.shoot.vo.EventVo"/>
+		<typeAlias alias="memberVo" type="com.tpdf.shoot.vo.MemberVo"/>
 	</typeAliases>
 
 </configuration>	

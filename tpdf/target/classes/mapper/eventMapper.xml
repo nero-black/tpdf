@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tpdf.shoot.service">
+<mapper namespace="com.tpdf.shoot.service.event">
 	
 	<select id="event_list" resultType="EventVo">
 	<![CDATA[ select * from event_info_tbl where process="n" order by event_idx desc limit 0,10 ]]>

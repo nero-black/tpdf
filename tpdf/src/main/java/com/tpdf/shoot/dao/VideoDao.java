@@ -15,7 +15,7 @@ public class VideoDao {
 	
 	SqlSession sqlSession;
 		
-	private final String MAPPER = "com.tpdf.shoot.video";
+	private final String MAPPER = "com.tpdf.shoot.service.video";
 		
 	@Autowired(required=false)
 	public VideoDao(SqlSession sqlSession) {

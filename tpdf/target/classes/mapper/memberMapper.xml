@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tpdf.shoot.service.member">
+
+	<!-- parameterType & resultType -->
+	
+	<select id="login_check" resultType="MemberVo">
+		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw}
+	</select>
+
+</mapper>	
+
+
