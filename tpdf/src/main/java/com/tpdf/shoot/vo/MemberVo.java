@@ -15,6 +15,9 @@ public class MemberVo {
 	private int member_grade;
 	private String member_email;
 	private String member_tel;
+	private String id_check; // 아이디 중복확인
+	private String name_check; // 닉네임 중복확인
+	private int result; // 확인 결과
 	
 	
 	
@@ -90,6 +93,26 @@ public class MemberVo {
 	public void setMember_tel(String member_tel) {
 		this.member_tel = member_tel;
 	}
+	public String getId_check() {
+		return id_check;
+	}
+	public void setId_check(String id_check) {
+		this.id_check = id_check;
+	}
+	public String getName_check() {
+		return name_check;
+	}
+	public void setName_check(String name_check) {
+		this.name_check = name_check;
+	}
+	public int getResult() {
+		return result;
+	}
+	public void setResult(int result) {
+		this.result = result;
+	}
+	
+	
 	
 	
 	

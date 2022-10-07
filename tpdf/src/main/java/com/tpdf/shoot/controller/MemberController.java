@@ -30,6 +30,19 @@ public class MemberController {
 		return "member/join";
 	}
 	
+	@RequestMapping("/id_check.do")
+	public String id_check(MemberVo memberVo, HttpSession session) {
+		int id_check = memberService.id_check(memberVo); // 아이디 중복 여부 확인
+		
+		if (id_check == 1) {
+			session.setAttribute("result", id_check);
+		} else {
+			session.setAttribute("result", id_check);
+		}
+		
+		return "member/id_check";
+	}
+	
 	@RequestMapping("/join_process.do")
 	public String join_process(MemberVo memberVo, HttpServletRequest request, Model model) {
 		
@@ -50,6 +63,7 @@ public class MemberController {
 		*/
 		
 		memberService.join_process(memberVo);
+		
 		return "member/join_process";
 	}	
 	

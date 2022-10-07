@@ -10,21 +10,18 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/join.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<script>
-function id_check() {
-	// window.open('index.do');
-	window.open("index.do", "ID 중복 확인", "width=600px, height=300px");
-}
-</script>
-
 <script src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
 <body>
 
+<form method="get" id="id_check_form">
+	<input type="hidden" id="id_check" name="id_check" />
+</form>
+
 <div id="join">
-	<form action="${pageContext.request.contextPath}/join_process.do" method="post" id="join_form">
-		<input type="text" id="member_id" name="member_id" placeholder="아이디" required />
-		<a href="${pageContext.request.contextPath}/id_check.do" id="id_check" onclick="id_check(); return false;">입력하기</a>
+		<form action="${pageContext.request.contextPath}/join_process.do" method="post" id="join_form">
+		<input type="text" id="member_id" name="member_id" placeholder="아이디" required style="text-transform:lowercase;" />
+		<a href="${pageContext.request.contextPath}/id_check.do" id="id_check" onclick="id_check(); return false;">중복확인</a>
 		<br>
 		<input type="password" id="member_pw" name="member_pw" placeholder="비밀번호" required />
 		<a id="pwc1">비밀번호 불일치</a>
@@ -37,7 +34,9 @@ function id_check() {
 		<br>
 		<input type="email" id="member_email" name="member_email" placeholder="이메일 (example@email.com)" required />
 		<br>
-		<input type="tel" id="member_tel" name="member_tel" placeholder="휴대폰 번호 (하이폰 '-' 포함)" required />
+		<input type="tel" id="member_tel1" name="member_tel1" placeholder="휴대폰 번호 (하이폰 '-' 포함)" required />
+		<input type="hidden" id="member_tel" name="member_tel" required />
+		
 		<br>
 		<div id="member_gender">
 		성별: &nbsp; &nbsp;
@@ -46,10 +45,12 @@ function id_check() {
 		<label id="member_gender_u"><input type="hidden" class="member_gender" name="member_gender" value="-" checked />
 		</div>
 		<br>
-		<div id="birth">생년월일: </div><input type="date" id="member_birth" name="member_birth" placeholder="생년월일" required/>
+		<div id="birth">생년월일: </div><input type="date" id="member_birth1" name="member_birth1" placeholder="생년월일" required/>
+		<input type="hidden" id="member_birth" name="member_birth" />
 		<br>
 		<input type="text" id="member_addr1" name="member_addr1" placeholder="주소: 우편 번호로 찾기 (클릭)" required />
-		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소" /> <!-- addr1+addr2 로 처리 필요 -->
+		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소" />
+		<input type="hidden" id="member_addr" name="member_addr" /> <!-- addr1+addr2 로 처리 -->
 		<br>
 	</form>
 	<button id="submit" onclick="join()">회원가입</button>

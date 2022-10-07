@@ -12,6 +12,10 @@ public interface MemberService {
 	
 	
 	
+	default int id_check(MemberVo memberVo) {
+		return 0;
+	}
+	
 	default int join_process(MemberVo memberVo) {
 		return 0;
 	}

@@ -28,6 +28,11 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
+	public int id_check(MemberVo memberVo) {
+		return memberDao.id_check(memberVo);
+	}
+	
+	@Override
 	public int join_process(MemberVo memberVo) {
 		return memberDao.join_process(memberVo);
 	}

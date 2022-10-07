@@ -1,3 +1,9 @@
+function id_check() {
+	member_id = document.getElementById('member_id').value;
+	request = 'id_check.do?id_check=' + member_id
+	window.open(request, "ID 중복 확인", "width=500px, height=200px, resizeable=no, scrollbars=no");
+	document.getElementById('id_check_form').submit();
+}
 
 function join(){
 	let result = confirm("입력하신 내용으로 회원가입을 하시겠습니까?");
@@ -27,24 +33,41 @@ function join(){
 	
 	if (null_checker >= input_length) {
 	
+		member_pw = document.getElementById('member_pw').value;
+		member_pwc = document.getElementById('member_pwc').value;
+		if (member_pw != member_pwc) {
+			alert('비밀번호가 일치하지 않습니다.');
+			pwc1.style.display= 'inline-block';
+			pwc2.style.display= 'inline-block';
+			return false;
+		}
+		if (member_pw == member_pwc) {
+			pwc1.style.display= 'none';
+			pwc2.style.display= 'none';
+		}
+	
+	
 		member_email = document.getElementById('member_email').value;
-		member_tel = document.getElementById('member_tel').value;
-		member_birth = document.getElementById('member_birth').value;
+		member_tel = document.getElementById('member_tel1').value;
+		member_birth = document.getElementById('member_birth1').value;
 		member_addr1 = document.getElementById('member_addr1').value;
 		member_addr2 = document.getElementById('member_addr2').value;
-		member_addr = "";
-		if (member_addr == " ") {document.getElementById("member_addr1").value = '-';}
-		else { member_addr = member_addr1 + " " + member_addr2;}
+		member_addr = member_addr1 + " " + member_addr2;
 		
 		if (member_email == "") {member_email = '-';}
-		if (member_tel == "") {member_tel = '000-0000-0000';}
-		if (member_birth == "") {member_birth = '1900-01-01';}
+		if (member_tel == "") {member_tel = '-';}
+		if (member_birth == "") {member_birth = '-';}
+		if (member_addr == " ") {member_addr = '-';}
 		
 		document.getElementById("member_email").value = member_email;
 		document.getElementById("member_tel").value = member_tel;
 		document.getElementById("member_birth").value = member_birth;
+		document.getElementById("member_addr").value = member_addr;
+		
+		return false;
 		
 		document.getElementById('join_form').submit();
+		
 	} else {
 	alert('아이디, 비밀번호, 닉네임은 반드시 입력해야 합니다.');
 	return false;

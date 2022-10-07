@@ -6,31 +6,31 @@ main {width:1200px; height:1100px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
 #join {width:800px; height:1000px; margin:0 auto 20px auto; border:solid 1px black;}
-#member_id {width:240px; height:40px; padding-left:10px; margin:45px 0 0 223px; margin-bottom:45px; background:rgb(240,240,240);
-			font-size:20px; line-height:15px;}
-#id_check {display:inline-block; width:80px; height:40px; background:white; border:solid 1px black;
+#member_id {width:240px; height:40px; padding-left:10px; margin:45px 0 0 223px; margin-bottom:45px; background:rgb(235,245,255);
+			border:solid 1px gray; font-size:20px; line-height:15px;}
+#id_check {display:inline-block; width:80px; height:40px; background:white; border:solid 1px gray;
 		   margin-left:10px; font-size:15px; line-height:42px; text-align:center; text-decoration:none; color:black;}
-#member_pw {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
-			font-size:20px; line-height:15px;}
+#member_pw {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px; background:rgb(235,245,255);
+			border:solid 1px gray; font-size:20px; line-height:15px;}
 #pwc1 {display:none; width:160px; height:40px; margin-left:10px;
 	   font-size:18px; line-height:42px; color:red;}
-#member_pwc {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
-			font-size:20px; line-height:15px;}
+#member_pwc {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px; background:rgb(235,245,255);
+			border:solid 1px gray; font-size:20px; line-height:15px;}
 #pwc2 {display:none; width:160px; height:40px; margin-left:10px;
 	   font-size:18px; line-height:42px; color:red;}
-#member_name {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
-			font-size:20px; line-height:15px;}
-#name_check {display:inline-block; width:80px; height:40px; background:white; border:solid 1px black;
+#member_name {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px; background:rgb(235,245,255);
+			  border:solid 1px gray; font-size:20px; line-height:15px;}
+#name_check {display:inline-block; width:80px; height:40px; background:white; border:solid 1px gray;
 			 margin-left:10px; font-size:15px; line-height:42px; text-align:center; text-decoration:none; color:black;}
 #member_email {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
 			font-size:20px; line-height:15px;}
-#member_tel {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
+#member_tel1 {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
 			font-size:20px; line-height:15px;}
 #member_gender {width:340px; height:40px; margin-left:223px; margin-bottom:45px;
 			font-size:20px; line-height:40px;}
 .member_gender {width:20px; height:20px;}
 #birth {display:inline-block; width:100px; height:40px; margin-left:223px; font-size:20px; line-height:15px;}
-#member_birth {width:240px; height:40px; padding-left:10px; margin-bottom:45px;
+#member_birth1 {width:240px; height:40px; padding-left:10px; margin-bottom:45px;
 			font-size:20px; line-height:15px;}
 #member_addr1 {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:15px;
 			font-size:20px; line-height:15px;}

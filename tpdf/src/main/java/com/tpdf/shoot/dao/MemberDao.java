@@ -28,6 +28,10 @@ public class MemberDao {
 	
 	
 	
+	public int id_check(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".id_check", memberVo);
+		}
+	
 	public int join_process(MemberVo memberVo) {
 		return sqlSession.insert(MAPPER+".join_process", memberVo);
 		}

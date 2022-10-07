@@ -16,6 +16,10 @@
 		(#{member_id}, #{member_pw}, #{member_name}, #{member_gender}, #{member_birth}, #{member_addr}, #{member_email}, #{member_tel})
 	</insert> 
 
+	<select id="id_check" parameterType="MemberVo" resultType="int">
+		select exists ( select member_idx from member_tbl where member_id=#{id_check} ) as checker
+	</select>
+
 </mapper>	
 
 
