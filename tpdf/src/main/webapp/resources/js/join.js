@@ -29,26 +29,22 @@ function join(){
 	
 		member_email = document.getElementById('member_email').value;
 		member_tel = document.getElementById('member_tel').value;
-		member_gender = document.getElementById('member_gender').value;
 		member_birth = document.getElementById('member_birth').value;
 		member_addr1 = document.getElementById('member_addr1').value;
 		member_addr2 = document.getElementById('member_addr2').value;
+		member_addr = "";
+		if (member_addr == " ") {document.getElementById("member_addr1").value = '-';}
+		else { member_addr = member_addr1 + " " + member_addr2;}
 		
-		if (member_email == null) {member_email = '-';}
-		if (member_tel == null) {member_tel = '-';}
-		if (member_gender == null) {member_gender = '-';}
-		if (member_birth == null) {member_birth = '-';}
-		if (member_addr1 == null && member_addr2 == null) {member_addr = '-';}
-		else {member_addr = member_addr1 + " " + member_addr2;}
+		if (member_email == "") {member_email = '-';}
+		if (member_tel == "") {member_tel = '000-0000-0000';}
+		if (member_birth == "") {member_birth = '1900-01-01';}
 		
 		document.getElementById("member_email").value = member_email;
 		document.getElementById("member_tel").value = member_tel;
-		document.getElementById("member_gender").value = member_gender;
 		document.getElementById("member_birth").value = member_birth;
-		document.getElementById("member_addr").value = member_addr;
 		
-		
-	document.getElementById('join_form').submit();
+		document.getElementById('join_form').submit();
 	} else {
 	alert('아이디, 비밀번호, 닉네임은 반드시 입력해야 합니다.');
 	return false;

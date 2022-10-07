@@ -1,50 +1,115 @@
 package com.tpdf.shoot.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.tpdf.shoot.service.notice.NoticeService;
+import com.tpdf.shoot.vo.NoticeVo;
+import com.tpdf.shoot.vo.Page;
 
 @Controller
+@RequestMapping("/notice/*")
 public class NoticeController {
 	
-	@GetMapping("/notice_list.do")
-	public String notice() {
-		return "notice/notice";
+	@Inject
+	NoticeService service;
+	//게시물목록
+	@RequestMapping(value="/notice_list", method=RequestMethod.GET)
+	public void getList(Model model) throws Exception{
+		List<NoticeVo> list = null;
+		list = service.list();
+		
+		model.addAttribute("list",list);
+	}
+	//게시물작성
+	
+	@RequestMapping(value="/notice_write", method=RequestMethod.GET)
+	public void getWrite() throws Exception{
+		
+		
+		
 	}
 	
-	@GetMapping("/notice_insert.do")
-	public String notice_insert() {
-		return "notice/notice_insert";
+	// 게시물 작성
+	@RequestMapping(value="/notice_write", method=RequestMethod.POST)
+	public String postWrite(NoticeVo vo) throws Exception {
+	  service.write(vo);
+	  
+	  return "redirect:/notice/notice_listPageSearch?num=1";
 	}
 	
-	@PostMapping("/notice_insert_process.do") // 추후 게시글 작성할 때 매개변수 넘어가는 과정 처리해주어야 함
-	public String notice_insert_process() {
-		return "notice/notice_insert_process";
+	//게시물 조회
+	@RequestMapping(value="/notice_view", method=RequestMethod.GET)
+	public void getView(@RequestParam("notice_idx") int notice_idx, Model model) throws Exception{
+		NoticeVo vo = service.view(notice_idx);
+		model.addAttribute("view",vo);
 	}
 	
-	@GetMapping("/notice_view.do")
-	public String notice_view() {
-		return "notice/notice_view";
+	//게시물 수정
+	@RequestMapping(value="/notice_modify", method=RequestMethod.GET)
+	public void getModify(@RequestParam("notice_idx") int notice_idx, Model model) throws Exception{
+		NoticeVo vo = service.view(notice_idx);
+		model.addAttribute("view",vo);
+	}
+	//게시물 수정
+	@RequestMapping(value="/notice_modify", method=RequestMethod.POST)
+	public String postModify(NoticeVo vo) throws Exception {
+	  service.modify(vo);
+	  
+	  return "redirect:/notice/notice_view?notice_idx=" +vo.getNotice_idx();
 	}
 	
-	@GetMapping("/notice_modify.do")
-	public String notice_modify() {
-		return "notice/notice_modify";
+	// 게시물 삭제
+	@RequestMapping(value = "/notice_delete", method = RequestMethod.GET)
+	public String getDelete(@RequestParam("notice_idx") int notice_idx) throws Exception {
+	  
+	 service.delete(notice_idx);  
+
+	 return "redirect:/notice/notice_listPageSearch?num=1";
 	}
 	
-	@PostMapping("/notice_modify_process.do") // 추후 게시글 수정할 때 매개변수 넘어가는 과정 처리해주어야 함
-	public String notice_modify_process() {
-		return "notice/notice_modify_process";
+	// 게시물 목록 + 페이징 추가 + 검색
+	@RequestMapping(value = "/notice_listPageSearch", method = RequestMethod.GET)
+	public void getListPageSearch(Model model, @RequestParam("num") int num, 
+		@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+		@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+	  ) throws Exception {
+
+	 
+	 Page page = new Page();
+	 
+	 page.setNum(num);
+		/* page.setCount(service.count()); */  
+	 page.setCount(service.searchCount(searchType, keyword));
+	 
+	// 검색 타입과 검색어
+	/* page.setSearchTypeKeyword(searchType, keyword); */
+	 page.setSearchType(searchType);
+	 page.setKeyword(keyword);
+	 
+	 
+	 List<NoticeVo> list = null; 
+	 //list = service.listPage(page.getDisplayPost(), page.getPostNum());
+	 list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	 
+	 model.addAttribute("list", list);
+	 model.addAttribute("page", page);
+	 model.addAttribute("select", num);
+	 
+		/*
+		 * model.addAttribute("searchType", searchType); 
+		 * model.addAttribute("keyword",
+		 * keyword);
+		 */
 	}
 	
-	@PostMapping("/notice_delete_process.do") // 추후 게시글 삭제할 때 매개변수 넘어가는 과정 처리해주어야 함
-	public String notice_delete_process() {
-		return "notice/notice_delete_process";
-	}
 	
-	
-	
-	
-	
+			
 }

@@ -43,6 +43,7 @@ function id_check() {
 		성별: &nbsp; &nbsp;
 		<label id="member_gender_m"><input type="radio" class="member_gender" name="member_gender" value="m" /> 남자</label> &nbsp; &nbsp; &nbsp; &nbsp;
 		<label id="member_gender_f"><input type="radio" class="member_gender" name="member_gender" value="f" /> 여자</label> &nbsp; &nbsp; &nbsp; 
+		<label id="member_gender_u"><input type="hidden" class="member_gender" name="member_gender" value="-" checked />
 		</div>
 		<br>
 		<div id="birth">생년월일: </div><input type="date" id="member_birth" name="member_birth" placeholder="생년월일" required/>
