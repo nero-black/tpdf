@@ -43,6 +43,16 @@ public class MemberController {
 		return "member/id_check";
 	}
 	
+	@RequestMapping("/name_check.do")
+	public String name_check(MemberVo memberVo, HttpSession session) {
+		int name_check = memberService.name_check(memberVo); // 닉네임 중복 여부 확인
+		
+		session.setAttribute("result", name_check);
+		
+		return "member/name_check";
+	}
+	
+	@ResponseBody
 	@RequestMapping("/join_process.do")
 	public String join_process(MemberVo memberVo, HttpServletRequest request, Model model) {
 		
@@ -62,10 +72,10 @@ public class MemberController {
 		+member_tel +"/"+ member_gender +"/"+ member_birth +"/"+ member_addr);
 		*/
 		
-		memberService.join_process(memberVo);
-		
-		return "member/join_process";
-	}	
+		String request_mapping = "<script>alert('회원가입이 완료되었습니다.');"+ "location.href='/login.do'</script>";
+			memberService.join_process(memberVo); // 회원가입 처리
+			return request_mapping;
+	}
 	
 	@GetMapping("/login.do")
 	public String login() {
@@ -78,10 +88,10 @@ public class MemberController {
 		
 		MemberVo member_check = memberService.login_check(memberVo); // 회원 여부 확인
 		
-		String request_mapping = "<script>alert('로그인 실패');"+ "location.href='/login.do'</script>";
+		String request_mapping = "<script>alert('아이디 또는 비밀번호를 확인해주세요.');"+ "location.href='/login.do'</script>";
 		
 		if (member_check != null) {
-			request_mapping = "<script>alert('로그인 성공');"+ "location.href='index.do'</script>";
+			request_mapping = "<script>location.href='index.do'</script>";
 			
 			session.setAttribute("member_idx", member_check.getMember_idx());
 			session.setAttribute("member_name", member_check.getMember_name());
@@ -97,7 +107,7 @@ public class MemberController {
 	@RequestMapping("/log_out.do")
 	public String log_out(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('로그아웃 되었습니다.');"+ "location.href='index.do'</script>";
+		String request_mapping = "<script>location.href='index.do'</script>";
 	
 	return request_mapping;
 	}
@@ -111,9 +121,32 @@ public class MemberController {
 	return request_mapping;
 	}
 	
-	@GetMapping("/find_ippw.do")
-	public String find_ippw() {
+	@GetMapping("/find_idpw.do")
+	public String find_idpw() {
 		return "member/find_idpw";
+	}
+	
+	@GetMapping("/find_id.do")
+	public String find_id(MemberVo memberVo, HttpSession session) {
+		int find_id1 = memberService.find_id1(memberVo); // 아이디 존재 여부 확인
+		
+		if (find_id1 == 1) {
+		String find_id2 = memberService.find_id2(memberVo); // 아이디 값 확인
+		session.setAttribute("member_id", find_id2);
+		}
+		
+		session.setAttribute("result", find_id1);
+			
+		return "member/find_id";
+	}
+	
+	@GetMapping("/find_pw.do")
+	public String find_pw(MemberVo memberVo, HttpSession session) {
+		int find_pw1 = memberService.find_pw1(memberVo); // 아이디 일치 여부 확인
+		
+		session.setAttribute("result", find_pw1);
+			
+		return "member/find_id";
 	}
 	
 	@PostMapping("/find_idpw_process.do") // 추후 아이디/비밀번호 찾을 때 이곳에 매개변수 넘어가는 과정 처리해주어야 함

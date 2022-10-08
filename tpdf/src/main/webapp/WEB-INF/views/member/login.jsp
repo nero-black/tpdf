@@ -22,7 +22,7 @@
 	<br>
 	<div id="sub_menu">
 		<a href="${pageContext.request.contextPath}/join.do">회원가입 </a> | 
-		<a href="${pageContext.request.contextPath}/find_ippw.do">아이디/비밀번호 찾기</a>
+		<a href="${pageContext.request.contextPath}/find_idpw.do">아이디/비밀번호 찾기</a>
 	</div>
 </div>
 </body>

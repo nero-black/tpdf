@@ -5,7 +5,7 @@
 main {width:1200px; height:1100px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
-#join {width:800px; height:1000px; margin:0 auto 20px auto; border:solid 1px black;}
+#join {width:800px; height:1200px; margin:0 auto 20px auto; border:solid 1px black;}
 #member_id {width:240px; height:40px; padding-left:10px; margin:45px 0 0 223px; margin-bottom:45px; background:rgb(235,245,255);
 			border:solid 1px gray; font-size:20px; line-height:15px;}
 #id_check {display:inline-block; width:80px; height:40px; background:white; border:solid 1px gray;
@@ -18,6 +18,10 @@ hr.clear_line {clear:both; border:0;}
 			border:solid 1px gray; font-size:20px; line-height:15px;}
 #pwc2 {display:none; width:160px; height:40px; margin-left:10px;
 	   font-size:18px; line-height:42px; color:red;}
+#member_quest {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px; background:white;
+			   border:solid 1px gray; font-size:20px; line-height:15px;}
+#member_answer {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px; background:white;
+			    border:solid 1px gray; font-size:20px; line-height:15px;}
 #member_name {width:240px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px; background:rgb(235,245,255);
 			  border:solid 1px gray; font-size:20px; line-height:15px;}
 #name_check {display:inline-block; width:80px; height:40px; background:white; border:solid 1px gray;

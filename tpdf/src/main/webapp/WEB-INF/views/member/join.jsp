@@ -18,23 +18,31 @@
 	<input type="hidden" id="id_check" name="id_check" />
 </form>
 
+<form method="get" id="name_check_form">
+	<input type="hidden" id="name_check" name="name_check" />
+</form>
+
 <div id="join">
 		<form action="${pageContext.request.contextPath}/join_process.do" method="post" id="join_form">
-		<input type="text" id="member_id" name="member_id" placeholder="아이디" required style="text-transform:lowercase;" />
-		<a href="${pageContext.request.contextPath}/id_check.do" id="id_check" onclick="id_check(); return false;">중복확인</a>
+		<input type="text" id="member_id" name="member_id" placeholder="아이디 (최대 20글자)" maxlength="20" required />
+		<a href="${pageContext.request.contextPath}/id_check.do" id="id_check" onclick="id_checker(); return false;">중복확인</a>
 		<br>
-		<input type="password" id="member_pw" name="member_pw" placeholder="비밀번호" required />
+		<input type="password" id="member_pw" name="member_pw" placeholder="비밀번호 (최대 30글자)" maxlength="30" required />
 		<a id="pwc1">비밀번호 불일치</a>
 		<br>
-		<input type="password" id="member_pwc" name="member_pwc" placeholder="비밀번호 확인" required />
+		<input type="password" id="member_pwc" name="member_pwc" placeholder="비밀번호 확인" maxlength="30" required />
 		<a id="pwc2">비밀번호 불일치</a>
 		<br>
-		<input type="text" id="member_name" name="member_name" placeholder="닉네임" required />
-		<a href="${pageContext.request.contextPath}/name_check.do" id="name_check">중복 확인</a>
+		<input type="text" id="member_quest" name="member_quest" placeholder="비밀번호 찾기 질문 (최대 40글자)" maxlength="30" required />
+		<br>
+		<input type="text" id="member_answer" name="member_answer" placeholder="비밀번호 찾기 답변 (최대 10글자)" maxlength="10" required />
+		<br>		
+		<input type="text" id="member_name" name="member_name" placeholder="닉네임 (한글, 최대 8글자)"  maxlength="8" required />
+		<a href="${pageContext.request.contextPath}/name_check.do" id="name_check" onclick="name_checker(); return false;">중복 확인</a>
 		<br>
 		<input type="email" id="member_email" name="member_email" placeholder="이메일 (example@email.com)" required />
 		<br>
-		<input type="tel" id="member_tel1" name="member_tel1" placeholder="휴대폰 번호 (하이폰 '-' 포함)" required />
+		<input type="tel" id="member_tel1" name="member_tel1" placeholder="휴대폰 번호 (하이폰 '-' 제외)" required />
 		<input type="hidden" id="member_tel" name="member_tel" required />
 		
 		<br>
@@ -48,8 +56,8 @@
 		<div id="birth">생년월일: </div><input type="date" id="member_birth1" name="member_birth1" placeholder="생년월일" required/>
 		<input type="hidden" id="member_birth" name="member_birth" />
 		<br>
-		<input type="text" id="member_addr1" name="member_addr1" placeholder="주소: 우편 번호로 찾기 (클릭)" required />
-		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소" />
+		<input type="text" id="member_addr1" name="member_addr1" placeholder="주소" required />
+		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소 (선택)" />
 		<input type="hidden" id="member_addr" name="member_addr" /> <!-- addr1+addr2 로 처리 -->
 		<br>
 	</form>

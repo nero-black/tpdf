@@ -20,20 +20,42 @@ public class MemberDao {
 		this.sqlSession = sqlSession;
 		}
 	
-	// -------------------------
-		
-	public MemberVo login_check(MemberVo memberVo) {
-		return sqlSession.selectOne(MAPPER+".login_check", memberVo);
-		}
-	
-	
+	// -------------------------	
 	
 	public int id_check(MemberVo memberVo) {
 		return sqlSession.selectOne(MAPPER+".id_check", memberVo);
 		}
 	
+	public int name_check(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".name_check", memberVo);
+		}
+	
 	public int join_process(MemberVo memberVo) {
 		return sqlSession.insert(MAPPER+".join_process", memberVo);
+		}
+	
+	public int find_id1(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_id1", memberVo);
+		}
+	
+	public String find_id2(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_id2", memberVo);
+		}
+	
+	public int find_pw1(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_pw1", memberVo);
+		}
+	
+	public String find_pw2(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_pw2", memberVo);
+		}
+	
+	public int find_pw(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_pw", memberVo);
+		}
+	
+	public MemberVo login_check(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".login_check", memberVo);
 		}
 	
 	

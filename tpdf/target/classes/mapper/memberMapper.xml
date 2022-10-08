@@ -6,18 +6,38 @@
 
 	<!-- parameterType & resultType -->
 	
-	<select id="login_check" resultType="MemberVo">
-		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw}
-	</select>
-	
 	<insert id="join_process" parameterType="MemberVo">
 		insert into member_tbl
-		(member_id, member_pw, member_name, member_gender, member_birth, member_addr, member_email, member_tel) values
-		(#{member_id}, #{member_pw}, #{member_name}, #{member_gender}, #{member_birth}, #{member_addr}, #{member_email}, #{member_tel})
-	</insert> 
+		(member_id, member_pw, member_quest, member_answer, member_name, member_gender, member_birth, member_addr, member_email, member_tel) values
+		(#{member_id}, #{member_pw}, #{member_quest}, #{member_answer}, #{member_name}, #{member_gender}, #{member_birth}, #{member_addr}, #{member_email}, #{member_tel})
+	</insert>
 
 	<select id="id_check" parameterType="MemberVo" resultType="int">
-		select exists ( select member_idx from member_tbl where member_id=#{id_check} ) as checker
+		select exists ( select member_id from member_tbl where member_id=#{member_id} ) as checker
+	</select>
+	
+	<select id="name_check" parameterType="MemberVo" resultType="int">
+		select exists ( select member_name from member_tbl where member_name=#{member_name} ) as checker
+	</select>
+
+	<select id="find_id1" parameterType="MemberVo" resultType="int">
+		select exists ( select member_id from member_tbl where member_name=#{member_name} and member_email=#{member_email} and member_tel=#{member_tel} ) as checker
+	</select>
+	
+	<select id="find_id2" parameterType="MemberVo" resultType="String">
+		select member_id from member_tbl where member_name=#{member_name} and member_email=#{member_email} and member_tel=#{member_tel}
+	</select>
+
+	<select id="find_pw1" parameterType="MemberVo" resultType="int">
+		select exists ( select member_id, member_quest from member_tbl where member_id=#{member_id} ) as checker
+	</select>
+	
+	<select id="find_pw2" parameterType="MemberVo" resultType="String">
+		select member_pw from member_tbl where member_id=#{member_id} and member_answer=#{member_answer}
+	</select>
+
+	<select id="login_check" resultType="MemberVo">
+		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
 
 </mapper>	

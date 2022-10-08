@@ -6,6 +6,8 @@ public class MemberVo {
 	private int member_idx;
 	private String member_id;
 	private String member_pw;
+	private String member_quest;
+	private String member_answer;
 	private String member_name;
 	private String member_gender;
 	private String member_birth;
@@ -15,12 +17,7 @@ public class MemberVo {
 	private int member_grade;
 	private String member_email;
 	private String member_tel;
-	private String id_check; // 아이디 중복확인
-	private String name_check; // 닉네임 중복확인
 	private int result; // 확인 결과
-	
-	
-	
 	public int getMember_idx() {
 		return member_idx;
 	}
@@ -38,6 +35,18 @@ public class MemberVo {
 	}
 	public void setMember_pw(String member_pw) {
 		this.member_pw = member_pw;
+	}
+	public String getMember_quest() {
+		return member_quest;
+	}
+	public void setMember_quest(String member_quest) {
+		this.member_quest = member_quest;
+	}
+	public String getMember_answer() {
+		return member_answer;
+	}
+	public void setMember_answer(String member_answer) {
+		this.member_answer = member_answer;
 	}
 	public String getMember_name() {
 		return member_name;
@@ -93,24 +102,14 @@ public class MemberVo {
 	public void setMember_tel(String member_tel) {
 		this.member_tel = member_tel;
 	}
-	public String getId_check() {
-		return id_check;
-	}
-	public void setId_check(String id_check) {
-		this.id_check = id_check;
-	}
-	public String getName_check() {
-		return name_check;
-	}
-	public void setName_check(String name_check) {
-		this.name_check = name_check;
-	}
 	public int getResult() {
 		return result;
 	}
 	public void setResult(int result) {
 		this.result = result;
 	}
+	
+	
 	
 	
 	

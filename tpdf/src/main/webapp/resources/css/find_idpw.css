@@ -5,13 +5,31 @@
 main {width:1200px; height:1000px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
-#find_ippw {width:800px; height:350px; margin:0 auto 20px auto;}
-#member_email {width:340px; height:40px; padding-left:10px; margin:60px 0 0 223px; margin-bottom:30px;
-			font-size:20px; line-height:15px;}
-#member_tel {width:340px; height:40px; padding-left:10px; margin-left:223px; margin-bottom:45px;
-			font-size:20px; line-height:15px;}
+#find {width:810px; margin:0 auto; margin-bottom:20px; border:solid 1px black;}
+h3 {width:810px; margin-top:40px; text-align:center;}
 
-#submit {width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 242px;
+#find_id {width:800px; height:350px; margin:0 auto 20px auto;}
+#member_name {width:340px; height:40px; padding-left:10px; margin:20px 0 30px 223px;
+			font-size:20px; line-height:15px;}
+#member_email {width:340px; height:40px; padding-left:10px; margin:0 0 30px 223px;
+			font-size:20px; line-height:15px;}
+#member_tel {width:340px; height:40px; padding-left:10px; margin:0 0 30px 223px;
+			font-size:20px; line-height:15px;}
+#find_id_button {width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 241px;
 		 font-size:20px;}
+
+#find_pw {width:800px; height:200px; margin:0 auto 20px auto;}
+#member_id {width:340px; height:40px; padding-left:10px; margin:20px 0 30px 223px;
+			font-size:20px; line-height:15px;}
+#member_quest {display:none; width:780px; height:40px; padding-left:10px; margin:0 0 30px 3px;
+			border:none; font-size:18px; line-height:15px;}
+#member_answer {display:none; width:340px; height:40px; padding-left:10px; margin:0 0 30px 223px;
+			font-size:20px; line-height:15px;}
+#find_pw_button1 {display:inline-block; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 241px;
+		 font-size:20px;}
+#find_pw_button2 {display:none; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 241px;
+		 font-size:20px;}
+
+
 #return {width:150px; height:40px; background:white; border:solid 1px black; margin:0 0 30px 0;
 		 font-size:20px;}

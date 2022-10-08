@@ -4,30 +4,28 @@
 <%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- JSTL라이브러리 -->
 
-<% String member_id = request.getParameter("member_id"); %>
-
+<% String member_id = (String)session.getAttribute("member_id"); %>
 <% int result = (Integer)session.getAttribute("result"); %>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/id_check.css">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/id_check.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/find_id.js"></script>
 
 <html>
 <body>
 	<c:choose>
-		<c:when test="${result == 0}">
+		<c:when test="${result == 1}">
 			<div class="window">
-			<h4><b><%= member_id %></b>은(는) 사용할 수 있는 아이디입니다.</h4>
+			<h4>회원님의 아이디는 <b><%= member_id %></b>입니다.</h4>
 			<br>
-			<button onclick="id_check_s()">사용하기</button>
+			<button onclick="close_window()">확인</button>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div class="window">
-			<h4><b><%= member_id %></b>은(는) 사용할 수 없는 아이디입니다.<br> 다른 아이디를 입력해주세요.</h4>
+			<h4>입력하신 정보와 일치하는 아이디가 없습니다. <br>신규 회원으로 가입해주세요.</h4>
 			<br>
-			<button onclick="id_check_f()">다시 입력하기</button>
+			<button onclick="close_window()">확인</button>
 			</div>
 		</c:otherwise>
 	</c:choose>
