@@ -34,6 +34,18 @@ public interface MemberService {
 		return null;
 	}
 	
+	default String find_pw3(MemberVo memberVo) {
+		return null;
+	}
+	
+	default int find_pw4(MemberVo memberVo) {
+		return 0;
+	}
+	
+	default String find_pw5(MemberVo memberVo) {
+		return null;
+	}
+	
 	default MemberVo login_check(MemberVo memberVo) {
 		return null;
 	}

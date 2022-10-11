@@ -1,6 +1,3 @@
-id_check = 0;
-name_check = 0;
-
 $(function(){ // 닉네임 입력 방지 (한글 조합없는 자모음, 영어, 숫자, 특수문자, 공백)
 	$( '#member_name' ).on("blur keyup", function() {
 		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ]/g, '' ) );	

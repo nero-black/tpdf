@@ -143,15 +143,33 @@ public class MemberController {
 	@GetMapping("/find_pw.do")
 	public String find_pw(MemberVo memberVo, HttpSession session) {
 		int find_pw1 = memberService.find_pw1(memberVo); // 아이디 일치 여부 확인
+		String find_pw2;
+		String find_pw3;
 		
 		session.setAttribute("result", find_pw1);
+		
+		if (find_pw1 == 1) {
+			find_pw2 = memberService.find_pw2(memberVo); // 찾으려는 아이디 확인
+			find_pw3 = memberService.find_pw3(memberVo); // 비밀번호 찾기 질문 가져오기
+			session.setAttribute("member_id", find_pw2); // 아이디 찾기 이후 다른값이 나오지 않도록 세션 덮어쓰기
+			session.setAttribute("quest", find_pw3);
+			}
 			
-		return "member/find_id";
+		return "member/find_pw";
 	}
 	
-	@PostMapping("/find_idpw_process.do") // 추후 아이디/비밀번호 찾을 때 이곳에 매개변수 넘어가는 과정 처리해주어야 함
-	public String find_idpw_process() {
-		return "member/find_idpw_process";
+	@GetMapping("/find_pw_quest.do") // 추후 아이디/비밀번호 찾을 때 이곳에 매개변수 넘어가는 과정 처리해주어야 함
+	public String find_pw_quest(MemberVo memberVo, HttpSession session) {
+		
+		int result = memberService.find_pw4(memberVo); // 비밀번호 찾기 결과 존재 여부
+		session.setAttribute("result", result);
+		
+		if (result == 1) {
+		String member_pw = memberService.find_pw5(memberVo); // 비밀번호 찾기 결과 가져오기
+		session.setAttribute("member_pw", member_pw); // 아이디 찾기 이후 다른값이 나오지 않도록 세션 덮어쓰기
+		}
+		
+		return "member/find_pw_quest";
 	}
 	
 	@GetMapping("/mypage_check.do")

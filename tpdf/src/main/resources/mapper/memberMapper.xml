@@ -33,6 +33,18 @@
 	</select>
 	
 	<select id="find_pw2" parameterType="MemberVo" resultType="String">
+		select member_id from member_tbl where member_id=#{member_id}
+	</select>
+	
+	<select id="find_pw3" parameterType="MemberVo" resultType="String">
+		select member_quest from member_tbl where member_id=#{member_id}
+	</select>
+	
+	<select id="find_pw4" parameterType="MemberVo" resultType="int">
+		select exists ( select member_pw from member_tbl where member_id=#{member_id} and member_answer=#{member_answer} ) as checker
+	</select>
+	
+	<select id="find_pw5" parameterType="MemberVo" resultType="String">
 		select member_pw from member_tbl where member_id=#{member_id} and member_answer=#{member_answer}
 	</select>
 

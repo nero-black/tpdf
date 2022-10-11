@@ -56,6 +56,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public String find_pw3(MemberVo memberVo) {
+		return memberDao.find_pw3(memberVo);
+	}
+	
+	@Override
+	public int find_pw4(MemberVo memberVo) {
+		return memberDao.find_pw4(memberVo);
+	}
+	
+	@Override
+	public String find_pw5(MemberVo memberVo) {
+		return memberDao.find_pw5(memberVo);
+	}
+	
+	@Override
 	public MemberVo login_check(MemberVo memberVo) {
 		return memberDao.login_check(memberVo);
 	}

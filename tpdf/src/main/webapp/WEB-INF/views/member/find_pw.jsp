@@ -6,19 +6,30 @@
 
 <% String member_id = (String)session.getAttribute("member_id"); %>
 <% int result = (Integer)session.getAttribute("result"); %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/id_check.css">
+<% String quest = (String)session.getAttribute("quest"); %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/find_pw.css">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/find_id.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/find_pw.js"></script>
 
 <html>
 <body>
 	<c:choose>
 		<c:when test="${result == 1}">
 			<div class="window">
-			<h4>회원님의 아이디는 <b><%= member_id %></b>입니다.</h4>
+			<h4><%= quest %></h4>
 			<br>
+			<c:if test="${quest != '설정된 질문이 없습니다. 사이트 관리자에게 문의해주세요.'}">
+			<form action="${pageContext.request.contextPath}/find_pw_quest.do" method="get" id="quest_form" name="quest_form">
+			<input type="hidden" id="member_id" name="member_id" value="<%= member_id %>" required />
+			<input type="text" id="member_answer" name="member_answer" placeholder="정답입력"  maxlength="10" required />
+			<button type="button" onclick="quest_answer()">확인</button>
+			</form>
+			</c:if>
+			<c:if test="${quest == '설정된 질문이 없습니다. 사이트 관리자에게 문의해주세요.'}">
 			<button onclick="close_window()">확인</button>
+			</c:if>
+			<br>
 			</div>
 		</c:when>
 		<c:otherwise>

@@ -6,7 +6,7 @@
 
 <% String member_id = (String)session.getAttribute("member_id"); %>
 <% int result = (Integer)session.getAttribute("result"); %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/id_check.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/find_id.css">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/find_id.js"></script>
@@ -17,6 +17,7 @@
 		<c:when test="${result == 1}">
 			<div class="window">
 			<h4>회원님의 아이디는 <b><%= member_id %></b>입니다.</h4>
+			<% session.removeAttribute("member_id"); member_id = null; %> <!-- 세션 삭제, 변수 초기화 -->
 			<br>
 			<button onclick="close_window()">확인</button>
 			</div>

@@ -50,8 +50,16 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".find_pw2", memberVo);
 		}
 	
-	public int find_pw(MemberVo memberVo) {
-		return sqlSession.selectOne(MAPPER+".find_pw", memberVo);
+	public String find_pw3(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_pw3", memberVo);
+		}
+	
+	public int find_pw4(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_pw4", memberVo);
+		}
+	
+	public String find_pw5(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".find_pw5", memberVo);
 		}
 	
 	public MemberVo login_check(MemberVo memberVo) {

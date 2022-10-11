@@ -21,10 +21,6 @@ h3 {width:810px; margin-top:40px; text-align:center;}
 #find_pw {width:800px; height:200px; margin:0 auto 20px auto;}
 #member_id {width:340px; height:40px; padding-left:10px; margin:20px 0 30px 223px;
 			font-size:20px; line-height:15px;}
-#member_quest {display:none; width:780px; height:40px; padding-left:10px; margin:0 0 30px 3px;
-			border:none; font-size:18px; line-height:15px;}
-#member_answer {display:none; width:340px; height:40px; padding-left:10px; margin:0 0 30px 223px;
-			font-size:20px; line-height:15px;}
 #find_pw_button1 {display:inline-block; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 241px;
 		 font-size:20px;}
 #find_pw_button2 {display:none; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 241px;
