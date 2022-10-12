@@ -42,7 +42,23 @@ hr.clear_line {clear:both; border:0;}
 	<input type="text" id="writer" name="writer" placeholder="작성자"/><br />
 	
 	<textarea cols="50" id="content" rows="9" name="content" placeholder="내용"></textarea><br />
-	
+	<div class="inputArea">
+   <label for="gdsImg">이미지</label>
+   <input type="file" id="gdsImg" name="file" />
+   <div class="select_img"><img src="" /></div>
+   
+   <script>
+    $("#gdsImg").change(function(){
+     if(this.files && this.files[0]) {
+      var reader = new FileReader;
+      reader.onload = function(data) {
+       $(".select_img img").attr("src", data.target.result).height(500);          
+      }
+      reader.readAsDataURL(this.files[0]);
+     }
+    });
+   </script>
+</div>
 	<button id="submit" type="submit">작성</button>
 	<button id="cancel">취소</button>
 	<br><br><br><br>

@@ -54,7 +54,7 @@
 	
 	 <nav id="menu">
 	   <a href="/notice/notice_listPageSearch?num=1">뉴스</a> |
-	   <a href="${pageContext.request.contextPath}/board_list.do">게시판</a> |
+	   <a href="/board/board_list">게시판</a> |
 	   <a href="${pageContext.request.contextPath}/event_list.do">이벤트</a> |
 	   <a href="${pageContext.request.contextPath}/video_list.do">영상</a> |
 	   <a href="${pageContext.request.contextPath}/rank.do">순위/일정</a>

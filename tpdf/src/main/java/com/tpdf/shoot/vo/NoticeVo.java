@@ -18,9 +18,15 @@ public class NoticeVo {
 	private String writer;
 	private Date regDate;
 	private int viewCnt;
+	private String gdsThumbImg;
 	
 	
-	
+	public String getGdsThumbImg() {
+		return gdsThumbImg;
+	}
+	public void setGdsThumbImg(String gdsThumbImg) {
+		this.gdsThumbImg = gdsThumbImg;
+	}
 	public int getNotice_idx() {
 		return notice_idx;
 	}
