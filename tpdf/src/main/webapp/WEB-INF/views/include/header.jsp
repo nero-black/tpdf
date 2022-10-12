@@ -7,10 +7,10 @@
 <% String member_name = (String)session.getAttribute("member_name"); %>
 <% int member_point = (Integer)session.getAttribute("member_point"); %>
 <% int member_grade = (Integer)session.getAttribute("member_grade"); %>
-<% String member_ban = (String)session.getAttribute("member_ban"); %>
+<% String member_drop = (String)session.getAttribute("member_drop"); %>
 
 <c:if test="${member_ban == 'y'}">
-<% response.sendRedirect("banned.do"); %>
+<% response.sendRedirect("dropped.do"); %>
 </c:if> <!-- 강제탈퇴된 계정 로그인 방지 -->
 
 <!DOCTYPE html>
@@ -24,14 +24,14 @@
 <body>
 
 	<c:choose>
-		<c:when test = "${member_grade == 2 && member_ban == 'n'}">
+		<c:when test = "${member_grade == 2 && member_drop == 'n'}">
 			<nav id="admin">
 			  <a><b style="color:red;">관리자</b></a>님 |
-			  <b style="color:black;"><a href="${pageContext.request.contextPath}/admin_index.do">관리자 페이지</a></b> |
+			  <b style="color:black;"><a href="${pageContext.request.contextPath}/admin_index.do" style="color:black;">관리자 페이지</a></b> |
 			  <a style="color:black;" href="${pageContext.request.contextPath}/log_out.do">로그아웃</a>
 			</nav>
 		</c:when>
-		<c:when test = "${member_grade == 1 && member_ban == 'n'}">
+		<c:when test = "${member_grade == 1 && member_drop == 'n'}">
 			<nav id="member">
 			  <a><b>${member_name}</b></a>님 |
 			  <a style="color:#1DDB16"><b>${member_point}p</b></a> |

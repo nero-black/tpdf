@@ -17,7 +17,9 @@
 <body>
 <main>
 
+	<c:if test="${ member_grade == 2 }">
 	<button id="video_insert" onclick="location.href='${pageContext.request.contextPath}/video_insert.do'">업로드</button>
+	</c:if>
 	
 	<div id="search">
 		<p>제목: </p>

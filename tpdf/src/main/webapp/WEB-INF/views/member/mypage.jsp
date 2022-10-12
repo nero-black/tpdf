@@ -15,7 +15,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
 
 <body>
-dd: ${checker}
 <div id="mypage">
 		<br><br><br>
 		<h3>아이디　： </h3>

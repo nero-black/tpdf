@@ -47,6 +47,10 @@
 	<select id="find_pw5" parameterType="MemberVo" resultType="String">
 		select member_pw from member_tbl where member_id=#{member_id} and member_answer=#{member_answer}
 	</select>
+	
+	<select id="member_point" parameterType="int" resultType="int">
+	select member_point from member_tbl where member_idx=#{member_idx}
+	</select>
 
 	<select id="login_check" resultType="MemberVo">
 		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw} and del_yn='n'
@@ -65,14 +69,14 @@
 		member_email, member_tel from member_tbl where member_idx=#{member_idx}
 	</select>
 	
-	<select id="member_modify" parameterType="MemberVo" resultType="memberVo">
+	<update id="member_modify" parameterType="MemberVo">
 		update member_tbl set member_pw=#{member_pw}, member_quest=#{member_quest}, member_answer=#{member_answer},
 		member_email=#{member_email}, member_tel=#{member_tel}, member_addr=#{member_addr} where member_idx=#{member_idx}
-	</select>
+	</update>
 	
-	<select id="member_drop" parameterType="MemberVo" resultType="memberVo">
+	<update id="member_drop" parameterType="MemberVo">
 		update member_tbl set del_yn='y' where member_idx=#{member_idx}
-	</select>
+	</update>
 
 </mapper>
 

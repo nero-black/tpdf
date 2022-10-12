@@ -90,12 +90,11 @@ public class MemberController {
 	public String login_process(MemberVo memberVo, HttpSession session) {
 		
 		MemberVo member_check = memberService.login_check(memberVo); // 회원 여부 확인
-		
+
 		String request_mapping = "<script>alert('아이디 또는 비밀번호를 확인해주세요.');"+ "location.href='/login.do'</script>";
 		
 		int drop_check = memberService.drop_check(memberVo);
-		
-		if (drop_check == 1) { request_mapping = "<script>location.href='/banned.do'</script>"; }
+		if (drop_check == 1) { request_mapping = "<script>location.href='/dropped.do'</script>"; }
 		
 		if (member_check != null) {
 			
@@ -123,7 +122,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping("/dropped.do")
-	public String banned(HttpSession session) {
+	public String dropped(HttpSession session) {
 		session.invalidate();
 		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='index.do'</script>";
 	
@@ -212,6 +211,10 @@ public class MemberController {
 		memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
 		MemberVo member_info_o = memberService.member_info(member_idx); // 현재 member_idx기반으로 정보 조회
 		model.addAttribute("member_info", member_info_o); // 조회 데이터 담아오기
+		
+		int now_point = memberService.member_point(memberVo); // 현재 내 포인트
+		session.setAttribute("member_point", now_point); // 세션에 대입
+		
 		
 		return "member/mypage";
 	}

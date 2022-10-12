@@ -71,6 +71,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public int member_point(MemberVo memberVo) {
+		return memberDao.member_point(memberVo);
+	}
+	
+	@Override
 	public MemberVo login_check(MemberVo memberVo) {
 		return memberDao.login_check(memberVo);
 	}

@@ -62,6 +62,10 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".find_pw5", memberVo);
 		}
 	
+	public int member_point(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".member_point", memberVo);
+		}
+	
 	public MemberVo login_check(MemberVo memberVo) {
 		return sqlSession.selectOne(MAPPER+".login_check", memberVo);
 		}

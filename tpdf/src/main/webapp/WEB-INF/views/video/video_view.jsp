@@ -26,8 +26,10 @@
 </pre>
 <hr class="mid_line">
 <input id="remove_idx" type="text" value="${videoVo.video_idx}" />
+<c:if test="${ member_grade == 2 }">
 <button id="remove" onclick="video_delete()">삭제</button>
 <button id="modify" onclick="location.href='${pageContext.request.contextPath}/video_modify.do?video_idx=${videoVo.video_idx}' ">수정</button>
+</c:if>
 <button id="list" onclick="location.href='${pageContext.request.contextPath}/video_list.do' ">목록</button>
 <br>
 </main>

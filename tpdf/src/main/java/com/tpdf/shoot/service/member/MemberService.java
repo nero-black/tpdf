@@ -46,6 +46,10 @@ public interface MemberService {
 		return null;
 	}
 	
+	default int member_point(MemberVo memberVo) {
+		return 0;
+	}
+	
 	default MemberVo login_check(MemberVo memberVo) {
 		return null;
 	}

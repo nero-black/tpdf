@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tpdf.shoot.service.admin">
+
+	<!-- parameterType & resultType -->
+	
+	<select id="admin_point_check" resultType="int">
+		select exists ( select * from member_tbl where member_name = #{member_name} ) as checker
+	</select>
+	
+	<update id="admin_point" parameterType="AdminVo">
+		update member_tbl set member_point = member_point + #{member_point}
+		where member_name = #{member_name}
+	</update>
+
+</mapper>
+
+

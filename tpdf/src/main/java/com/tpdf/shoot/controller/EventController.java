@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tpdf.shoot.service.event.EventService;
 import com.tpdf.shoot.vo.EventVo;
+import com.tpdf.shoot.vo.MemberVo;
 
 @Controller
 public class EventController {
@@ -28,17 +29,20 @@ public class EventController {
 	}
 	
 	@RequestMapping("/event_list.do")
-	public String event(Model model, HttpServletRequest request) {
+	public String event(Model model, HttpSession session, MemberVo memberVo, HttpServletRequest request) {
 		List<EventVo> eventList = eventService.event_list();
 		EventVo eventNow = eventService.event_now();
 		model.addAttribute("eventList", eventList);
 		model.addAttribute("eventNow", eventNow);
 		
-		HttpSession session = request.getSession();
-		int member_idx = 1; // 임시로 삽입
-		int member_grade = 2; // 임시로 삽입
-		session.setAttribute("loginVO_member_idx", member_idx); // 추후 LoginVO.loginVO 구성으로 변경 (하나로 통일)
-		session.setAttribute("loginVO_member_grade", member_grade); // 추후 LoginVO.loginVO 구성으로 변경
+		
+		Object member_idx_s = session.getAttribute("member_idx"); // 회원번호 세션에서 가져오기
+		
+		if (member_idx_s != null) {
+			int member_idx = (Integer)member_idx_s;
+			int after_point = eventService.member_point(member_idx); // 현재 포인트 조회
+			session.setAttribute("member_point",after_point); // 세션에 대입
+		}
 		
 		int process = eventService.event_betting_stop_c(); // 이벤트 중단 여부 확인
 		// System.out.println("진행 상태: "+process);
@@ -80,7 +84,7 @@ public class EventController {
 	
 	@ResponseBody // alert & request를 위함
 	@RequestMapping("/event_betting_process.do") // 추후 이벤트 종료할 때 매개변수 넘어가는 과정 처리해주어야 함
-	public String event_betting_process(EventVo eventVo, HttpServletRequest request, Model model) {
+	public String event_betting_process(EventVo eventVo, MemberVo memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		
 		String member_idx_s = request.getParameter("member_idx");
 		int member_idx = Integer.parseInt(member_idx_s); // String으로 가져온 파라미터값을 int로 형변환
@@ -101,6 +105,8 @@ public class EventController {
 			if (member_point >= b_point) {
 				int result_i = eventService.event_betting_i(eventVo); // 베팅 목록에 삽입
 				eventService.event_betting_u(eventVo); // 개인 포인트 감소
+				int after_point = memberVo.getMember_point(); // 처리후 남은 포인트
+				session.setAttribute("member_point",after_point); // 세션에 대입
 				String result_mapping = "<script>alert('베팅이 완료되었습니다.');"
 						+ "location.href='/event_list.do'</script>";
 				return result_mapping;

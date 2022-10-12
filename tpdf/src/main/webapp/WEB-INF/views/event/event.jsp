@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- JSTL라이브러리 -->
-<%@ page import = "com.tpdf.shoot.vo.EventVo" %>  
+<%@ page import = "com.tpdf.shoot.vo.EventVo" %>   
 <%@ page import="java.util.*" %>
 
 <% List<EventVo> eventList = (List)request.getAttribute("eventList"); %>
@@ -21,7 +21,7 @@
 	<c:if test="${empty eventNow}">
 	<div id="no_event">
 	<h3>진행중인 이벤트가 없습니다.</h3>
-	<c:if test="${loginVO_member_grade == 2}"> <!-- 임시조치. 대소문자 주의! -->
+	<c:if test="${member_grade == 2}">
 	<button id="event_add" onclick="location.href='${pageContext.request.contextPath}/event_add.do' ">이벤트 추가</button>
 	</c:if>
 	</c:if>
@@ -33,31 +33,31 @@
 	<h1>${eventNow.team_a} vs  ${eventNow.team_b}</h1> 
 	<h2>결과를 예측하고 포인트를 획득해보세요!</h2>
 
-		<c:if test="${loginVO_member_grade == 0 && process == 'n'}"> <!-- 임시조치. 대소문자 주의! -->
+		<c:if test="${member_grade != 1 && member_grade != 2}">
 		<h3>(로그인 후 이용하실 수 있습니다.)</h3>
 		</c:if>
-		<c:if test="${loginVO_member_grade == 1 && process == 'n'}"> <!-- 임시조치. 대소문자 주의! -->
+		<c:if test="${member_grade == 1 && process == 'n'}">
 		<div id="event_user">
 		<!-- name값은 controller에서, id값은 자바스크립트쪽에서 사용 -->
 			<form name="event_user_set" id="event_user_set" action="${pageContext.request.contextPath}/event_betting_process.do" method="post">
 			<div class="betting"><label><input type="radio" class="betting_team" name="betting_team" value="${eventNow.team_a}"  required /> ${eventNow.team_a}</label></div>
 			<div class="betting"><label><input type="radio" class="betting_team" name="betting_team" value="${eventNow.team_b}" required /> ${eventNow.team_b}</label></div>
 			<div class="betting">
-			<input type="hidden" name="member_idx" id="member_idx" value="${loginVO_member_idx}"  required /> <!-- 히든으로 감춰줌 -->
+			<input type="hidden" name="member_idx" id="member_idx" value="${member_idx}"  required /> <!-- 히든으로 감춰줌 -->
 			<input type="number" name="b_point" id="b_point" value="10" min="10" required />
 			<button onclick="event_betting(); return false;">베팅하기</button> <!-- return을 통해 기본값이 false로 되게 해줘야 confirm취소시 전송이 안됨 -->
 			</div>
 		</form>
 		</div>
 		</c:if>
-		<c:if test="${loginVO_member_grade <= 1 && process == 'y'}"> <!-- 임시조치. 대소문자 주의! -->
+		<c:if test="${member_grade <= 1 && process == 'y'}">
 		<h3>베팅이 종료되었습니다.</h3>
 		</c:if>
-		<c:if test="${loginVO_member_grade == 2 && process == 'n'}"> <!-- 임시조치. 대소문자 주의! -->
+		<c:if test="${member_grade == 2 && process == 'n'}">
 			<button id="event_admin_stop" onclick="event_stop()">베팅 종료</button>
 		</c:if>
 		
-		<c:if test="${loginVO_member_grade == 2 && process == 'y'}"> <!-- 임시조치. 대소문자 주의! -->
+		<c:if test="${member_grade == 2 && process == 'y'}">
 			<div id="event_set">
 			<form name="event_admin_set" id="event_admin_set" action="${pageContext.request.contextPath}/event_set_process.do" method="post">
 			<label><input type="radio" class="betting_team" name="victory_team" id="victory_team" value="${eventNow.team_a}"  required /> ${eventNow.team_a}</label><br>
