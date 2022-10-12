@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+<insert id="insert">
+	   INSERT INTO board_tbl(  title , content , writer  )
+	                 VALUES(#{title}, #{content} , #{writer}  )
+   
+   </insert>
+		<select id="list" resultType="com.tpdf.shoot.vo.BoardVo">
+		SELECT  board_idx, title , content , writer 
+		  FROM board_tbl
+		  ORDER BY board_idx DESC
+	</select>
+	
+	<update id="update" parameterType="com.tpdf.shoot.vo.BoardVo">
+		UPDATE board_tbl
+		   SET title    =   #{title},
+		   	   content  =   #{content}
+		 WHERE board_idx = #{board_idx} 
+	</update>
+	<select id="read" parameterType="int" resultType="com.tpdf.shoot.vo.BoardVo">
+		SELECT	board_idx
+			  , title
+			  , content
+			  , writer
+			  , regDate
+		 FROM board_tbl
+		 WHERE board_idx = #{board_idx}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE 
+		  FROM board_tbl
+		 WHERE board_idx = #{board_idx}
+	</delete>
+	
+</mapper>
