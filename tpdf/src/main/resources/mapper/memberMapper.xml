@@ -49,9 +49,31 @@
 	</select>
 
 	<select id="login_check" resultType="MemberVo">
-		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw}
+		select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw} and del_yn='n'
+	</select>
+	
+	<select id="drop_check" resultType="int">
+		select exists(select * from member_tbl member_tbl where member_id=#{member_id} and member_pw=#{member_pw} and del_yn='y') as checker
+	</select>
+	
+	<select id="member_check" parameterType="MemberVo" resultType="int">
+		select exists ( select member_id from member_tbl where member_idx=#{member_idx} and member_pw=#{member_pw} ) as checker
+	</select>
+	
+	<select id="member_info" parameterType="int" resultType="memberVo">
+		select member_idx, member_id, member_quest, member_answer, member_name, member_gender, member_birth, member_addr, member_point,
+		member_email, member_tel from member_tbl where member_idx=#{member_idx}
+	</select>
+	
+	<select id="member_modify" parameterType="MemberVo" resultType="memberVo">
+		update member_tbl set member_pw=#{member_pw}, member_quest=#{member_quest}, member_answer=#{member_answer},
+		member_email=#{member_email}, member_tel=#{member_tel}, member_addr=#{member_addr} where member_idx=#{member_idx}
+	</select>
+	
+	<select id="member_drop" parameterType="MemberVo" resultType="memberVo">
+		update member_tbl set del_yn='y' where member_idx=#{member_idx}
 	</select>
 
-</mapper>	
+</mapper>
 
 

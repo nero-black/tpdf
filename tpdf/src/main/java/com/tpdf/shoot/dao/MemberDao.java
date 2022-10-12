@@ -66,6 +66,26 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".login_check", memberVo);
 		}
 	
+	public int drop_check(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".drop_check", memberVo);
+		}
+	
+	public int member_check(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".member_check", memberVo);
+		}
+	
+	public MemberVo member_info(int member_idx) {
+		return sqlSession.selectOne(MAPPER+".member_info", member_idx);
+		}
+	
+	public MemberVo member_modify(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".member_modify", memberVo);
+		}
+	
+	public MemberVo member_drop(MemberVo memberVo) {
+		return sqlSession.selectOne(MAPPER+".member_drop", memberVo);
+		}
+	
 	
 
 	

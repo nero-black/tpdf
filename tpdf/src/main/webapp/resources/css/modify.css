@@ -5,7 +5,7 @@
 main {width:1200px; height:1100px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
-#modify {width:800px; height:1000px; margin:0 auto 20px auto;}
+#modify {width:800px; height:1100px; margin:0 auto 20px auto;}
 h3 {display:inline-block; width:100px; margin-left:170px;}
 
 .mypage_info {display:inline-block; width:340px; height:40px; padding-left:10px; margin-bottom:45px;
@@ -13,11 +13,19 @@ h3 {display:inline-block; width:100px; margin-left:170px;}
 
 .mypage_info_pw {display:inline-block; width:240px; height:40px; padding-left:10px; margin-bottom:45px;
 		 font-size:20px; line-height:40px;}
+		 
+#member_quest {width:340px; height:40px; padding-left:10px; margin-left:275px; margin-bottom:45px; background:white;
+			   border:solid 1px gray; font-size:20px; line-height:15px;}
+#member_answer {width:340px; height:40px; padding-left:10px; margin-left:275px; margin-bottom:45px; background:white;
+			    border:solid 1px gray; font-size:20px; line-height:15px;}
 
-.pwc {display:none; width:160px; height:40px; margin-left:10px;
+#pwc1 {display:none; width:160px; height:40px; margin-left:10px;
 	   font-size:18px; line-height:42px; color:red;}
 
-#submit {width:150px; height:40px; background:skyblue; border:solid 1px black; border-radius:10px; margin:0 10px 30px 242px;
+#pwc2 {display:none; width:160px; height:40px; margin-left:10px;
+	   font-size:18px; line-height:42px; color:red;}
+
+#submit {width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 242px;
 		 font-size:20px;}
-#return {width:150px; height:40px; background:orange; border:solid 1px black; border-radius:10px; margin:0 0 30px 0;
+#return {width:150px; height:40px; background:white; border:solid 1px black; margin:0 0 30px 0;
 		 font-size:20px;}

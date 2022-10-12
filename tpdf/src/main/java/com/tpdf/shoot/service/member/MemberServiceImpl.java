@@ -74,5 +74,30 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVo login_check(MemberVo memberVo) {
 		return memberDao.login_check(memberVo);
 	}
+	
+	@Override
+	public int drop_check(MemberVo memberVo) {
+		return memberDao.drop_check(memberVo);
+	}
+	
+	@Override
+	public int member_check(MemberVo memberVo) {
+		return memberDao.member_check(memberVo);
+	}
+	
+	@Override
+	public MemberVo member_info(int member_idx) {
+		return memberDao.member_info(member_idx);
+	}
+	
+	@Override
+	public MemberVo member_modify(MemberVo memberVo) {
+		return memberDao.member_modify(memberVo);
+	}
+	
+	@Override
+	public MemberVo member_drop(MemberVo memberVo) {
+		return memberDao.member_drop(memberVo);
+	}
 
 }

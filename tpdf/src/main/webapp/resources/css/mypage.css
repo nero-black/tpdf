@@ -19,13 +19,13 @@ h3 {display:inline-block; width:100px; margin-left:170px;}
 #point_check {display:inline-block; width:80px; height:40px; background:whitesmoke; border:solid 1px black;
 		   margin-left:10px; font-size:15px; line-height:42px; text-align:center; text-decoration:none; color:black;}
 
-#modify {width:150px; height:40px; background:skyblue; border:solid 1px black; border-radius:10px; margin:0 10px 30px 77px;
+#modify {width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 77px;
 		 font-size:20px;}
-#point_give {display:inline-block; width:150px; height:40px; background:yellowgreen; border:solid 1px black; border-radius:10px; margin:0 10px 30px 0;
+#point_give {display:inline-block; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 0;
 		 font-size:20px;}
-#dropout {display:none; width:150px; height:40px; background:red; border:solid 1px black; border-radius:10px; margin:0 10px 30px 0;
+#dropout {display:inline-block; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 0;
 		 font-size:20px;}
-#admin_menu {display:inline-block; width:150px; height:40px; background:pink; border:solid 1px black; border-radius:10px; margin:0 10px 30px 0;
+#admin_menu {display:inline-block; width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 0;
 		 font-size:20px;}
-#return {display:inline-block; width:150px; height:40px; background:orange; border:solid 1px black; border-radius:10px; margin:0 0 30px 0;
+#return {display:inline-block; width:150px; height:40px; background:white; border:solid 1px black; margin:0 0 30px 0;
 		 font-size:20px;}

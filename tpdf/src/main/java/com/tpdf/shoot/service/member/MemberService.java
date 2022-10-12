@@ -49,5 +49,25 @@ public interface MemberService {
 	default MemberVo login_check(MemberVo memberVo) {
 		return null;
 	}
+	
+	default int drop_check(MemberVo memberVo) {
+		return 0;
+	}
+	
+	default int member_check(MemberVo memberVo) {
+		return 0;
+	}
+	
+	default MemberVo member_info(int member_idx) {
+		return null;
+	}
+	
+	default MemberVo member_modify(MemberVo memberVo) {
+		return null;
+	}
+	
+	default MemberVo member_drop(MemberVo memberVo) {
+		return null;
+	}
 
 }

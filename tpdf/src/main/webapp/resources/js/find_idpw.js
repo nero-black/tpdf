@@ -7,10 +7,10 @@ $(function(){ // 닉네임 입력 방지 (한글 조합없는 자모음, 영어,
 	});
 })
 
-$(function(){ // 이메일 입력 방지 (한글, 특수문자(_ 제외), 공백)
+$(function(){ // 이메일 입력 방지 (한글, 특수문자(_, @, . 제외), 공백)
 	$( '#member_email' ).on("blur keyup", function() {
 		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
-		$(this).val( $(this).val().replace( /[\{\}\[\]\/?.,;:|\)*~`!^\-+┼<>@\#$%&\'\"\\\(\=]/gi, '' ) );
+		$(this).val( $(this).val().replace( /[\{\}\[\]\/?,;:|\)*~`!^\-+┼<>\#$%&\'\"\\\(\=]/gi, '' ) );
 		$(this).val( $(this).val().replace( ' ', '' ) );
 	});
 })

@@ -1,5 +1,7 @@
 package com.tpdf.shoot.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tpdf.shoot.service.member.MemberService;
+import com.tpdf.shoot.vo.EventVo;
 import com.tpdf.shoot.vo.MemberVo;
 
 @Controller
@@ -54,7 +57,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping("/join_process.do")
-	public String join_process(MemberVo memberVo, HttpServletRequest request, Model model) {
+	public String join_process(MemberVo memberVo, HttpServletRequest request) {
 		
 		// 폼에 들어있는 값 가져와서 출력
 		/*
@@ -84,20 +87,26 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping("/login_process.do")
-	public String login_process(MemberVo memberVo, HttpSession session, Model model) {
+	public String login_process(MemberVo memberVo, HttpSession session) {
 		
 		MemberVo member_check = memberService.login_check(memberVo); // 회원 여부 확인
 		
 		String request_mapping = "<script>alert('아이디 또는 비밀번호를 확인해주세요.');"+ "location.href='/login.do'</script>";
 		
+		int drop_check = memberService.drop_check(memberVo);
+		
+		if (drop_check == 1) { request_mapping = "<script>location.href='/banned.do'</script>"; }
+		
 		if (member_check != null) {
+			
 			request_mapping = "<script>location.href='index.do'</script>";
 			
 			session.setAttribute("member_idx", member_check.getMember_idx());
+			session.setAttribute("member_id", member_check.getMember_id());
 			session.setAttribute("member_name", member_check.getMember_name());
 			session.setAttribute("member_point", member_check.getMember_point());
 			session.setAttribute("member_grade", member_check.getMember_grade());
-			session.setAttribute("member_ban", member_check.getDel_yn());
+			session.setAttribute("member_drop", member_check.getDel_yn());
 		}
 		
 		return request_mapping;
@@ -113,10 +122,10 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/banned.do")
+	@RequestMapping("/dropped.do")
 	public String banned(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('강제탈퇴된 계정입니다.');"+ "location.href='index.do'</script>";
+		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='index.do'</script>";
 	
 	return request_mapping;
 	}
@@ -128,6 +137,7 @@ public class MemberController {
 	
 	@GetMapping("/find_id.do")
 	public String find_id(MemberVo memberVo, HttpSession session) {
+		
 		int find_id1 = memberService.find_id1(memberVo); // 아이디 존재 여부 확인
 		
 		if (find_id1 == 1) {
@@ -142,6 +152,7 @@ public class MemberController {
 	
 	@GetMapping("/find_pw.do")
 	public String find_pw(MemberVo memberVo, HttpSession session) {
+		
 		int find_pw1 = memberService.find_pw1(memberVo); // 아이디 일치 여부 확인
 		String find_pw2;
 		String find_pw3;
@@ -173,33 +184,65 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage_check.do")
-	public String mypage_check() {
+	public String mypage_check(MemberVo memberVo) {
+		
 		return "member/mypage_check";
 	}
 	
-	@PostMapping("/mypage_check_process.do") // 추후 마이 페이지 진입할 때 이곳에 매개변수 넘어가는 과정 처리해주어야 함
-	public String mypage_check_process() { // 이후 쿠키값을 부여해 10분간은 자동으로 넘어가지게 만들어야 함
-		return "member/mypage";// 추후 마이페이지가 아닌 mypage_check_process가 되도록 수정해주어야 함
+	@ResponseBody
+	@PostMapping("/mypage_check_process.do")
+	public String mypage_check_process(MemberVo memberVo, HttpServletRequest request) {
+
+		String request_mapping = "<script>alert('비밀번호가 틀렸습니다.');"+ "location.href='mypage_check.do'</script>";
+		int result = memberService.member_check(memberVo); // 일치 여부 확인
+
+		if (result == 1) {
+			request_mapping = "<script>location.href='mypage.do'</script>";
+		}
+
+		return request_mapping;
+		
 	}
 	
 	@GetMapping("/mypage.do")
-	public String mypage() {
+	public String mypage(MemberVo memberVo, HttpServletRequest request, HttpSession session, Model model) {
+		
+		Object member_idx_o = session.getAttribute("member_idx"); // 로그인한 인덱스 번호 추출
+		int member_idx = (Integer)member_idx_o;  // 로그인한 인덱스 번호 int형으로 변경
+		memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
+		MemberVo member_info_o = memberService.member_info(member_idx); // 현재 member_idx기반으로 정보 조회
+		model.addAttribute("member_info", member_info_o); // 조회 데이터 담아오기
+		
 		return "member/mypage";
 	}
-	
+
 	@GetMapping("/point_check.do")
 	public String point_check() {
 		return "member/point_check";
 	}
 	
 	@GetMapping("/modify.do")
-	public String modify() {
+	public String modify(MemberVo memberVo, HttpServletRequest request, HttpSession session, Model model) {
+		
+		Object member_idx_o = session.getAttribute("member_idx"); // 로그인한 인덱스 번호 추출
+		int member_idx = (Integer)member_idx_o;  // 로그인한 인덱스 번호 int형으로 변경
+		memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
+		MemberVo member_info_o = memberService.member_info(member_idx); // 현재 member_idx기반으로 정보 조회
+		model.addAttribute("member_info", member_info_o); // 조회 데이터 담아오기
+		
 		return "member/modify";
 	}
 	
-	@PostMapping("/modify_process.do") // 추후 수정되는 회원정보 매개변수 넘어가는 과정 처리해주어야 함
-	public String modify_process() {
-		return "member/modify_process";
+	@ResponseBody
+	@PostMapping("/modify_process.do")
+	public String modify_process(MemberVo memberVo, HttpServletRequest request) {
+		
+		memberService.member_modify(memberVo);
+		
+		String request_mapping = "<script>alert('회원 정보가 수정되었습니다.');"+ "location.href='mypage.do'</script>";
+
+		return request_mapping;
+		
 	}
 	
 	@GetMapping("/point_pass.do")
@@ -212,9 +255,20 @@ public class MemberController {
 		return "member/point_pass_process";
 	}
 	
-	@PostMapping("/mypage_drop_process.do") // 추후 회원탈퇴할 때 매개변수 넘어가는 과정 처리해주어야 함
-	public String mypage_drop_process() {
-		return "member/myptage_drop_process";
+	@ResponseBody
+	@GetMapping("/mypage_drop_process.do")
+	public String mypage_drop_process(MemberVo memberVo, HttpSession session) {
+		
+		Object member_idx_o = session.getAttribute("member_idx"); // 로그인한 인덱스 번호 추출
+		int member_idx = (Integer)member_idx_o;  // 로그인한 인덱스 번호 int형으로 변경
+		memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
+		
+		memberService.member_drop(memberVo); // 회원 탈퇴처리
+		
+		session.invalidate();
+		String request_mapping = "<script>alert('정상적으로 회원 탈퇴 처리되었습니다.');"+ "location.href='index.do'</script>";
+
+		return request_mapping;
 	}
 	
 	
