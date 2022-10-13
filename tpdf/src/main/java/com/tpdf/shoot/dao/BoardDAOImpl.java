@@ -8,30 +8,26 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.tpdf.shoot.vo.BoardVo;
+import com.tpdf.shoot.vo.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
-	//게시물 작성
+	//게시물작성
 	@Override
 	public void write(BoardVo boardVo) throws Exception {
 		sqlSession.insert("boardMapper.insert", boardVo);
-		
 	}
 	//게시물 목록
 	@Override
-	public List<BoardVo> list() throws Exception {
+	public List<BoardVo> list(SearchCriteria scri) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("boardMapper.list");
+		return sqlSession.selectList("boardMapper.listPage", scri);
 	}
-	//게시물 조회
-	@Override
-	public BoardVo read(int board_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("boardMapper.read", board_idx);
-	}
+	
+
 	//게시물 수정
 	@Override
 	public void update(BoardVo boardVo) throws Exception {
@@ -45,6 +41,17 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		sqlSession.delete("boardMapper.delete", board_idx);
 	}
-	
+	//게시물 총 갯수
+	@Override
+	public int listCount(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.listCount", scri);
+	}
+	//게시물 조회
+	@Override
+	public BoardVo read(int board_idx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.read", board_idx);
+	}
 
 }

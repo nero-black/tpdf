@@ -12,7 +12,11 @@
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/board/board_list";
+				location.href = "/board/board_readView?board_idx=${update.board_idx}"
+					   + "&page=${scri.page}"
+					   + "&perPageNum=${scri.perPageNum}"
+					   + "&searchType=${scri.searchType}"
+					   + "&keyword=${scri.keyword}";
 			})
 			
 			$(".update_btn").on("click", function(){

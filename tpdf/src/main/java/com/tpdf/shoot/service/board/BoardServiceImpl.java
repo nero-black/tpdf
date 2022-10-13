@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tpdf.shoot.dao.BoardDAO;
 import com.tpdf.shoot.vo.BoardVo;
+import com.tpdf.shoot.vo.SearchCriteria;
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -21,10 +22,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 	// 게시물 목록 조회
 	@Override
-	public List<BoardVo> list() throws Exception {
+	public List<BoardVo> list(SearchCriteria scri) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.list();
+		return dao.list(scri);
 	}
+	
 	//게시물 수정
 	@Override
 	public void update(BoardVo boardVo) throws Exception {
@@ -42,6 +44,12 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVo read(int board_idx) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.read(board_idx);
+	}
+	//게시물 총 개수
+	@Override
+	public int listCount(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listCount(scri);
 	}
 
 

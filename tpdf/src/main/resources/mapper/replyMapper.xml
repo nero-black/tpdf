@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replyMapper">
+
+<!-- 댓글 조회 -->
+	<select id="readReply" resultType="com.tpdf.shoot.vo.ReplyVo">
+    	SELECT
+    		  board_reply_idx, content, writer, regDate
+    	 FROM board_reply_tbl
+    	WHERE board_idx = #{board_idx}
+	</select>
+	<insert id="writeReply">
+		INSERT INTO board_reply_tbl(
+			board_idx
+			, content
+			, writer
+		)
+		VALUES(#{board_idx}
+			 ,#{content}
+			, #{writer}	)
+	</insert>
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="com.tpdf.shoot.vo.ReplyVo">
+		UPDATE board_reply_tbl SET content = #{content}
+		WHERE board_reply_idx = #{board_reply_idx}
+	</update>
+
+	<!-- 댓글 삭제 -->
+		<delete id="deleteReply" parameterType="com.tpdf.shoot.vo.ReplyVo">
+			DELETE FROM board_reply_tbl
+			WHERE board_reply_idx = #{board_reply_idx}
+		</delete>
+		
+	<!-- 선택된 댓글 조회 -->
+		<select id="selectReply" resultType="com.tpdf.shoot.vo.ReplyVo">
+			SELECT
+					board_idx
+				  , board_reply_idx
+				  , content
+				  , writer
+				  , regDate
+			  FROM board_reply_tbl
+			 WHERE board_reply_idx = #{board_reply_idx}
+		</select>
+</mapper>
