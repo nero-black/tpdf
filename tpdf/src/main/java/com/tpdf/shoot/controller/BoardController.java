@@ -2,15 +2,21 @@ package com.tpdf.shoot.controller;
 
 
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tpdf.shoot.service.board.BoardService;
@@ -40,10 +46,10 @@ public class BoardController {
 		
 		// 게시판 글 작성
 		@RequestMapping(value = "/board_write", method = RequestMethod.POST)
-		public String write(BoardVo BoardVo) throws Exception{
+		public String write(BoardVo BoardVo, MultipartHttpServletRequest mpRequest) throws Exception{
 			
 			
-			service.write(BoardVo);
+			service.write(BoardVo, mpRequest);
 			
 			return "redirect:board_list";
 		}
@@ -70,8 +76,13 @@ public class BoardController {
 			
 			model.addAttribute("read", service.read(boardVo.getBoard_idx()));
 			model.addAttribute("scri", scri);
+			
 			List<ReplyVo> replyList = replyService.readReply(boardVo.getBoard_idx());
 			model.addAttribute("replyList", replyList);
+			
+			List<Map<String, Object>> fileList = service.selectFileList(boardVo.getBoard_idx());
+			model.addAttribute("file", fileList);
+			
 			return "board/board_readView";
 		}
 		
@@ -83,12 +94,16 @@ public class BoardController {
 			
 			model.addAttribute("update", service.read(boardVo.getBoard_idx()));
 			model.addAttribute("scri", scri);
+			
+			List<Map<String, Object>> fileList = service.selectFileList(boardVo.getBoard_idx());
+			model.addAttribute("file", fileList);
 			return "board/board_updateView";
 		}
 		
 		// 게시판 수정
 		@RequestMapping(value = "/board_update", method = RequestMethod.POST)
-		public String update(BoardVo boardVo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+		public String update(BoardVo boardVo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr
+											) throws Exception{
 	
 			service.update(boardVo);
 			
@@ -185,6 +200,27 @@ public class BoardController {
 			
 			return "redirect:/board/board_readView";
 		}
-	
+		/*
+		 * //파일다운
+		 * 
+		 * @RequestMapping(value="/board_fileDown") public void fileDown(@RequestParam
+		 * Map<String, Object> map, HttpServletResponse response) throws Exception{
+		 * Map<String, Object> resultMap = service.selectFileInfo(map); String
+		 * storedFileName = (String) resultMap.get("stored_file_name"); String
+		 * originalFileName = (String) resultMap.get("origin_file_name");
+		 * 
+		 * // 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다. byte fileByte[] =
+		 * org.apache.commons.io.FileUtils.readFileToByteArray(new
+		 * File("C:\\mp\\file\\"+storedFileName));
+		 * 
+		 * response.setContentType("application/octet-stream");
+		 * response.setContentLength(fileByte.length);
+		 * response.setHeader("Content-Disposition",
+		 * "attachment; fileName=\""+URLEncoder.encode(originalFileName,
+		 * "UTF-8")+"\";"); response.getOutputStream().write(fileByte);
+		 * response.getOutputStream().flush(); response.getOutputStream().close();
+		 * 
+		 * }
+		 */
 	
 }

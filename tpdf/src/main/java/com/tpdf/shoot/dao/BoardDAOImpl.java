@@ -1,6 +1,8 @@
 package com.tpdf.shoot.dao;
 
 import java.util.List;
+import java.util.Map;
+
 
 import javax.inject.Inject;
 
@@ -52,6 +54,44 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardVo read(int board_idx) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("boardMapper.read", board_idx);
+		
+		
 	}
-
+	
+	// 첨부파일 업로드
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			sqlSession.insert("boardMapper.insertFile", map);
+	}
+	
+  
+   	// 첨부파일 조회
+	@Override
+	public List<Map<String, Object>> selectFileList(int board_idx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.selectFileList", board_idx);
+	}
+	//게시물 조회수
+	@Override
+	public void boardHit(int board_idx) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("boardMapper.boardHit", board_idx);
+	}
+	
+	/*
+	 * // 첨부파일 다운로드
+	 * 
+	 * @Override public Map<String, Object> selectFileInfo(Map<String, Object> map)
+	 * throws Exception { // TODO Auto-generated method stub return
+	 * sqlSession.selectOne("boardMapper.selectFileInfo", map); }
+	 */
+	/*
+	 * //첨부파일 수정
+	 * 
+	 * @Override public void updateFile(Map<String, Object> map) throws Exception {
+	 * // TODO Auto-generated method stub
+	 * 
+	 * sqlSession.update("boardMapper.updateFile", map); }
+	 */
 }

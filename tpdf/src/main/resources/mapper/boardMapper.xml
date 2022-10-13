@@ -3,7 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
-<insert id="insert">
+	<insert id="insert">
+		<selectKey keyProperty="board_idx" resultType="int" order="BEFORE">
+	    	SELECT MAX(board_idx)+1 FROM board_tbl
+	    </selectKey>
 	   INSERT INTO board_tbl(  title , content , writer  )
 	                 VALUES(#{title}, #{content} , #{writer}  )
    
@@ -13,13 +16,15 @@
 			        title, 
 			        content,
 			        writer, 
-			        regDate
+			        regDate,
+			        hit
 			 FROM ( 
 			        SELECT board_idx, 
 			               title, 
 			               content, 
 			               writer, 
 			               regDate, 
+			               hit,
 			               ROW_NUMBER() OVER(ORDER BY board_idx DESC) AS RNUM
 			         FROM board_tbl
 			         WHERE 1=1 
@@ -67,5 +72,49 @@
 		  FROM board_tbl
 		 WHERE board_idx = #{board_idx}
 	</delete>
-	
+	<insert id="insertFile" parameterType="hashMap">
+		INSERT INTO board_file(
+			board_idx,
+			origin_file_name,
+			stored_file_name,
+			file_size
+		)VALUES(
+			
+			#{board_idx},
+			#{origin_file_name},
+			#{stored_file_name},
+			#{file_size}
+		)
+    </insert>
+    <!-- 첨부파일조회 -->
+    <select id="selectFileList" parameterType="int" resultType="hashMap">
+		SELECT file_idx,
+			   origin_file_name,
+			   ROUND(file_size/1024,1) AS file_size
+		  FROM board_file
+		 WHERE board_idx = #{board_idx}
+		   AND del_gb = 'N'
+		   ORDER BY file_idx ASC
+	</select>
+	<!-- 
+		첨부파일 다운
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+		SELECT 
+			stored_file_name,
+			origin_file_name
+		FROM board_file
+		WHERE file_idx= #{file_idx}
+	</select>
+		첨부파일 수정
+	<update id="updateFile" parameterType="hashMap">
+    	UPDATE board_file SET
+    	del_gb = 'Y'
+    	WHERE file_idx = #{file_idx}
+    </update> -->
+    
+    <update id="boardHit" parameterType="int">
+    	UPDATE board_tbl SET
+    	HIT = HIT+1
+    	WHERE board_idx = #{board_idx}
+    </update>
 </mapper>

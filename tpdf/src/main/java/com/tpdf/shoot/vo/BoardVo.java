@@ -8,6 +8,15 @@ public class BoardVo {
 	private String content;
 	private String writer;
 	private Date regDate;
+	private int hit;
+	
+	
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
 	public int getBoard_idx() {
 		return board_idx;
 	}
@@ -38,6 +47,7 @@ public class BoardVo {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
 	
 	
 }	

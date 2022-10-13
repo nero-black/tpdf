@@ -3,6 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	<title>게시판</title>
 	</head>
@@ -30,6 +34,7 @@
 		})
 			
 		function fn_valiChk(){
+			alert("실행중");
 			var updateForm = $("form[name='updateForm'] .chk").length;
 			for(var i = 0; i<updateForm; i++){
 				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
@@ -38,6 +43,26 @@
 				}
 			}
 		}
+		/* function fn_addFile(){
+			var fileIndex = 1;
+			//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+			$(".fileAdd_btn").on("click", function(){
+				$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+			});
+			$(document).on("click","#fileDelBtn", function(){
+				$(this).parent().remove();
+				
+			});
+		}
+ 		var fileNoArry = new Array();
+ 		var fileNameArry = new Array();
+ 		function fn_del(value, name){
+ 			
+ 			fileNoArry.push(value);
+ 			fileNameArry.push(name);
+ 			$("#fileNoDel").attr("value", fileNoArry);
+ 			$("#fileNameDel").attr("value", fileNameArry);
+ 		} */
 		
 	</script>
 	<body>
@@ -56,6 +81,9 @@
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/board_update">
 					<input type="hidden" name="board_idx" value="${update.board_idx}" readonly="readonly"/>
+					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
+					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+					
 					<table>
 						<tbody>
 							<tr>
@@ -78,12 +106,25 @@
 									<label for="regDate">작성날짜</label>
 									<fmt:formatDate value="${update.regDate}" pattern="yyyy-MM-dd"/>					
 								</td>
-							</tr>		
+							</tr>
+							<%-- <tr>
+								<td id="fileIndex">
+									<c:forEach var="file" items="${file}" varStatus="var">
+									<div>
+										<input type="hidden" id="file_idx" name="file_idx_${var.index}" value="${file.file_idx }">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="file_idx_${var.index}">
+										<a href="#" id="fileName" onclick="return false;">${file.origin_file_name}</a>(${file.file_size}kb)
+										<button id="fileDel" onclick="fn_del('${file.file_idx}','file_idx_${var.index}');" type="button">삭제</button><br>
+									</div>
+									</c:forEach>
+								</td>
+							</tr>	 --%>	
 						</tbody>			
 					</table>
 					<div>
 						<button type="submit" class="update_btn">저장</button>
 						<button type="submit" class="cancel_btn">취소</button>
+					<!-- 	<button type="button" class="fileAdd_btn">파일추가</button> -->
 					</div>
 				</form>
 			</section>
