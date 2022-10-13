@@ -5,6 +5,14 @@
 
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 
+<c:if test="${member_grade == null}">
+<% response.sendRedirect("need_login.do"); %>
+</c:if> <!-- 비회원 접속 방지 -->
+
+<c:if test="${member_grade == 2}">
+<% response.sendRedirect("invalid.do"); %>
+</c:if> <!-- 잘못된 접속 방지 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +25,7 @@
 
 <body>
 
+<c:if test="${member_grade == 1}">
 <div id="modify">
 	<form action="${pageContext.request.contextPath}/modify_process.do" method="post" id="modify_form">
 		<br><br><br>
@@ -50,6 +59,7 @@
 	<button id="submit" onclick="modify();">수정하기</button>
 	<button id="return" onclick="history.back()">돌아가기</button>
 </div>
+</c:if>
 </body>
 </html>
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

@@ -5,6 +5,14 @@
 
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 
+<c:if test="${member_grade == null}">
+<% response.sendRedirect("need_login.do"); %>
+</c:if> <!-- 비회원 접속 방지 -->
+
+<c:if test="${member_grade == 2}">
+<% response.sendRedirect("invalid.do"); %>
+</c:if> <!-- 잘못된 접속 방지 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +23,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
 
 <body>
+<c:if test="${member_grade == 1}">
 <div id="mypage">
 		<br><br><br>
 		<h3>아이디　： </h3>
@@ -43,15 +52,11 @@
 		<!-- <a href="${pageContext.request.contextPath}/point_check.do" id="point_check">내역 확인</a> -->
 		<br>
 	<button id="modify" onclick="location.href = '${pageContext.request.contextPath}/modify.do';">회원정보 수정</button>
-	<button id="point_give" onclick="location.href = '${pageContext.request.contextPath}/point_pass.do'; ">포인트 전달</button>
-	<c:if test="${member_grade == 2}">
-	<button id="admin_menu" onclick="location.href = '${pageContext.request.contextPath}/admin_index.do'; ">관리자 메뉴</button>
-	</c:if>
-	<c:if test="${member_grade == 1}">
+	<!-- <button id="point_give" onclick="location.href = '${pageContext.request.contextPath}/point_pass.do'; ">포인트 전달</button>  -->
 	<button id="dropout" onclick="drop()">회원 탈퇴</button>
-	</c:if>
 	<button id="return" onclick="history.back()">돌아가기</button>
 </div>
+</c:if>
 </body>
 </html>
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

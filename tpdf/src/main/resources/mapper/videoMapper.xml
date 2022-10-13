@@ -21,7 +21,7 @@
 
 	<select id="video_search" parameterType="String" resultType="VideoVo">
 	<![CDATA[ select video_idx, title, thumbnail, file, date_format(wdate, '%y-%m-%d') as wdate_d, hit from video_tbl
-	where title like #{search_value} order by video_idx desc; ]]>
+	where title like concat('%', #{search_value}, '%') order by video_idx desc; ]]>
 	</select>
 		
 	<select id="video_one" parameterType="int" resultType="VideoVo">

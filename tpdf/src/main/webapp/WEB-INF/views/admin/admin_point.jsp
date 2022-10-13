@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
+
+<c:if test="${member_grade != 2}">
+<% response.sendRedirect("invalid.do"); %>
+</c:if> <!-- 부정 접속 방지 -->
+
 <!DOCTYPE html>
 <html>
 <head>

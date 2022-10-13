@@ -14,6 +14,29 @@
 		update member_tbl set member_point = member_point + #{member_point}
 		where member_name = #{member_name}
 	</update>
+	
+	<select id="member_list" resultType="AdminVo">
+		<![CDATA[ select member_idx, member_id, member_name, member_point, date_format(reg_date, '%y-%m-%d') as reg_date_, del_yn from member_tbl
+		where member_name not in ("관리자") order by member_idx desc; ]]>
+	</select>
+	
+	<select id="member_search_id" parameterType="String" resultType="AdminVo">
+		<![CDATA[ select member_idx, member_id, member_name, member_point, date_format(reg_date, '%y-%m-%d') as reg_date_, del_yn from member_tbl
+		where member_name not in ("관리자") and member_id like concat('%', #{search_value}, '%') order by member_idx desc; ]]>
+	</select>
+	
+	<select id="member_search_name" parameterType="String" resultType="AdminVo">
+		<![CDATA[ select member_idx, member_id, member_name, member_point, date_format(reg_date, '%y-%m-%d') as reg_date_, del_yn from member_tbl
+		where member_name not in ("관리자") and member_name like concat('%', #{search_value}, '%') order by member_idx desc; ]]>
+	</select>
+	
+	<select id="admin_ban_check" parameterType="int" resultType="int">
+		select exists ( select member_idx from member_tbl where del_yn = 'y' and member_idx = #{member_idx} ) as checker
+	</select>
+	
+	<update id="admin_ban_process" parameterType="int">
+		update member_tbl set del_yn = 'y' where member_idx = #{member_idx}
+	</update>
 
 </mapper>
 

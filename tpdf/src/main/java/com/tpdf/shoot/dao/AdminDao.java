@@ -1,5 +1,7 @@
 package com.tpdf.shoot.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,6 +28,26 @@ public class AdminDao {
 	
 	public AdminVo admin_point(AdminVo adminVo) {
 		return sqlSession.selectOne(MAPPER+".admin_point", adminVo);
+	}
+	
+	public List<AdminVo> member_list() {
+		return sqlSession.selectList(MAPPER+".member_list");
+	}
+	
+	public List<AdminVo> member_search_id(String search_value) {
+		return sqlSession.selectList(MAPPER+".member_search_id", search_value);
+	}
+	
+	public List<AdminVo> member_search_name(String search_value) {
+		return sqlSession.selectList(MAPPER+".member_search_name", search_value);
+	}
+	
+	public int admin_ban_check(int member_idx) {
+		return sqlSession.selectOne(MAPPER+".admin_ban_check", member_idx);
+	}
+	
+	public int admin_ban_process(int member_idx) {
+		return sqlSession.update(MAPPER+".admin_ban_process", member_idx);
 	}
 
 	

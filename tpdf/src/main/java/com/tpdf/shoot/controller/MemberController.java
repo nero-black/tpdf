@@ -129,6 +129,15 @@ public class MemberController {
 	return request_mapping;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/need_login.do")
+	public String need_login(HttpSession session) {
+		session.invalidate();
+		String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='login.do'</script>";
+	
+	return request_mapping;
+	}
+	
 	@GetMapping("/find_idpw.do")
 	public String find_idpw() {
 		return "member/find_idpw";
@@ -206,15 +215,18 @@ public class MemberController {
 	@GetMapping("/mypage.do")
 	public String mypage(MemberVo memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		
-		Object member_idx_o = session.getAttribute("member_idx"); // 로그인한 인덱스 번호 추출
-		int member_idx = (Integer)member_idx_o;  // 로그인한 인덱스 번호 int형으로 변경
-		memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
-		MemberVo member_info_o = memberService.member_info(member_idx); // 현재 member_idx기반으로 정보 조회
-		model.addAttribute("member_info", member_info_o); // 조회 데이터 담아오기
-		
-		int now_point = memberService.member_point(memberVo); // 현재 내 포인트
-		session.setAttribute("member_point", now_point); // 세션에 대입
-		
+			Object member_idx_o = session.getAttribute("member_idx"); // 로그인한 인덱스 번호 추출
+			
+			if (member_idx_o != null) {
+			
+			int member_idx = (Integer)member_idx_o;  // 로그인한 인덱스 번호 int형으로 변경
+			memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
+			MemberVo member_info_o = memberService.member_info(member_idx); // 현재 member_idx기반으로 정보 조회
+			model.addAttribute("member_info", member_info_o); // 조회 데이터 담아오기
+
+			int now_point = memberService.member_point(memberVo); // 현재 내 포인트
+			session.setAttribute("member_point", now_point); // 세션에 대입		
+			}
 		
 		return "member/mypage";
 	}
@@ -228,10 +240,15 @@ public class MemberController {
 	public String modify(MemberVo memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		
 		Object member_idx_o = session.getAttribute("member_idx"); // 로그인한 인덱스 번호 추출
+		
+		if (member_idx_o != null) {
+		
 		int member_idx = (Integer)member_idx_o;  // 로그인한 인덱스 번호 int형으로 변경
 		memberVo.setMember_idx(member_idx); // memberVo의 현재 idx값 설정
 		MemberVo member_info_o = memberService.member_info(member_idx); // 현재 member_idx기반으로 정보 조회
 		model.addAttribute("member_info", member_info_o); // 조회 데이터 담아오기
+		
+		}
 		
 		return "member/modify";
 	}
