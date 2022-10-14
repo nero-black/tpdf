@@ -20,8 +20,8 @@
 	<br><br>
 	<button id="admin_point" onclick="location.href = '${pageContext.request.contextPath}/admin_point.do';">포인트 지급</button>
 	<br>
-	<button id="admin_report" onclick="location.href = '${pageContext.request.contextPath}/admin_report.do'; ">신고게시글</button>
-	<br>
+	<!--<button id="admin_report" onclick="location.href = '${pageContext.request.contextPath}/admin_report.do'; ">신고게시글</button>
+	<br> -->
 	<!-- <button id="admin_filter" onclick="location.href = '${pageContext.request.contextPath}/admin_filter.do'; ">필터 관리</button>
 	<br>  -->
 	<button id="admin_ban" onclick="location.href = '${pageContext.request.contextPath}/admin_ban.do'; ">강제 탈퇴</button>

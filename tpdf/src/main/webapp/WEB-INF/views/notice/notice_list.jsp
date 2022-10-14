@@ -1,76 +1,100 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ShooT :: 비상하는 해외축구 커뮤니티</title>
-</head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/notice.css">
-<body>
-
-
-<main>
-<div id="nav">
-	<%@ include file="./notice_include.jsp" %>
-</div>
-	<button id="list_align_a" onclick="#">최신순</button>
-	<button id="list_align_b" onclick="#">추천순</button>
-		<br><br>
-		<div id="notice">
-		<table>
-			<thead>
-	        <tr>
-	          <th>번호</th>
-	          <th>제목</th>
-	          <th>작성자</th>
-	          <th>작성일</th>
-	          <th>조회수</th>
-	        </tr>
-	        </thead>
-	       <tbody>
-	        	<c:forEach items="${list}" var="list">
-	        	<tr>
-	        		<td>${list.notice_idx}</td>
-	        		<td>
-	        		<a href="/notice/notice_view?notice_idx=${list.notice_idx}">${list.title}</a>
-	        		</td>
-	        		<td>
-	        			<fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd"/>
-	        		</td>
-	        		<td>${list.writer}</td>
-	        		<td>${list.viewCnt}</td>
-	        		
-	        	</tr>     		        	
-	        	</c:forEach>
-	        </tbody> 
-		</table>
-		<br>
-		<button id="notice_insert" onclick="location.href='/notice/notice_write'">글쓰기</button>
-		<div id="page">
-		
-		<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-  		<path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
-		</svg>
-		<b>1</b> 2 3 4 5 6 7 8 9 10
-		<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-  		<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-		</svg>
+	<head>
+			<!-- 합쳐지고 최소화된 최신 CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+			<!-- 부가적인 테마 -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	 	<title>게시판</title>
+	</head>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<style type="text/css">
+			li {list-style: none; float: left; padding: 6px;}
+		</style>
+	<body>
+		<div id="root" class="container">
+			<header>
+				<h1> 게시판</h1>
+			</header>
+			<hr />
+			 <div>
+			 	<%@include file="nav.jsp" %>
+			 </div>
+			
+			<hr />
+			
+			<section id="container">
+				<form role="form" method="get">
+					<table class="table table-hover">
+						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
+						
+						<c:forEach items="${list}" var = "list">
+							<tr>
+								<td><c:out value="${list.notice_idx}" /></td>
+								<td>
+									<a href="/notice/notice_readView?notice_idx=${list.notice_idx}&
+																		page=${scri.page}&
+																		perPageNum=${scri.perPageNum}&
+																		searchType=${scri.searchType}&
+																		keyword=${scri.keyword}">
+																		<c:out value="${list.title}" /></a>
+								</td>
+								<td><c:out value="${list.writer}" /></td>
+								<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd"/></td>
+								<td><c:out value="${list.hit}" /></td>
+							</tr>
+						</c:forEach>
+						
+					</table>
+					<div class="search row">
+						<div class="cols-xs-2 col-sm-2">
+						    <select name="searchType" class="form-control">
+						      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+						    </select>
+					    </div>
+					    <div class="col-xs-10 col-sm-10">
+							<div class="input-group">
+								<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control"/>
+								<span class="input-group-btn">
+									<button id="searchBtn" type="button" class="btn btn-default">검색</button> 	
+								</span>
+							</div>
+						</div>
+					    <script>
+					      $(function(){
+					        $('#searchBtn').click(function() {
+					          self.location = "notice_list" + "${Paging.makeSearch(1)}" + "?searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+					        });
+					      });   
+					    </script>
+					  </div>
+					<div class="col-md-offset-3">
+						<ul class="pagination">
+					    <c:if test="${Paging.prev}">
+					    	<li><a href="notice_list${Paging.makeSearch(Paging.startPage - 1)}">이전</a></li>
+					    </c:if> 
+					
+					    <c:forEach begin="${Paging.startPage}" end="${Paging.endPage}" var="idx">
+					    	<li <c:out value="${Paging.cri.page == idx ? 'class=info' : ''}" />>
+					    	<li><a href="notice_list${Paging.makeSearch(idx)}">${idx}</a></li>
+					    </c:forEach>
+					
+					    <c:if test="${Paging.next && Paging.endPage > 0}">
+					    	<li><a href="notice_list${Paging.makeSearch(Paging.endPage + 1)}">다음</a></li>
+					    </c:if> 
+					  </ul>
+					</div>
+				</form>
+			</section>
+			<hr />
 		</div>
-		<div id="search">
-			<select name="search_type" id="search_type">
-			<option value="title">제목</option>
-			<option value="writer">작성자</option>
-			</select>
-			<input type="text" id="search_value" name="search_value" placeholder="검색할 내용 입력" />
-			<button id="search_submit" onclick="#">검색</button>
-		</div>
-	</div>
-</main>
-</body>
+	</body>
 </html>
-
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

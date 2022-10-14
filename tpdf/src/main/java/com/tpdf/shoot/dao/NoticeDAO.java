@@ -1,26 +1,35 @@
 package com.tpdf.shoot.dao;
+
 import java.util.List;
+import java.util.Map;
+
 import com.tpdf.shoot.vo.NoticeVo;
+import com.tpdf.shoot.vo.SearchCriteria;
 
 public interface NoticeDAO {
-		
-	 //게시물 목록
-	 public List<NoticeVo> list() throws Exception; 
-	 //게시물 작성
-	 public void write(NoticeVo vo) throws Exception;
-	 //게시물 조회
-	 public NoticeVo view(int notice_idx) throws Exception;
-	 //게시물 수정
-	 public void modify(NoticeVo vo) throws Exception;
-	 //게시물 삭제
-	 public void delete(int notice_idx) throws Exception;
-	 //게시물 페이징
-	 public int count() throws Exception;
-	// 게시물 목록 + 페이징
-	 public List<NoticeVo> listPage(int displayPost, int postNum) throws Exception;
-	// 게시물 목록 + 페이징 + 검색
-	 public List<NoticeVo> listPageSearch(
-	   int displayPost, int postNum, String searchType, String keyword) throws Exception;
-	// 게시물 총 갯수 + 검색 적용
-	 public int searchCount(String searchType, String keyword) throws Exception;
+	//게시글 작성
+	public void write(NoticeVo noticeVo) throws Exception;
+	//게시물 목록 조회
+	public List<NoticeVo> list(SearchCriteria scri) throws Exception;
+	//게시물 총 갯수
+	public int listCount(SearchCriteria scri) throws Exception;
+	//게시물 조회
+	public NoticeVo read(int notice_idx) throws Exception;
+	// 게시물 수정
+	public void update(NoticeVo noticeVo) throws Exception;
+	// 게시물 삭제
+	public void delete(int notice_idx) throws Exception;
+	// 첨부파일 업로드
+	public void insertFile(Map<String, Object> map) throws Exception;
+    // 첨부파일 조회
+	public List<Map<String, Object>> selectFileList(int notice_idx) throws Exception;
+	// 게시판 조회수
+	public void noticeHit(int notice_idx) throws Exception;
+	/*
+	 * // 첨부파일 다운 public Map<String, Object> selectFileInfo(Map<String, Object> map)
+	 * throws Exception;
+	 */
+	/*
+	 * // 첨부파일 수정 public void updateFile(Map<String, Object> map) throws Exception;
+	 */
 }
