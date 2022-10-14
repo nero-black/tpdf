@@ -9,8 +9,15 @@ public class BoardVo {
 	private String writer;
 	private Date regDate;
 	private int hit;
+	private String stored_file_name;
 	
 	
+	public String getStored_file_name() {
+		return stored_file_name;
+	}
+	public void setStored_file_name(String stored_file_name) {
+		this.stored_file_name = stored_file_name;
+	}
 	public int getHit() {
 		return hit;
 	}

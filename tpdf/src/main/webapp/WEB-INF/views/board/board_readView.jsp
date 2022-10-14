@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 <html>
 	<head>
 			
@@ -88,7 +89,7 @@
 			<hr />
 			 
 			 <div>
-			 	<%@include file="nav.jsp" %> %>
+			 	<%@include file="nav.jsp" %> 
 			 </div>
 			<hr />
 			
@@ -105,8 +106,12 @@
 					<label for="title" class="col-sm-2 control-label">제목</label>
 					<input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" />
 				</div>
-				<div class="form-group">
+				<div class="form-group" >
+					
 					<label for="content" class="col-sm-2 control-label">내용</label>
+					<c:forEach var="file" items="${file}">
+					<img src="${pageContext.request.contextPath}/resources/img/board/${file.origin_file_name}" width="300px;" height="200px;"> 
+					</c:forEach>
 					<textarea id="content" name="content" class="form-control" readonly="readonly"><c:out value="${read.content}" /></textarea>
 				</div>
 				<div class="form-group">
@@ -120,7 +125,7 @@
 				<span>파일 목록</span>
 				<div class="form-group" style="border: 1px solid #dbdbdb;">
 					<c:forEach var="file" items="${file}">
-						<a href="#" onclick="fn_fileDown('${file.file_idx}'); return false;">${file.origin_file_name}</a>(${file.file_size}kb)<br>
+						${file.origin_file_name}(${file.file_size}kb)<br>
 					</c:forEach>
 				</div>
 				<div>
@@ -181,3 +186,4 @@
 		</div>
 	</body>
 </html>
+<%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

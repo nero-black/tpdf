@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 <html>
 	<head>
 	<!-- 합쳐지고 최소화된 최신 CSS -->
@@ -132,3 +133,4 @@
 		</div>
 	</body>
 </html>
+<%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->
