@@ -484,7 +484,7 @@ $(function(){
     line-height: 39px;
 }
 	.schedule_month ul {text-align:center;}
-	.schedule_month ul li{display:inline-block; list-style-type: none;  border-top:1px solid black; border-collapse: collapse; width:auto;
+	.schedule_month ul li{display:inline-block; list-style-type: none; border-collapse: collapse; width:auto;
 						padding:0px 60px 0px 60px; font-weight: bold; }
 	.result_id, .table_id{font-weight:900; font-size:20px;}
 	#league_menu ul {text-align:center;}

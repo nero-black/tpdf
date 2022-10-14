@@ -63,9 +63,9 @@
 	
 	<hr class="clear_line">
 	
-	<a href="#"><img src="${pageContext.request.contextPath}/resources/img/banner02.png" alt="광고 배너" id="banner_l1"></a>
-	<a href="#"><img src="${pageContext.request.contextPath}/resources/img/banner01.png" alt="광고 배너" id="banner_l2"></a>
-	<a href="#"><img src="${pageContext.request.contextPath}/resources/img/banner03.png" alt="광고 배너" id="banner_r"></a>
+	<a href="https://www.sungsimdangmall.co.kr/" target="_blank"><img src="${pageContext.request.contextPath}/resources/img/banner02.png" alt="광고 배너" id="banner_l1"></a>
+	<a href="https://map.naver.com/v5/entry/place/37033591?c=14149386.6292817,4244279.9830111,13,0,0,0,dh&placePath=%2Fhome&entry=plt" target="_blank"><img src="${pageContext.request.contextPath}/resources/img/banner01.png" alt="광고 배너" id="banner_l2"></a>
+	<a href="https://www.shinsegae.com/store/main.do?storeCd=SC00060" target="_blank"><img src="${pageContext.request.contextPath}/resources/img/banner03.png" alt="광고 배너" id="banner_r"></a>
 	<a href="#"><div id="top_button">▲</div></a>
 	</header>
 	

@@ -57,7 +57,38 @@ hr.clear_line {clear:both; border:0;}
 .video table td img {max-width:200px; max-height:150px;}
 .video table tr {width:250px; font-size:15px;}
 
-#rank {display:inline-block; width:595px; height:400px;  border:solid 1px black;}
-#schedule {display:inline-block; width:595px; height:400px;  border:solid 1px black;}
+/* rank <-> schedule 위치 바뀌어있음 */
+
+#more:hover {text-decoration:underline;}
+
+#rank {display:inline-block; width:595px; height:340px;}
+
+#rank table {height:330px; border-collapse: collapse; text-align:center; margin-top:8px;}
+#rank table th {border-top:solid 2px gray;}
+#rank table thead {height:27px;}
+#rank table thead tr {border-bottom:solid 1px black;}
+#rank table thead tr:first-child:hover {background:rgb(255, 255, 255);}
+#rank table tr:hover {background:rgb(240, 240, 240);}
+#rank table td {border-bottom:solid 1px black;}
+
+#schedule {display:inline-block; width:595px; height:340px;}
+
+#schedule table {height:330px; border-collapse: collapse; text-align:center; margin-top:8px;}
+#schedule table th {border-top:solid 2px gray;}
+#schedule table th {border-right:solid 1px rgb(200, 200, 200);}
+#schedule table th:nth-child(n+0):nth-child(-n+1) {border-right:none;}
+#schedule table th:last-child {border-right:none;}
+
+#schedule table td {border-bottom:solid 1px black;}
+#schedule table td:nth-child(2) {text-align:left;}
+#schedule table td {border-right:solid 1px rgb(200, 200, 200);}
+#schedule table td:nth-child(n+0):nth-child(-n+1) {border-right:none;}
+#schedule table td:last-child {border-right:none;}
+#schedule table tr:first-child {background:rgb(255, 255, 255); border-bottom:double 2px black;}
+#schedule table tr:first-child:hover {background:rgb(255, 255, 255);}
+#schedule table tr:hover {background:rgb(240, 240, 240);}
+
+#font {border:none; font-size:25px; font-weight:bold;}
+#font:hover {text-decoration:underline;}
 
 

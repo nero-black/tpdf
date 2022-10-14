@@ -15,8 +15,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
 <style>
 * {text-decoration:none;}
-#more{float:right;}
-#font{font-weight:900; border:1px solid black; margin:20px;}
+#more{display:inline-block; margin-left:330px; font-weight:bold;}
+#font{font-weight:900; margin-bottom:10px;}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -71,9 +71,9 @@ $(document).ready(function () {
 		       $("#rank_tbl").html("<table>"
 		  				 +"<thead><tr>"
 		   				 +"<th class='time' scope='col' width='10%' align='center'>시간</th>"
-		   				 +"<th scope='col' width='30%'' align='right'>HOME</th>"
+		   				 +"<th scope='col' width='30%'' align='right'><!-- HOME --></th>"
 		   				 +"<th scope='col' width='5%'' align='center'>경기</th>"
-		   				 +"<th scope='col' width='30%'' align='left'>AWAY</th></tr>"
+		   				 +"<th scope='col' width='30%'' align='left'><!-- AWAY --></th></tr>"
 		   			     +"</thead>"
 		  				 +v+"</table>");
 		  		 
@@ -130,7 +130,7 @@ $(document).ready(function () {
 			    	  }   
 			       });
 			      
-			    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+			    	  $("#schedule_tbl").html("<table width=100%  border-collapse: collapse; >"
 			    			  		+"<th>순위</th>"
 			    			  		+"<th align='left'>팀</th>"
 			    			  		+"<th>경기수</th>"
@@ -537,7 +537,7 @@ $("#SA_league").click(function () {
     <hr class="clear_line">
     
     <div id="mid_banner">
-    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/banner00.png" alt="배너" id="banner00" /></a>
+    <a href="https://www.eveonline.com/" target="_blank"><img src="${pageContext.request.contextPath}/resources/img/banner00.png" alt="배너" id="banner00" /></a>
     </div>
     
     <hr class="clear_line">
@@ -571,22 +571,22 @@ $("#SA_league").click(function () {
     <hr class="clear_line">
 
    <div id="rank">
-      <a id="font" href="${pageContext.request.contextPath}/rank.do">해외축구 경기일정/결과</a>
-      <a id="more" href="${pageContext.request.contextPath}/rank.do">더보기</a>
+      <a id="font" href="${pageContext.request.contextPath}/rank.do">오늘의  경기일정</a>
+      <!-- <a id="more" href="${pageContext.request.contextPath}/rank.do">더보기</a> -->
       <div id="rank_tbl">
       
       </div>
     </div>
 
     <div id="schedule">
-      <a id="font"  href="${pageContext.request.contextPath}/schedule.do">해외축구 순위표</a>
-      <a id="more" href="${pageContext.request.contextPath}/schedule.do">더보기</a>
+      <a id="font"  href="${pageContext.request.contextPath}/schedule.do">리그 순위표</a>
+      <!-- <a id="more" href="${pageContext.request.contextPath}/schedule.do">더보기</a> -->
       <br>
       <div>
-      <a href="#" id="PL_league"  onclick="return false;" >프리미어리그</a>
+      <!-- <a href="#" id="PL_league"  onclick="return false;" >프리미어리그</a>
       <a href="#" id="PD_league"  onclick="return false;">라리가</a>
       <a href="#" id="BL1_league" onclick="return false;">분데스리가</a>
-      <a href="#" id="SA_league"  onclick="return false;">세리에 A</a>
+      <a href="#" id="SA_league"  onclick="return false;">세리에 A</a>  -->
       </div>
       
       <div id="schedule_tbl">

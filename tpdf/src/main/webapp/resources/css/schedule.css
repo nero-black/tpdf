@@ -14,8 +14,9 @@ hr.clear_line {clear:both; border:0;}
 
 #league_menu a {font-size:18px;}
 
-.list li {border-top:solid 2px gray;}
-.list li:hover {border-top:solid 2px black;}
+.list li {border-top:solid 3px rgb(150, 150, 150);}
+.list li:hover {border-top:solid 3px black;}
+.list li a:hover {font-size:21px;}
 
 table {border-collapse: collapse; text-align:center;}
 table td {border-bottom:solid 1px black;}
