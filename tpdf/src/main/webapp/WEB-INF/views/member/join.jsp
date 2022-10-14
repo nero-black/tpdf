@@ -40,24 +40,23 @@
 		<input type="text" id="member_name" name="member_name" placeholder="닉네임 (한글, 최대 8글자)"  maxlength="8" required />
 		<a href="${pageContext.request.contextPath}/name_check.do" id="name_check" onclick="name_checker(); return false;">중복 확인</a>
 		<br>
-		<input type="email" id="member_email" name="member_email" placeholder="이메일 (example@email.com)" required />
+		<input type="email" id="member_email" name="member_email" placeholder="이메일 (example@email.com)" maxlength="30" required />
 		<br>
-		<input type="tel" id="member_tel1" name="member_tel1" placeholder="휴대폰 번호 (하이폰 '-' 제외)" required />
+		<input type="tel" id="member_tel1" name="member_tel1" placeholder="휴대폰 번호 (하이폰 '-' 제외)" required maxlength="15" />
 		<input type="hidden" id="member_tel" name="member_tel" required />
 		
 		<br>
 		<div id="member_gender">
 		성별: &nbsp; &nbsp;
-		<label id="member_gender_m"><input type="radio" class="member_gender" name="member_gender" value="m" /> 남자</label> &nbsp; &nbsp; &nbsp; &nbsp;
-		<label id="member_gender_f"><input type="radio" class="member_gender" name="member_gender" value="f" /> 여자</label> &nbsp; &nbsp; &nbsp; 
-		<label id="member_gender_u"><input type="hidden" class="member_gender" name="member_gender" value="-" checked />
+		<label id="member_gender_m"><input type="radio" class="member_gender" name="member_gender" checked value="남자" /> 남자</label> &nbsp; &nbsp; &nbsp; &nbsp;
+		<label id="member_gender_f"><input type="radio" class="member_gender" name="member_gender" value="여자" /> 여자</label> &nbsp; &nbsp; &nbsp; 
 		</div>
 		<br>
 		<div id="birth">생년월일: </div><input type="date" id="member_birth1" name="member_birth1" placeholder="생년월일" required/>
 		<input type="hidden" id="member_birth" name="member_birth" />
 		<br>
-		<input type="text" id="member_addr1" name="member_addr1" placeholder="주소" required />
-		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소 (선택)" />
+		<input type="text" id="member_addr1" name="member_addr1" placeholder="주소" required  maxlength="30"  />
+		<input type="text" id="member_addr2" name="member_addr2" placeholder="상세 주소 (선택)"  maxlength="10"  />
 		<input type="hidden" id="member_addr" name="member_addr" /> <!-- addr1+addr2 로 처리 -->
 		<br>
 	</form>

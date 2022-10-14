@@ -5,16 +5,16 @@
 main {width:1200px; height:1000px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
-#login {width:600px; height:350px; margin:0 auto 20px auto;}
-#member_id {width:240px; height:40px; padding-left:10px; margin:60px 0 0 173px; margin-bottom:30px;
+#login {width:800px; height:350px; margin:0 auto 20px auto; border:solid 1px black;}
+#member_id {width:240px; height:40px; padding-left:10px; margin:60px 0 0 273px; margin-bottom:30px;
 			font-size:20px; line-height:15px;}
-#member_pw {width:240px; height:40px; padding-left:10px; margin-left:173px; margin-bottom:45px;
+#member_pw {width:240px; height:40px; padding-left:10px; margin-left:273px; margin-bottom:45px;
 			font-size:20px; line-height:15px;}
 
-#submit {width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 144px;
+#submit {width:150px; height:40px; background:white; border:solid 1px black; margin:0 10px 30px 244px;
 		 font-size:20px;}
 #return {width:150px; height:40px; background:white; border:solid 1px black; margin:0 0 30px 0;
 		 font-size:20px;}
 
-#sub_menu {width:450px; margin-left:75px; text-align:center;}
+#sub_menu {width:650px; margin-left:75px; text-align:center;}
 #sub_menu a {text-decoration:none; color:black; font-weight:bold;}

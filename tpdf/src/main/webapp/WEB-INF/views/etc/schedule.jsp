@@ -13,7 +13,7 @@
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/schedule.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="${pageContext.request.contextPath}/resources/js/schedule.js"></script>
 <script>
 /* alert("test"); */
 var v= "";
@@ -496,14 +496,15 @@ $(".PL_one").click(function () {
 	 color:#fff;
   	 text-decoration: none;
   	 background-color: #afafaf;
-     color: maroon;
-     padding:15px 80px 15px 80px;
+     color: white;
+     padding:15px 70px 15px 70px;
+     margin: 0 5px 0;
      text-align: center;
      text-decoration: none;
      display: inline-block;
      cursor: pointer;
-     font-weight: bold;
   }
+  #league_menu_a {font-weight:bold;}
   .schedule_month .list a {
     position: relative;
     display: block;
@@ -532,19 +533,19 @@ $(".PL_one").click(function () {
   	<div id="league_menu">
 	  	<ul>
 	  		<li>
-	  			<a href="${pageContext.request.contextPath}/schedule.do">프리미어리그</a> 
+	  			<a id="league_menu_a" href="${pageContext.request.contextPath}/schedule.do">프리미어리그</a> 
 	  		</li>
 	  		<li>
-	  			<a href="${pageContext.request.contextPath}/schedule2.do">챔피언스리그</a>
+	  			<a id="league_menu_b" href="${pageContext.request.contextPath}/schedule2.do">챔피언스리그</a>
 	  		 </li>
 	  		<li>
-	  			<a href="${pageContext.request.contextPath}/schedule3.do">라리가</a>
+	  			<a id="league_menu_c" href="${pageContext.request.contextPath}/schedule3.do">라리가</a>
 	  		</li>
 	  		<li>
-	  			<a href="${pageContext.request.contextPath}/schedule4.do">분데스리가</a>
+	  			<a id="league_menu_d" href="${pageContext.request.contextPath}/schedule4.do">분데스리가</a>
 	  		</li>
 	  		<li>
-	  			<a href="${pageContext.request.contextPath}/schedule5.do">세리에</a>
+	  			<a id="league_menu_e" href="${pageContext.request.contextPath}/schedule5.do">세리에</a>
 	  		</li>
 	  	</ul>	
   	</div>

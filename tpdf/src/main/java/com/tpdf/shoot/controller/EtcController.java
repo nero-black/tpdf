@@ -1062,8 +1062,19 @@ public class EtcController {
 		return jsonObject;
 	}
 	
+	@ResponseBody
+	@GetMapping("/live_video.do")
+	public String live_video() {
+		
+		String request_mapping = "<script>alert('진행중인 실시간 방송이 없습니다.');"
+				+ "location.href='/rank.do'</script>";
+		
+		return request_mapping;
+	}
+	
 	@GetMapping("/live_controller.do")
 	public String live_controller() {
+		
 		return "etc/live_controller";
 	}
 	

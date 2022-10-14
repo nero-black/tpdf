@@ -11,6 +11,7 @@
 <title>ShooT :: 비상하는 해외축구 커뮤니티</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/rank.css">
+<script src="${pageContext.request.contextPath}/resources/js/rank.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
@@ -63,7 +64,7 @@ $(document).ready(function () {
 		    	  }   
 		       });
 		      
-		    	  $("#rank").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    	  $("#rank").html("<table width=100%  border-collapse: collapse; >"
 		    			  		+"<th>순위</th>"
 		    			  		+"<th align='left'>팀</th>"
 		    			  		+"<th>경기수</th>"
@@ -92,17 +93,22 @@ $(document).ready(function () {
 	#rank{border:1px solid #fff; }
 	th, td{padding: 5px; }
 	#league_menu a {
+	 font-size:18px;
 	 color:#fff;
   	 text-decoration: none;
   	 background-color: #afafaf;
-     color: maroon;
-     padding:15px 80px 15px 80px;
+     color: white;
+     padding:15px 70px 15px 70px;
+     margin:0 5px 0;
      text-align: center;
      text-decoration: none;
      display: inline-block;
      cursor: pointer;
-     font-weight: bold;
   }
+  #league_menu_e {font-weight:bold;}
+  #league_menu ul {text-align:center;}
+  #league_menu ul li {display:inline-block; }
+  
 </style>
 <body>
   <main>
@@ -112,12 +118,24 @@ $(document).ready(function () {
 		<a href="${pageContext.request.contextPath}/live_video.do">실시간 방송</a>
   	</div>
   	<div id="league_menu">
-  		<a href="${pageContext.request.contextPath}/rank.do">프리미어리그</a> 
-  		<a href="${pageContext.request.contextPath}/rank2.do">챔피언스리그</a> 
-		<a href="${pageContext.request.contextPath}/rank3.do">라리가</a>
-		<a href="${pageContext.request.contextPath}/rank4.do">분데스리가</a>
-		<a href="${pageContext.request.contextPath}/rank5.do">세리에</a>
-  	</div>
+	  	<ul>
+	  		<li>
+	  			<a id="league_menu_a" href="${pageContext.request.contextPath}/rank.do">프리미어리그</a> 
+	  		</li>
+	  		<li>
+	  			<a id="league_menu_b" href="${pageContext.request.contextPath}/rank2.do">챔피언스리그</a>
+	  		 </li>
+	  		<li>
+	  			<a id="league_menu_c" href="${pageContext.request.contextPath}/rank3.do">라리가</a>
+	  		</li>
+	  		<li>
+	  			<a id="league_menu_d" href="${pageContext.request.contextPath}/rank4.do">분데스리가</a>
+	  		</li>
+	  		<li>
+	  			<a id="league_menu_e" href="${pageContext.request.contextPath}/rank5.do">세리에</a>
+	  		</li>
+	  	</ul>	
+  	</div>	
   	<br><br>
     <div id="rank">
         

@@ -5,7 +5,7 @@
 main {width:1200px; height:1100px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
-#modify {width:800px; height:1100px; margin:0 auto 20px auto;}
+#modify {width:800px; height:1100px; margin:0 auto 20px auto; border:solid 1px black;}
 h3 {display:inline-block; width:100px; margin-left:170px;}
 
 .mypage_info {display:inline-block; width:340px; height:40px; padding-left:10px; margin-bottom:45px;

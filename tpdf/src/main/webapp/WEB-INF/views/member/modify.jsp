@@ -46,15 +46,15 @@
 		<h3>닉네임　： </h3>
 		<div class="mypage_info"><%= member_info.getMember_name() %></div>
 		<h3>이메일　： </h3>
-		<input type="email" class="mypage_info" id="member_email" name="member_email" placeholder="이메일 (example@email.com)" value="<%= member_info.getMember_email() %>" required />
+		<input type="email" class="mypage_info" id="member_email" name="member_email" placeholder="이메일 (example@email.com)" value="<%= member_info.getMember_email() %>" maxlength="30" required />
 		<h3>휴대전화： </h3>
-		<input type="tel" class="mypage_info" id="member_tel" name="member_tel" placeholder="휴대폰 번호 (하이폰 '-' 제외)" value="<%= member_info.getMember_tel() %>"  required />
+		<input type="tel" class="mypage_info" id="member_tel" name="member_tel" placeholder="휴대폰 번호 (하이폰 '-' 제외)" value="<%= member_info.getMember_tel() %>" maxlength="15" required />
 		<h3>성별　　： </h3>
 		<div class="mypage_info"><%= member_info.getMember_gender() %></div>
 		<h3>생년월일： </h3>
 		<div class="mypage_info"><%= member_info.getMember_birth() %></div>
 		<h3>주소　　： </h3>
-		<input type="text" class="mypage_info" id="member_addr" name="member_addr" placeholder="주소" value="<%= member_info.getMember_addr() %>" required />
+		<input type="text" class="mypage_info" id="member_addr" name="member_addr" placeholder="주소" value="<%= member_info.getMember_addr() %>" maxlength="40" required />
 	</form>
 	<button id="submit" onclick="modify();">수정하기</button>
 	<button id="return" onclick="history.back()">돌아가기</button>

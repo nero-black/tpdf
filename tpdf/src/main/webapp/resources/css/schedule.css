@@ -12,4 +12,16 @@ hr.clear_line {clear:both; border:0;}
 			 text-align:center; line-height:50px;}
 #sub_menu a:nth-child(2) {font-weight:bold;}
 
+#league_menu a {font-size:18px;}
+
+.list li {border-top:solid 2px gray;}
+.list li:hover {border-top:solid 2px black;}
+
+table {border-collapse: collapse; text-align:center;}
+table td {border-bottom:solid 1px black;}
+table th {background:rgb(255, 255, 255); border-top:double 4px black; border-bottom:double 4px black;}
+table th:hover {background:rgb(255, 255, 255);}
+table tr:hover {background:rgb(240, 240, 240);}
+.table_id {background:rgb(255, 255, 255);}
+
 #schedule {display:inline-block; width:1198px; margin-bottom:150px; border:solid 1px black;}
