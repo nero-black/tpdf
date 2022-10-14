@@ -16,24 +16,27 @@ import com.tpdf.shoot.vo.BoardVo;
 
 @Component("fileUtil")
 public class FileUtil {
-//	private static final String filePath = "C:\\Users\\71100\\git\\tpdf\\tpdf\\src\\main\\webapp\\resources\\img\\"; // �뙆�씪�씠 ���옣�맆 �쐞移�
-
-	private static final String filePath = "C:\\Users\\71100\\Desktop\\workspace\\tpdf\\src\\main\\webapp\\resources\\img\\board\\";
+private static final String filePath = "C:\\Users\\71100\\git\\tpdf\\tpdf\\src\\main\\webapp\\resources\\img\\board\\"; // 깃허브용
+		//서버용
+	/*
+	 * private static final String filePath =
+	 * "C:\\Users\\71100\\Desktop\\workspace\\tpdf\\src\\main\\webapp\\resources\\img\\board\\";
+	 */
 	
 	public List<Map<String, Object>> parseInsertFileInfo(BoardVo boardVo, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
-		System.out.println("test");
+		
 		/*
-			Iterator�� �뜲�씠�꽣�뱾�쓽 吏묓빀泥�? �뿉�꽌 而щ젆�뀡�쑝濡쒕��꽣 �젙蹂대�� �뼸�뼱�삱 �닔 �엳�뒗 �씤�꽣�럹�씠�뒪�엯�땲�떎.
-			List�굹 諛곗뿴�� �닚李⑥쟻�쑝濡� �뜲�씠�꽣�쓽 �젒洹쇱씠 媛��뒫�븯吏�留�, Map�벑�쓽 �겢�옒�뒪�뱾�� �닚李⑥쟻�쑝濡� �젒洹쇳븷 �닔媛� �뾾�뒿�땲�떎.
-			Iterator�쓣 �씠�슜�븯�뿬 Map�뿉 �엳�뒗 �뜲�씠�꽣�뱾�쓣 while臾몄쓣 �씠�슜�븯�뿬 �닚李⑥쟻�쑝濡� �젒洹쇳빀�땲�떎.
+			Iterator占쏙옙 占쎈쑓占쎌뵠占쎄숲占쎈굶占쎌벥 筌욌쵑鍮�筌ｏ옙? 占쎈퓠占쎄퐣 �뚎됱젂占쎈�∽옙�몵嚥≪뮆占쏙옙苑� 占쎌젟癰귣�占쏙옙 占쎈섯占쎈선占쎌궞 占쎈땾 占쎌뿳占쎈뮉 占쎌뵥占쎄숲占쎈읂占쎌뵠占쎈뮞占쎌뿯占쎈빍占쎈뼄.
+			List占쎄돌 獄쏄퀣肉댐옙占� 占쎈떄筌△뫁�읅占쎌몵嚥∽옙 占쎈쑓占쎌뵠占쎄숲占쎌벥 占쎌젔域뱀눘�뵠 揶쏉옙占쎈뮟占쎈릭筌욑옙筌랃옙, Map占쎈쾻占쎌벥 占쎄깻占쎌삋占쎈뮞占쎈굶占쏙옙 占쎈떄筌△뫁�읅占쎌몵嚥∽옙 占쎌젔域뱀눛釉� 占쎈땾揶쏉옙 占쎈씨占쎈뮸占쎈빍占쎈뼄.
+			Iterator占쎌뱽 占쎌뵠占쎌뒠占쎈릭占쎈연 Map占쎈퓠 占쎌뿳占쎈뮉 占쎈쑓占쎌뵠占쎄숲占쎈굶占쎌뱽 while�눧紐꾩뱽 占쎌뵠占쎌뒠占쎈릭占쎈연 占쎈떄筌△뫁�읅占쎌몵嚥∽옙 占쎌젔域뱀눛鍮�占쎈빍占쎈뼄.
 		*/
 		
 		Iterator<String> iterator = mpRequest.getFileNames();
 		
 		MultipartFile multipartFile = null;
 		String originalFileName = null;
-		String originalFileExtension = null;
+		
 		String storedFileName = null;
 		
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
@@ -50,7 +53,6 @@ public class FileUtil {
 			multipartFile = mpRequest.getFile(iterator.next());
 			if(multipartFile.isEmpty() == false) {
 				originalFileName = multipartFile.getOriginalFilename();
-				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 				storedFileName = originalFileName;
 				
 				

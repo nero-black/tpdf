@@ -16,24 +16,20 @@ import com.tpdf.shoot.vo.NoticeVo;
 
 @Component("fileUtil2")
 public class FileUtil2 {
-//	private static final String filePath = "C:\\Users\\71100\\git\\tpdf\\tpdf\\src\\main\\webapp\\resources\\img\\"; // �뙆�씪�씠 ���옣�맆 �쐞移�
-
-	private static final String filePath = "C:\\Users\\71100\\Desktop\\workspace\\tpdf\\src\\main\\webapp\\resources\\img\\notice\\";
+	//깃허브용
+    private static final String filePath = "C:\\Users\\71100\\git\\tpdf\\tpdf\\src\\main\\webapp\\resources\\img\\notice\\"; 
+	//서버용
+	//private static final String filePath = "C:\\Users\\71100\\Desktop\\workspace\\tpdf\\src\\main\\webapp\\resources\\img\\notice\\";
 	
 	public List<Map<String, Object>> parseInsertFileInfo2(NoticeVo noticeVo, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
-		System.out.println("test");
-		/*
-			Iterator�� �뜲�씠�꽣�뱾�쓽 吏묓빀泥�? �뿉�꽌 而щ젆�뀡�쑝濡쒕��꽣 �젙蹂대�� �뼸�뼱�삱 �닔 �엳�뒗 �씤�꽣�럹�씠�뒪�엯�땲�떎.
-			List�굹 諛곗뿴�� �닚李⑥쟻�쑝濡� �뜲�씠�꽣�쓽 �젒洹쇱씠 媛��뒫�븯吏�留�, Map�벑�쓽 �겢�옒�뒪�뱾�� �닚李⑥쟻�쑝濡� �젒洹쇳븷 �닔媛� �뾾�뒿�땲�떎.
-			Iterator�쓣 �씠�슜�븯�뿬 Map�뿉 �엳�뒗 �뜲�씠�꽣�뱾�쓣 while臾몄쓣 �씠�슜�븯�뿬 �닚李⑥쟻�쑝濡� �젒洹쇳빀�땲�떎.
-		*/
+	
+		
 		
 		Iterator<String> iterator = mpRequest.getFileNames();
 		
 		MultipartFile multipartFile = null;
 		String originalFileName = null;
-		String originalFileExtension = null;
 		String storedFileName = null;
 		
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
@@ -41,24 +37,23 @@ public class FileUtil2 {
 		
 		int notice_idx = noticeVo.getNotice_idx();
 		
-		File file2 = new File(filePath);
-		if(file2.exists() == false) {
-			file2.mkdirs();
+		File file = new File(filePath);
+		if(file.exists() == false) {
+			file.mkdirs();
 		}
 		
 		while(iterator.hasNext()) {
 			multipartFile = mpRequest.getFile(iterator.next());
 			if(multipartFile.isEmpty() == false) {
 				originalFileName = multipartFile.getOriginalFilename();
-				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 				storedFileName = originalFileName;
 				
 				
 				
-				file2 = new File(filePath + storedFileName);
-				multipartFile.transferTo(file2);
+				file = new File(filePath + storedFileName);
+				multipartFile.transferTo(file);
 				
-				
+				;
 				listMap = new HashMap<String, Object>();
 				listMap.put("notice_idx", notice_idx);
 				

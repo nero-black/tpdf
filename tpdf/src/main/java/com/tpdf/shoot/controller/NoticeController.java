@@ -2,28 +2,22 @@ package com.tpdf.shoot.controller;
 
 
 
-import java.io.File;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tpdf.shoot.service.notice.NoticeService;
-import com.tpdf.shoot.service.reply.ReplyService;
 import com.tpdf.shoot.vo.NoticeVo;
 import com.tpdf.shoot.vo.Paging;
-import com.tpdf.shoot.vo.ReplyVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 
 @Controller
@@ -32,19 +26,17 @@ public class NoticeController {
 		@Inject
 		NoticeService service;
 	
-		@Inject
-		ReplyService replyService;
+
 		
 		
-		
-		// 寃뚯떆�뙋 湲� �옉�꽦 �솕硫�
+		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐 占쎌넅筌롳옙
 		@RequestMapping(value = "/notice_writeView", method = RequestMethod.GET)
 		public void writeView() throws Exception{
 		
 			
 		}
 		
-		// 寃뚯떆�뙋 湲� �옉�꽦
+		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐
 		@RequestMapping(value = "/notice_write", method = RequestMethod.POST)
 		public String write(NoticeVo noticeVo, MultipartHttpServletRequest mpRequest) throws Exception{
 			
@@ -53,7 +45,7 @@ public class NoticeController {
 			
 			return "redirect:notice_list";
 		}
-		// 寃뚯떆�뙋 紐⑸줉 議고쉶
+		// 野껊슣�뻻占쎈솇 筌뤴뫖以� 鈺곌퀬�돳
 		@RequestMapping(value = "/notice_list", method = RequestMethod.GET)
 		public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		
@@ -69,26 +61,25 @@ public class NoticeController {
 			
 		}
 		
-		// 寃뚯떆�뙋 議고쉶
+		// 野껊슣�뻻占쎈솇 鈺곌퀬�돳
 		@RequestMapping(value = "/notice_readView", method = RequestMethod.GET)
 		public String read(NoticeVo noticeVo, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 			
-			System.out.println("1");
+			
 			model.addAttribute("read", service.read(noticeVo.getNotice_idx()));
 			model.addAttribute("scri", scri);
 			
-			List<ReplyVo> replyList = replyService.readReply(noticeVo.getNotice_idx());
-			model.addAttribute("replyList", replyList);
-			System.out.println("2");
+	
+			
 			List<Map<String, Object>> fileList = service.selectFileList(noticeVo.getNotice_idx());
 			model.addAttribute("file", fileList);
-			System.out.println("3");
+			
 			return "notice/notice_readView";
 		
 		}
 		
 		
-		// 寃뚯떆�뙋 �닔�젙酉�
+		// 野껊슣�뻻占쎈솇 占쎈땾占쎌젟�뀎占�
 		@RequestMapping(value = "/notice_updateView", method = RequestMethod.GET)
 		public String updateView(NoticeVo noticeVo,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		
@@ -101,7 +92,7 @@ public class NoticeController {
 			return "notice/notice_updateView";
 		}
 		
-		// 寃뚯떆�뙋 �닔�젙
+		// 野껊슣�뻻占쎈솇 占쎈땾占쎌젟
 		@RequestMapping(value = "/notice_update", method = RequestMethod.POST)
 		public String update(NoticeVo noticeVo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr
 											) throws Exception{
@@ -116,7 +107,7 @@ public class NoticeController {
 			return "redirect:/notice/notice_list";
 		}
 
-		// 寃뚯떆�뙋 �궘�젣
+		// 野껊슣�뻻占쎈솇 占쎄텣占쎌젫
 		@RequestMapping(value = "/notice_delete", method = RequestMethod.POST)
 		public String delete(NoticeVo noticeVo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		
@@ -132,7 +123,7 @@ public class NoticeController {
 		}
 
 		/*
-		 * //�뙎湲��옉�꽦
+		 * //占쎈솊疫뀐옙占쎌삂占쎄쉐
 		 * 
 		 * @RequestMapping(value="/notice_replyWrite", method = RequestMethod.POST)
 		 * public String replyWrite(ReplyVo vo, SearchCriteria scri, RedirectAttributes
@@ -148,7 +139,7 @@ public class NoticeController {
 		 * 
 		 * return "redirect:/notice/notice_readView"; }
 		 */
-		//�뙎湲� �닔�젙 GET
+		//占쎈솊疫뀐옙 占쎈땾占쎌젟 GET
 		/*
 		 * @RequestMapping(value="/notice_replyUpdateView", method = RequestMethod.GET)
 		 * public String replyUpdateView(ReplyVo vo, SearchCriteria scri, Model model)
@@ -161,7 +152,7 @@ public class NoticeController {
 		 * 
 		 * return "notice/notice_replyUpdateView"; }
 		 * 
-		 * //�뙎湲� �닔�젙 POST
+		 * //占쎈솊疫뀐옙 占쎈땾占쎌젟 POST
 		 * 
 		 * @RequestMapping(value="/notice_replyUpdate", method = RequestMethod.POST)
 		 * public String replyUpdate(ReplyVo vo, SearchCriteria scri, RedirectAttributes
@@ -178,7 +169,7 @@ public class NoticeController {
 		 * return "redirect:/notice/notice_readView"; }
 		 * 
 		 * 
-		 * //�뙎湲� �궘�젣 GET
+		 * //占쎈솊疫뀐옙 占쎄텣占쎌젫 GET
 		 * 
 		 * @RequestMapping(value="/notice_replyDeleteView", method = RequestMethod.GET)
 		 * public String replyDeleteView(ReplyVo vo, SearchCriteria scri, Model model)
@@ -192,7 +183,7 @@ public class NoticeController {
 		 * 
 		 * return "notice/notice_replyDeleteView"; }
 		 * 
-		 * //�뙎湲� �궘�젣
+		 * //占쎈솊疫뀐옙 占쎄텣占쎌젫
 		 * 
 		 * @RequestMapping(value="/notice_replyDelete", method = RequestMethod.POST)
 		 * public String replyDelete(ReplyVo vo, SearchCriteria scri, RedirectAttributes
@@ -209,7 +200,7 @@ public class NoticeController {
 		 * return "redirect:/notice/notice_readView"; }
 		 */
 		/*
-		 * //�뙆�씪�떎�슫
+		 * //占쎈솁占쎌뵬占쎈뼄占쎌뒲
 		 * 
 		 * @RequestMapping(value="/notice_fileDown") public void fileDown(@RequestParam
 		 * Map<String, Object> map, HttpServletResponse response) throws Exception{
@@ -217,7 +208,7 @@ public class NoticeController {
 		 * storedFileName = (String) resultMap.get("stored_file_name"); String
 		 * originalFileName = (String) resultMap.get("origin_file_name");
 		 * 
-		 * // �뙆�씪�쓣 ���옣�뻽�뜕 �쐞移섏뿉�꽌 泥⑤��뙆�씪�쓣 �씫�뼱 byte[]�삎�떇�쑝濡� 蹂��솚�븳�떎. byte fileByte[] =
+		 * // 占쎈솁占쎌뵬占쎌뱽 占쏙옙占쎌삢占쎈뻥占쎈쐲 占쎌맄燁살꼷肉됵옙苑� 筌ｂ뫀占쏙옙�솁占쎌뵬占쎌뱽 占쎌뵭占쎈선 byte[]占쎌굨占쎈뻼占쎌몵嚥∽옙 癰귨옙占쎌넎占쎈립占쎈뼄. byte fileByte[] =
 		 * org.apache.commons.io.FileUtils.readFileToByteArray(new
 		 * File("C:\\mp\\file\\"+storedFileName));
 		 * 

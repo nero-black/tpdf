@@ -33,14 +33,14 @@ public class BoardController {
 		
 		
 		
-		// 寃뚯떆�뙋 湲� �옉�꽦 �솕硫�
+		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐 占쎌넅筌롳옙
 		@RequestMapping(value = "/board_writeView", method = RequestMethod.GET)
 		public void writeView() throws Exception{
 		
 			
 		}
 		
-		// 寃뚯떆�뙋 湲� �옉�꽦
+		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐
 		@RequestMapping(value = "/board_write", method = RequestMethod.POST)
 		public String write(BoardVo BoardVo, MultipartHttpServletRequest mpRequest) throws Exception{
 			
@@ -49,7 +49,7 @@ public class BoardController {
 			
 			return "redirect:board_list";
 		}
-		// 寃뚯떆�뙋 紐⑸줉 議고쉶
+		// 野껊슣�뻻占쎈솇 筌뤴뫖以� 鈺곌퀬�돳
 		@RequestMapping(value = "/board_list", method = RequestMethod.GET)
 		public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		
@@ -65,26 +65,26 @@ public class BoardController {
 			
 		}
 		
-		// 寃뚯떆�뙋 議고쉶
+		// 野껊슣�뻻占쎈솇 鈺곌퀬�돳
 		@RequestMapping(value = "/board_readView", method = RequestMethod.GET)
 		public String read(BoardVo boardVo, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 			
-			System.out.println("1");
+		
 			model.addAttribute("read", service.read(boardVo.getBoard_idx()));
 			model.addAttribute("scri", scri);
 			
 			List<ReplyVo> replyList = replyService.readReply(boardVo.getBoard_idx());
 			model.addAttribute("replyList", replyList);
-			System.out.println("2");
+	
 			List<Map<String, Object>> fileList = service.selectFileList(boardVo.getBoard_idx());
 			model.addAttribute("file", fileList);
-			System.out.println("3");
+			
 			return "board/board_readView";
 		
 		}
 		
 		
-		// 寃뚯떆�뙋 �닔�젙酉�
+		// 野껊슣�뻻占쎈솇 占쎈땾占쎌젟�뀎占�
 		@RequestMapping(value = "/board_updateView", method = RequestMethod.GET)
 		public String updateView(BoardVo boardVo,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		
@@ -97,7 +97,7 @@ public class BoardController {
 			return "board/board_updateView";
 		}
 		
-		// 寃뚯떆�뙋 �닔�젙
+		// 野껊슣�뻻占쎈솇 占쎈땾占쎌젟
 		@RequestMapping(value = "/board_update", method = RequestMethod.POST)
 		public String update(BoardVo boardVo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr
 											) throws Exception{
@@ -112,7 +112,7 @@ public class BoardController {
 			return "redirect:/board/board_list";
 		}
 
-		// 寃뚯떆�뙋 �궘�젣
+		// 野껊슣�뻻占쎈솇 占쎄텣占쎌젫
 		@RequestMapping(value = "/board_delete", method = RequestMethod.POST)
 		public String delete(BoardVo boardVo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		
@@ -126,7 +126,7 @@ public class BoardController {
 			
 			return "redirect:/board/board_list";
 		}
-		//�뙎湲��옉�꽦
+		//占쎈솊疫뀐옙占쎌삂占쎄쉐
 		@RequestMapping(value="/board_replyWrite", method = RequestMethod.POST)
 		public String replyWrite(ReplyVo vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 			
@@ -142,7 +142,7 @@ public class BoardController {
 			return "redirect:/board/board_readView";
 		}
 		
-		//�뙎湲� �닔�젙 GET
+		//占쎈솊疫뀐옙 占쎈땾占쎌젟 GET
 		@RequestMapping(value="/board_replyUpdateView", method = RequestMethod.GET)
 		public String replyUpdateView(ReplyVo vo, SearchCriteria scri, Model model) throws Exception {
 			
@@ -153,7 +153,7 @@ public class BoardController {
 			return "board/board_replyUpdateView";
 		}
 		
-		//�뙎湲� �닔�젙 POST
+		//占쎈솊疫뀐옙 占쎈땾占쎌젟 POST
 		@RequestMapping(value="/board_replyUpdate", method = RequestMethod.POST)
 		public String replyUpdate(ReplyVo vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
@@ -170,7 +170,7 @@ public class BoardController {
 		}
 		
 		
-		//�뙎湲� �궘�젣 GET
+		//占쎈솊疫뀐옙 占쎄텣占쎌젫 GET
 		@RequestMapping(value="/board_replyDeleteView", method = RequestMethod.GET)
 		public String replyDeleteView(ReplyVo vo, SearchCriteria scri, Model model) throws Exception {
 			
@@ -182,7 +182,7 @@ public class BoardController {
 			return "board/board_replyDeleteView";
 		}
 		
-		//�뙎湲� �궘�젣
+		//占쎈솊疫뀐옙 占쎄텣占쎌젫
 		@RequestMapping(value="/board_replyDelete", method = RequestMethod.POST)
 		public String replyDelete(ReplyVo vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 			
@@ -198,7 +198,7 @@ public class BoardController {
 			return "redirect:/board/board_readView";
 		}
 		/*
-		 * //�뙆�씪�떎�슫
+		 * //占쎈솁占쎌뵬占쎈뼄占쎌뒲
 		 * 
 		 * @RequestMapping(value="/board_fileDown") public void fileDown(@RequestParam
 		 * Map<String, Object> map, HttpServletResponse response) throws Exception{
@@ -206,7 +206,7 @@ public class BoardController {
 		 * storedFileName = (String) resultMap.get("stored_file_name"); String
 		 * originalFileName = (String) resultMap.get("origin_file_name");
 		 * 
-		 * // �뙆�씪�쓣 ���옣�뻽�뜕 �쐞移섏뿉�꽌 泥⑤��뙆�씪�쓣 �씫�뼱 byte[]�삎�떇�쑝濡� 蹂��솚�븳�떎. byte fileByte[] =
+		 * // 占쎈솁占쎌뵬占쎌뱽 占쏙옙占쎌삢占쎈뻥占쎈쐲 占쎌맄燁살꼷肉됵옙苑� 筌ｂ뫀占쏙옙�솁占쎌뵬占쎌뱽 占쎌뵭占쎈선 byte[]占쎌굨占쎈뻼占쎌몵嚥∽옙 癰귨옙占쎌넎占쎈립占쎈뼄. byte fileByte[] =
 		 * org.apache.commons.io.FileUtils.readFileToByteArray(new
 		 * File("C:\\mp\\file\\"+storedFileName));
 		 * 

@@ -12,22 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tpdf.shoot.dao.NoticeDAO;
-import com.tpdf.shoot.util.FileUtil;
 import com.tpdf.shoot.util.FileUtil2;
 import com.tpdf.shoot.vo.NoticeVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
-	@Resource(name="fileUtil")
-	private FileUtil fileUtil;
+	
 	@Resource(name="fileUtil2")
 	private FileUtil2 fileUtil2;
 	
 	@Inject
 	private NoticeDAO dao;
 	
-	// 게시글 작성
+	// 寃뚯떆湲� �옉�꽦
 	@Override
 	public void write(NoticeVo noticeVo, MultipartHttpServletRequest mpRequest) throws Exception {
 		dao.write(noticeVo);
@@ -38,47 +36,47 @@ public class NoticeServiceImpl implements NoticeService {
 			dao.insertFile(list.get(i)); 
 		}
 	}
-	// 게시물 목록 조회
+	// 寃뚯떆臾� 紐⑸줉 議고쉶
 	@Override
 	public List<NoticeVo> list(SearchCriteria scri) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.list(scri);
 	}
 	
-	//게시물 수정
+	//寃뚯떆臾� �닔�젙
 	@Override
 	public void update(NoticeVo noticeVo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.update(noticeVo);
 	}
-	//게시물 삭제
+	//寃뚯떆臾� �궘�젣
 	@Override
 	public void delete(int notice_idx) throws Exception {
 		// TODO Auto-generated method stub
 		dao.delete(notice_idx);
 	}
-	// 게시물 조회
+	// 寃뚯떆臾� 議고쉶
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public NoticeVo read(int notice_idx) throws Exception {
 				dao.noticeHit(notice_idx);
 			return dao.read(notice_idx);
 	}
-	//게시물 총 개수
+	//寃뚯떆臾� 珥� 媛쒖닔
 	@Override
 	public int listCount(SearchCriteria scri) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.listCount(scri);
 	}
 	
-	// 첨부파일 조회
+	// 泥⑤��뙆�씪 議고쉶
 	@Override
 	public List<Map<String, Object>> selectFileList(int notice_idx) throws Exception {
 			// TODO Auto-generated method stub
 			return dao.selectFileList(notice_idx);
 	}
 	/*
-	 * // 첨부파일 다운로드
+	 * // 泥⑤��뙆�씪 �떎�슫濡쒕뱶
 	 * 
 	 * @Override public Map<String, Object> selectFileInfo(Map<String, Object> map)
 	 * throws Exception { // TODO Auto-generated method stub return

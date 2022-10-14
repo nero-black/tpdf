@@ -106,6 +106,7 @@
 					<label for="title" class="col-sm-2 control-label">제목</label>
 					<input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" />
 				</div>
+				
 				<div class="form-group" >
 					
 					<label for="content" class="col-sm-2 control-label">내용</label>
