@@ -61,9 +61,9 @@ hr.clear_line {clear:both; border:0;}
 
 #more:hover {text-decoration:underline;}
 
-#rank {display:inline-block; width:595px; height:340px;}
+#rank {display:inline-block; width:595px; height:460px;}
 
-#rank table {height:330px; border-collapse: collapse; text-align:center; margin-top:8px;}
+#rank table {max-height:450px; border-collapse: collapse; text-align:center; margin-top:8px;}
 #rank table th {border-top:solid 2px gray;}
 #rank table thead {height:27px;}
 #rank table thead tr {border-bottom:solid 1px black;}
@@ -71,9 +71,9 @@ hr.clear_line {clear:both; border:0;}
 #rank table tr:hover {background:rgb(240, 240, 240);}
 #rank table td {border-bottom:solid 1px black;}
 
-#schedule {display:inline-block; width:595px; height:340px;}
+#schedule {display:inline-block; width:595px; height:460px;}
 
-#schedule table {height:330px; border-collapse: collapse; text-align:center; margin-top:8px;}
+#schedule table {max-height:450px; border-collapse: collapse; text-align:center; margin-top:8px;}
 #schedule table th {border-top:solid 2px gray;}
 #schedule table th {border-right:solid 1px rgb(200, 200, 200);}
 #schedule table th:nth-child(n+0):nth-child(-n+1) {border-right:none;}

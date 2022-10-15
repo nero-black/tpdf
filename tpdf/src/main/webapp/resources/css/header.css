@@ -2,15 +2,15 @@
 
 /* * {border:solid 1px black;} */
 /* 모든 요소에 실선 표시 */
-header {width:1583px; background:#EAEAEA;}
+header {background:#EAEAEA;}
 #header_div {width:1200px; margin:0 auto;}
 hr.clear_line {clear:both; border:0;}
 
-#banner_l1 {position:absolute; top:250px; right:1425px; z-index:999;
+#banner_l1 {position:absolute; top:250px; right:1645px; z-index:999; /* 1645px <--> 1425px */
 		   max-width:150px; max-height:300px;}
-#banner_l2 {position:absolute; top:700px; right:1425px; z-index:999;
+#banner_l2 {position:absolute; top:700px; right:1645px; z-index:999; /* 1645px <--> 1425px */
 		   max-width:150px; max-height:300px;}
-#banner_r {position:fixed; top:250px; left:1425px; z-index:999;
+#banner_r {position:fixed; top:250px; left:1645px; z-index:999; /* 1645px <--> 1425px */ 
 		   max-width:150px; max-height:300px;}
 		   
 #top_button {position:fixed; top:calc(100vh - 100px); left:calc(100vw - 80px); z-index:1000; width:40px; height:40px; background:white;

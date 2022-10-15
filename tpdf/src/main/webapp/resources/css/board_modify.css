@@ -2,7 +2,7 @@
 
 * {margin:0; padding:0;}
 
-main {width:1200px; height:1000px; margin:0 auto;}
+main {width:1200px; margin:0 auto; margin-bottom:100px;}
 hr.clear_line {clear:both; border:0;}
 
 #title {width:1000px; height:30px; padding-left:10px; margin:50px 0 20px 100px;
@@ -20,10 +20,10 @@ hr.clear_line {clear:both; border:0;}
 					  text-align:center; line-height:24px; font-size:14px; border:solid 1px gray; text-decoration:none;
 					  color:black;}
 
-#cancel {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke; 
-          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 10px 0 0;}
-#submit {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke;
-          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 90px 0 0;}
+.cancel_btn {float:right; display:inline-block; width:100px; height:30px; background:white; /* #cancel */
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 10px 0 0; cursor:pointer;}
+.update_btn {float:right; display:inline-block; width:100px; height:30px; background:white; /* #submit */
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:15px 90px 0 0; cursor:pointer;}
 
           
           

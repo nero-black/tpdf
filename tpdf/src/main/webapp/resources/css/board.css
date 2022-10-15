@@ -2,33 +2,43 @@
 
 * {margin:0; padding:0;}
 
-main {width:1200px; margin:0 auto 0; padding-bottom:200px;}
+main {width:1200px; margin:0 auto 0; padding-bottom:100px; margin-bottom:100px;}
 hr.clear_line {clear:both; border:0;}
-
-#list_align_a {float:left; display:inline-block; width:150px; height:30px; background:whitesmoke; 
-          text-align:center; line-height:18px; font-size:18px; border:solid 1px black;}
-#list_align_b {float:left; display:none; width:150px; height:30px; background:whitesmoke; 
-          text-align:center; line-height:18px; font-size:18px; border:solid 1px black;}
           
-.board_insert {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke; 
-          text-align:center; line-height:18px; font-size:18px; border:solid 1px black;}
+.board_insert {float:right; display:inline-block; width:100px; height:30px; margin-bottom:10px; background:white; cursor:pointer;
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray;}
           /* 관리자 글쓰기 버튼 */
 
-#board {width:1198px;} /* 기존 width:1198px; height:898px; */
+#container {width:1198px; display:inline-block; margin-top:10px;} /* 기존 width:1198px; height:898px; */
 #board a {font-size:25px; font-weight:bold;}
-#board table {width:1198px; font-size:20px; border-collapse: collapse;} /* 기존 width:1098px; height:700px; */
-#board table th {border:none; border-bottom:solid 2px black; text-align:center;}
-#board table td {border:none; border-bottom:solid 1px gray; text-align:center;}
-#board table td a {font-size:20px; font-weight:bold; color:black; text-decoration:none;} /* 추후 두께 해제해야 함 */
-#board table td a:hover {text-decoration:underline;}
+#board {width:1198px; font-size:20px; border-collapse: collapse;} /* 기존 width:1098px; height:700px; */
+#board th {border:none; border-top:solid 2px rgb(100,100,100); border-bottom:solid 2px rgb(100,100,100); text-align:center;}
+#board tr:first-child:hover {background:rgb(255,255,255);}
+#board tr:hover {background:rgb(240,240,240);}
+#board td {border:none; border-bottom:solid 1px rgb(100,100,100); text-align:center;}
+#board td a {font-size:20px; font-weight:normal; color:black; text-decoration:none;}
+#board td:first-child {width:90px;}
+#board td:nth-child(2) {text-align:left; padding-left:20px;}
+#board td:nth-child(3) {width:180px;}
+#board td:nth-child(4) {width:180px;}
+#board td:nth-child(5) {width:90px;}
+#board td a:hover {text-decoration:underline;}
 
 
-#page {display:inline-block; width:1200px; height:30px;
-	   font-size:18px; color:black; text-align:center; text-decoration:none;}
+#page {display:inline-block; width:630px; height:30px; margin-left:285px; text-align:center;
+	   font-size:18px; color:black; text-decoration:none;}
+
+.pagination {width:625px; height:30px; text-align:center;}
+.pagination li a {display:inline-block; color:black; text-decoration:none;}
+
+
+
+.search row {display:inline-block;}
+.input-group {display:inline-block;}
 
 #search {width:420px; height:70px; margin-left:380px;}
-#search_type {width:100px; height:30px; margin:15px 0 0 20px;}
-#search_value {width:200px; height:26px; margin-top:15px;}
-#search_submit {width:60px; height:30px; margin-top:15px;}
+#search_type {display:inline-block; width:100px; height:30px; margin:15px 0 0 20px;}
+#keywordInput {width:200px; height:26px; margin-top:15px;} /* 원래 이름 : search_value */
+#searchBtn {width:60px; height:30px; vertical-align:top; margin-top:15px; background:white; border:solid 1px gray;  cursor:pointer;} /* 원애 이름 : search_submit */
 
 

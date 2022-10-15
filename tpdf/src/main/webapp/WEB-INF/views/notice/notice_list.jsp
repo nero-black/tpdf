@@ -4,20 +4,19 @@
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 <html>
 	<head>
-			<!-- 합쳐지고 최소화된 최신 CSS -->
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-			<!-- 부가적인 테마 -->
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+			
 	 	<title>게시판</title>
 	</head>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/notice.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<style type="text/css">
 			li {list-style: none; float: left; padding: 6px;}
 		</style>
 	<body>
+	<main>
 		<div id="root" class="container">
 			<header>
-				<h1> 게시판</h1>
+				<h1>뉴스</h1>
 			</header>
 			<hr />
 			 <div>
@@ -95,6 +94,7 @@
 			</section>
 			<hr />
 		</div>
+	</main>
 	</body>
 </html>
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

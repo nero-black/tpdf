@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,6 +36,25 @@ public class NoticeController {
 		public void writeView() throws Exception{
 		
 			
+		}
+		
+		// 새로 추가한 부분 (new code)
+		@ResponseBody
+		@RequestMapping("/need_login.do")
+		public String need_login(HttpSession session) {
+			session.invalidate();
+			String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='notice_list.do'</script>";
+		
+		return request_mapping;
+		}
+		
+		// 새로 추가한 부분 (new code)
+		@ResponseBody
+		@RequestMapping("/invaid_update.do")
+		public String invaid_update(HttpSession session) {
+			String request_mapping = "<script>alert('비정상적인 접근입니다.');"+ "location.href='notice_list.do'</script>";
+		
+		return request_mapping;
 		}
 		
 		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐
@@ -63,7 +84,15 @@ public class NoticeController {
 		
 		// 野껊슣�뻻占쎈솇 鈺곌퀬�돳
 		@RequestMapping(value = "/notice_readView", method = RequestMethod.GET)
-		public String read(NoticeVo noticeVo, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+		public String read(NoticeVo noticeVo, Model model, @ModelAttribute("scri") SearchCriteria scri, HttpSession session) throws Exception{
+			
+			// 새로 추가한 부분 (new code)
+			Object grade = session.getAttribute("member_grade");
+
+			if (grade == null) {
+				session.setAttribute("member_grade", 0);
+				session.setAttribute("member_name", "-");
+			}
 			
 			
 			model.addAttribute("read", service.read(noticeVo.getNotice_idx()));
