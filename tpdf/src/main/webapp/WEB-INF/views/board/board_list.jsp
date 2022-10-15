@@ -6,7 +6,7 @@
 	<head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 	<script src="${pageContext.request.contextPath}/resources/js/board_list.js"></script>
-	 	<title>게시판</title>
+	 	<title></title>
 	</head>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<style type="text/css">
@@ -15,7 +15,7 @@
 	<body>
 	<main>
 		<c:if test="${member_grade >= 1}">
-		<a href="/board/board_writeView"><button class="board_insert">글 작성</button></a>
+		<a href="/board/board_writeView"><button class="board_insert">글쓰기</button></a>
 		</c:if>
 		<hr class="clear_line">
 		<div id="root" class="container">
@@ -51,12 +51,14 @@
 						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
 						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 						    </select>
+						    
 							<div class="input-group">
 								<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control"/>
 								<span class="input-group-btn">
 									<button id="searchBtn" type="button" class="btn btn-default">검색</button>
 								</span>
 						</div>
+						
 					    <script>
 					      $(function(){
 					        $('#searchBtn').click(function() {

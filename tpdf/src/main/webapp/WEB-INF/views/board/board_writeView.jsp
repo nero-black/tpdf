@@ -13,7 +13,7 @@
 	<head>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board_insert.css" />
-	 	<title>게시판</title>
+	 	<title></title>
 	</head>
 	<body>
 	<main>

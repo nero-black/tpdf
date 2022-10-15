@@ -2,7 +2,7 @@
 
 * {margin:0; padding:0;}
 
-main {width:1200px; margin:0 auto 0; padding-bottom:200px;}
+main {width:1200px; margin:0 auto 0; padding-bottom:100px; margin-bottom:100px;}
 hr.clear_line {clear:both; border:0;}
 
 #list_align_a {float:left; display:inline-block; width:60px; height:30px; margin-right:10px; background:#0054FF;
@@ -10,31 +10,38 @@ hr.clear_line {clear:both; border:0;}
 #list_align_b {float:left; display:inline-block; width:60px; height:30px; background:white;
           text-align:center; line-height:15px; color:black; font-size:15px; font-weight:bold; border:solid 1px gray;}
 
-#notice_insert {float:right; display:inline-block; width:60px; height:30px; background:white; 
-          text-align:center; line-height:15px; font-size:15px; border:solid 1px gray;}
+.notice_insert {float:right; display:inline-block; width:100px; height:30px; background:white; cursor:pointer; margin-bottom:20px;
+          text-align:center; line-height:18px; font-size:18px; border:solid 1px gray;}
           /* 관리자 글쓰기 버튼 */
+          
+#notice table {width:1198px; border-collapse:collapse; margin-top:20px;}
+#notice {width:1198px; font-size:20px; border-collapse: collapse;} /* 기존 width:1098px; height:700px; */
+#notice th {border:none; border-top:solid 2px gray; border-bottom:solid 2px gray; text-align:center;}
+#notice tbody {border-bottom:solid 2px gray;}
+#notice tr:first-child:hover {background:rgb(255,255,255);}
+#notice tr:hover {background:rgb(240,240,240);}
+#notice td {border:none; border-bottom:solid 1px rgb(220, 220, 220); text-align:center;}
+#notice td a {font-size:20px; font-weight:normal; color:black; text-decoration:none;}
+#notice td:first-child {width:90px;}
+#notice td:nth-child(2) {text-align:left; padding-left:20px;}
+#notice td:nth-child(3) {width:180px;}
+#notice td:nth-child(4) {width:180px;}
+#notice td:nth-child(5) {width:90px;}
+#notice td a:hover {text-decoration:underline;}
 
-#notice {width:1148px;} /* 기존 width:1198px; height:898px; */
-#notice table {width:1148px; font-size:15px; border-collapse: collapse;} /* 기존 width:1098px; height:700px; */
-#notice table th {border:none; border-top:solid 2px #001EC9; border-bottom:solid 1px #001EC9; text-align:center;}
-#notice td:first-child {width:100px;}
-#notice td:nth-child(2) {width:648px; text-align:left;}
-#notice table td {border:none; border-bottom:solid 1px rgb(240,240,240); text-align:center;}
-#notice table td a {color:black; text-decoration:none;}
-#notice table td a:hover {text-decoration:underline;}
-#notice tbody {border-bottom:solid 2px #2478FF;}
 
-#notice table tr:hover {background:rgb(240, 240, 240);}
-#notice table thead tr:first-child:hover {background:white;}
+#page {display:inline-block; width:630px; height:30px; margin-left:285px; text-align:center;
+	   font-size:18px; color:black; text-decoration:none;}
+
+.pagination {width:625px; height:30px; text-align:center;}
+.pagination li a {display:inline-block; color:black; text-decoration:none;}
 
 
-#page {display:inline-block; width:1200px; height:30px;
-	   font-size:18px; color:black; text-align:center; vertical-align:middle; text-decoration:none;}
 
 #search {width:420px; height:70px; margin-left:380px;}
 #search_type {display:inline-block; width:100px; height:30px; margin:15px 0 0 20px; border:solid 1px gray;}
-#search_value {display:inline-block; width:200px; height:28px; margin-top:15px; border:solid 1px gray;}
-#search_submit {display:inline-block; width:60px; height:30px; margin-top:15px; background:white;
+#keywordInput {display:inline-block; width:200px; height:28px; margin-top:15px; border:solid 1px gray;} /* search_input */
+#searchBtn {display:inline-block; width:60px; height:30px; margin-top:15px; background:white; cursor:pointer; /* search_submit */
 				vertical-align:top; border:solid 1px gray; font-size:15px;}
 
 

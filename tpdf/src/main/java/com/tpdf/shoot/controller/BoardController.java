@@ -115,8 +115,15 @@ public class BoardController {
 		
 		// 野껊슣�뻻占쎈솇 占쎈땾占쎌젟�뀎占�
 		@RequestMapping(value = "/board_updateView", method = RequestMethod.GET)
-		public String updateView(BoardVo boardVo,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+		public String updateView(BoardVo boardVo,@ModelAttribute("scri") SearchCriteria scri, Model model, HttpSession session) throws Exception{
 		
+			// 새로 추가한 부분
+			Object grade = session.getAttribute("member_grade");
+
+			if (grade == null) {
+				session.setAttribute("member_grade", 0);
+				session.setAttribute("member_name", "-");
+			}
 			
 			model.addAttribute("update", service.read(boardVo.getBoard_idx()));
 			model.addAttribute("scri", scri);

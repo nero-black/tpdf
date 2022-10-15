@@ -4,11 +4,9 @@
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 <html>
 	<head>
-			
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board_view.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<title>게시판</title>
+	 	<title></title>
 	</head>
 	
 	<script type="text/javascript">
@@ -81,17 +79,9 @@
 	</script>
 	
 	<body>
+	<main>
 	
 		<div id="root" class="container">
-			<header>
-				<h1> 게시판</h1>
-			</header>
-			<hr />
-			 
-			 <div>
-			 	<%@include file="nav.jsp" %> 
-			 </div>
-			<hr />
 			
 			<section id="container">
 				<form name="readForm" role="form" method="post">
@@ -103,35 +93,49 @@
 				  <input type="hidden" id="file_idx" name="file_idx" value="">
 				</form>
 				<div class="form-group">
-					<label for="title" class="col-sm-2 control-label">제목</label>
-					<input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" />
+					<!-- <label for="title" class="col-sm-2 control-label">제목</label> -->
+					<pre><input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" /></pre>
 				</div>
-				<div class="form-group" >
-					
-					<label for="content" class="col-sm-2 control-label">내용</label>
-					<c:forEach var="file" items="${file}">
-					<img src="${pageContext.request.contextPath}/resources/img/notice/${file.origin_file_name}" width="300px;" height="200px;"> 
-					</c:forEach>
-					<textarea id="content" name="content" class="form-control" readonly="readonly"><c:out value="${read.content}" /></textarea>
-				</div>
+				<hr style="width:1010px; margin-top:10px; margin-left:100px;" />
+				
 				<div class="form-group">
-					<label for="writer" class="col-sm-2 control-label">작성자</label>
+					<!-- <label for="writer" class="col-sm-2 control-label">작성자</label> -->
 					<input type="text" id="writer" name="writer" class="form-control" value="${read.writer}"  readonly="readonly"/>
 				</div>
-				<div class="form-group">
-					<label for="regDate" class="col-sm-2 control-label">작성날짜</label>
+				 | 
+				<div class="form-group" id="wdate">
+					<!-- <label for="regDate" class="col-sm-2 control-label">작성날짜</label> -->
 					<fmt:formatDate value="${read.regDate}" pattern="yyyy-MM-dd" />	
 				</div>
-				<span>파일 목록</span>
+				<!-- <span>파일 목록</span>
 				<div class="form-group" style="border: 1px solid #dbdbdb;">
 					<c:forEach var="file" items="${file}">
 						${file.origin_file_name}(${file.file_size}kb)<br>
 					</c:forEach>
+				</div> -->
+				
+				<div class="form-group" >
+					
+					<!-- <label for="content" class="col-sm-2 control-label">내용</label> -->
+					<c:forEach var="file" items="${file}">
+					<img src="${pageContext.request.contextPath}/resources/img/notice/${file.origin_file_name}" width="300px;" height="200px;"> 
+					</c:forEach>
+					<div id="content">
+					<pre style="font-size:15px;"><!-- <textarea id="content" class="form-control" style="border:none;"> --> <c:out value="${read.content}" /> <!-- </textarea> --></pre>
+					</div>
+					
 				</div>
-				<div>
-					<button type="button" class="update_btn btn btn-warning">수정</button>
-					<button type="button" class="delete_btn btn btn-danger">삭제</button>
-					<button type="button" class="list_btn btn btn-primary">목록</button>	
+				
+				<hr class="clear_line" />
+				
+				<hr style="width:1200px; margin-top:10px; margin-left:0px;" /> <!-- margin-left:100px; -->
+				
+				<div id="post_menu">
+					<c:if test="${member_grade == 2}">
+					<button type="button" id="remove" class="delete_btn btn btn-danger">삭제</button>
+					<button type="button" id="modify" class="update_btn btn btn-warning">수정</button>
+					</c:if>
+					<button type="button" id="list" class="list_btn btn btn-primary">목록</button>	
 				</div>
 				<%-- <!-- 댓글 -->
 				<div id="reply">
@@ -182,8 +186,8 @@
 					</div> --%>
 				</form>
 			</section>
-			<hr />
 		</div>
+	</main>
 	</body>
 </html>
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

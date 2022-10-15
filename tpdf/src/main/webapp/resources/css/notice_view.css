@@ -2,7 +2,7 @@
 
 * {margin:0; padding:0;}
 
-main {width:1200px; margin:0 auto;}
+main {width:1200px; margin:0 auto; padding-bottom:50px; margin-bottom:50px;}
 .clear_line {clear:both; border:solid 2px red;}
 
 #title {display:inline-block; width:1000px; height:30px; padding-left:10px; margin:0 20px 0 100px;
@@ -16,6 +16,9 @@ main {width:1200px; margin:0 auto;}
 #content {width:1000px; font-size:15px; padding:10px 0 200px 10px; margin:30px 0 0 100px;}
 #file {width:1000px; padding-left:10px; margin:30px 0 0 100px;}
 #file img {display:inline-block; max-width:1000px; max-height:500px;}
+
+#post_menu {margin-top:10px;}
+
 #list {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke; 
           text-align:center; line-height:18px; font-size:18px; border:solid 1px gray; margin:0 0 20px 10px;}
 #modify {float:right; display:inline-block; width:100px; height:30px; background:whitesmoke; 

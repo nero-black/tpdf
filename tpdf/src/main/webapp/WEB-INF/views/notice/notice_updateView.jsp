@@ -1,15 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<% MemberVo member_info = (MemberVo)request.getAttribute("member_info"); %>
+
 <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
+
+<c:if test="${member_grade == null}">
+<% response.sendRedirect("need_login.do"); %>
+</c:if> <!-- 비회원 접속 방지 -->
+
+<c:if test="${member_grade != 2}">
+<% response.sendRedirect("invaid_update.do"); %>
+</c:if> <!-- 비정상 접속 방지 -->
+
 <html>
 	<head>
-	<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board_modify.css" />
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<title>게시판</title>
+	 	<title></title>
 	</head>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -35,7 +44,7 @@
 		})
 			
 		function fn_valiChk(){
-			alert("실행중");
+			// alert("실행중");
 			var updateForm = $("form[name='updateForm'] .chk").length;
 			for(var i = 0; i<updateForm; i++){
 				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
@@ -67,17 +76,9 @@
 		
 	</script>
 	<body>
+	<main>
 	
 		<div id="root">
-			<header>
-				<h1> 게시판</h1>
-			</header>
-			<hr />
-			 
-			 <div>
-			 	<%@include file="nav.jsp" %> 
-			 </div>
-			<hr />
 			
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/notice/notice_update">
@@ -89,23 +90,23 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
+									<!-- <label for="title">제목</label> --> <input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
 								</td>
 							</tr>	
 							<tr>
 								<td>
-									<label for="content">내용</label><textarea id="content" name="content" class="chk" title="내용을 입력하세요."><c:out value="${update.content}" /></textarea>
+									<!-- <label for="content">내용</label> --> <textarea id="content" name="content" class="chk" title="내용을 입력하세요."><c:out value="${update.content}" /></textarea>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label for="writer">작성자</label><input type="text" id="writer" name="writer" value="${update.writer}" readonly="readonly" class="chk" title="작성자를 입력하세요."/>
+									<!-- <label for="writer">작성자</label> --> <input type="text" id="writer" name="writer" value="${update.writer}" readonly="readonly" class="chk" title="작성자를 입력하세요."/>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label for="regDate">작성날짜</label>
-									<fmt:formatDate value="${update.regDate}" pattern="yyyy-MM-dd"/>					
+									<!-- <label for="regDate">작성날짜</label>
+									<fmt:formatDate value="${update.regDate}" pattern="yyyy-MM-dd"/> -->
 								</td>
 							</tr>
 							<%-- <tr>
@@ -129,8 +130,8 @@
 					</div>
 				</form>
 			</section>
-			<hr />
 		</div>
+	</main>
 	</body>
 </html>
 <%@ include file = "../include/footer.jsp" %> <!-- 풋터 삽입 -->

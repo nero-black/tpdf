@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board_view.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
-	 	<title>게시판</title>
+	 	<title></title>
 	</head>
 	
 	<script type="text/javascript">

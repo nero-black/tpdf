@@ -5,28 +5,21 @@
 <html>
 	<head>
 			
-	 	<title>게시판</title>
+	 	<title></title>
 	</head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/notice.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<style type="text/css">
-			li {list-style: none; float: left; padding: 6px;}
+			li {list-style: none; display:inline-block; padding: 6px;}
 		</style>
 	<body>
 	<main>
 		<div id="root" class="container">
-			<header>
-				<h1>뉴스</h1>
-			</header>
-			<hr />
-			 <div>
-			 	<%@include file="nav.jsp" %>
-			 </div>
-			
-			<hr />
-			
+			<c:if test="${member_grade == 2}">
+			<a href="/notice/notice_writeView"><button class="notice_insert">글쓰기</button></a>
+			</c:if>
 			<section id="container">
-				<form role="form" method="get">
+				<form role="form" method="get" id="notice">
 					<table class="table table-hover">
 						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
 						
@@ -49,23 +42,20 @@
 						
 					</table>
 					<div class="search row">
-						<div class="cols-xs-2 col-sm-2">
-						    <select name="searchType" class="form-control">
-						      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+					<div id="search">
+						    <select name="searchType" id="search_type" class="form-control">
+						      <!-- <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option> -->
 						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
 						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 						    </select>
-					    </div>
-					    <div class="col-xs-10 col-sm-10">
-							<div class="input-group">
+							<div class="input-group" style="display:inline-block;">
 								<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control"/>
 								<span class="input-group-btn">
 									<button id="searchBtn" type="button" class="btn btn-default">검색</button> 	
 								</span>
 							</div>
-						</div>
 					    <script>
 					      $(function(){
 					        $('#searchBtn').click(function() {
@@ -74,7 +64,9 @@
 					      });   
 					    </script>
 					  </div>
+					  </div>
 					<div class="col-md-offset-3">
+						<div id="page">
 						<ul class="pagination">
 					    <c:if test="${Paging.prev}">
 					    	<li><a href="notice_list${Paging.makeSearch(Paging.startPage - 1)}">이전</a></li>
@@ -89,10 +81,10 @@
 					    	<li><a href="notice_list${Paging.makeSearch(Paging.endPage + 1)}">다음</a></li>
 					    </c:if> 
 					  </ul>
+					  </div>
 					</div>
 				</form>
 			</section>
-			<hr />
 		</div>
 	</main>
 	</body>

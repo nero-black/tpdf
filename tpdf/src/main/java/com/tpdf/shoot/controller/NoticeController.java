@@ -110,8 +110,16 @@ public class NoticeController {
 		
 		// 野껊슣�뻻占쎈솇 占쎈땾占쎌젟�뀎占�
 		@RequestMapping(value = "/notice_updateView", method = RequestMethod.GET)
-		public String updateView(NoticeVo noticeVo,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+		public String updateView(NoticeVo noticeVo,@ModelAttribute("scri") SearchCriteria scri, Model model, HttpSession session) throws Exception{
 		
+			
+			// 새로 추가한 부분
+			Object grade = session.getAttribute("member_grade");
+
+			if (grade == null) {
+				session.setAttribute("member_grade", 0);
+				session.setAttribute("member_name", "-");
+			}
 			
 			model.addAttribute("update", service.read(noticeVo.getNotice_idx()));
 			model.addAttribute("scri", scri);
