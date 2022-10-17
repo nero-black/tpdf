@@ -62,7 +62,7 @@
 					    <script>
 					      $(function(){
 					        $('#searchBtn').click(function() {
-					          self.location = "board_list" + "${Paging.makeSearch(1)}" + "?searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+					          self.location = "board_list" + "${Paging.makeQuery(1)}" + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 					        });
 					      });   
 					    </script>

@@ -464,7 +464,7 @@ $("#SA_league").click(function () {
     <hr class="mid_line">
     
     <div id="notice">
-      <a href="${pageContext.request.contextPath}/notice_list.do"><span>새로운 소식</span></a>
+      <a href="${pageContext.request.contextPath}/notice/notice_list"><span>새로운 소식</span></a>
       <table>
         <tr>
           <td><a href="#">뉴스 제목1</a></td>
@@ -499,7 +499,7 @@ $("#SA_league").click(function () {
       </table>
     </div>
     <div id="board">
-      <a href="${pageContext.request.contextPath}/board_list.do""><span>자유 게시판</span></a>
+      <a href="${pageContext.request.contextPath}/board/board_list""><span>자유 게시판</span></a>
       <table>
         <tr>
           <td><a href="#">자유 게시글 제목1</a></td>

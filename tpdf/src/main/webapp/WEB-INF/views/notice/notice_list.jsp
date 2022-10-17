@@ -59,7 +59,7 @@
 					    <script>
 					      $(function(){
 					        $('#searchBtn').click(function() {
-					          self.location = "notice_list" + "${Paging.makeSearch(1)}" + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+					          self.location = "notice_list" + "${Paging.makeQuery(1)}" + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 					        });
 					      });   
 					    </script>
