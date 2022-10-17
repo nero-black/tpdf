@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <% MemberVo member_info = (MemberVo)request.getAttribute("member_info"); %>
+    
     <%@ include file = "../include/header.jsp" %> <!-- 헤더 삽입 -->
 <html>
 	<head>
@@ -74,7 +77,7 @@
 							
 							<tr>
 								<td>
-									<!-- <label for="writer">작성자</label> --> <input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요."/>
+									<!-- <label for="writer">작성자</label> --> <input type="hidden" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member_name}" />
 								</td>
 							</tr>
 							

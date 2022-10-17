@@ -15,7 +15,7 @@
 	<body>
 	<main>
 		<c:if test="${member_grade >= 1}">
-		<a href="/board/board_writeView"><button class="board_insert">글쓰기</button></a>
+		<a href="${pageContext.request.contextPath}/board/board_writeView"><button class="board_insert">글쓰기</button></a>
 		</c:if>
 		<hr class="clear_line">
 		<div id="root" class="container">

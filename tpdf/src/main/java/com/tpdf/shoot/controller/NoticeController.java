@@ -32,9 +32,12 @@ public class NoticeController {
 		
 		
 		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐 占쎌넅筌롳옙
-		@RequestMapping(value = "/notice_writeView", method = RequestMethod.GET)
-		public void writeView() throws Exception{
-		
+		@RequestMapping("/notice_writeView")
+		public String writeView(Model model) throws Exception{
+			
+			String request_mapping = "notice/notice_writeView";
+			
+			return request_mapping;
 			
 		}
 		

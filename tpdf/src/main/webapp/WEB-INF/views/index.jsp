@@ -3,6 +3,7 @@
 <%@ include file = "include/header.jsp" %> <!-- 헤더 삽입 -->
 <%@ page import = "com.tpdf.shoot.vo.VideoVo" %>  
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <% List<VideoVo> videoList = (List)request.getAttribute("videoList"); %>
 
@@ -466,37 +467,18 @@ $("#SA_league").click(function () {
     <div id="notice">
       <a href="${pageContext.request.contextPath}/notice/notice_list"><span>새로운 소식</span></a>
       <table>
-        <tr>
-          <td><a href="#">뉴스 제목1</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목2</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목3</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목4</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목5</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목6</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목7</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목8</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목9</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">뉴스 제목10</a></td>
-        </tr>
-      </table>
+						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th></tr>
+						
+						<c:forEach items="${list}" var = "list">
+							<tr>
+								<td><c:out value="${list.board_idx}" /></td>
+								<td><c:out value="${list.title}" /></td>
+								<td><c:out value="${list.writer}" /></td>
+								<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd"/></td>
+							</tr>
+						</c:forEach>
+						
+					</table>
     </div>
     <div id="board">
       <a href="${pageContext.request.contextPath}/board/board_list""><span>자유 게시판</span></a>

@@ -36,10 +36,9 @@ public class BoardController {
 		
 		
 		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐 占쎌넅筌롳옙
-		@RequestMapping(value = "/board_writeView", method = RequestMethod.GET)
-		public void writeView() throws Exception{
-		
-			
+		@RequestMapping(value="/board_writeView",  method = RequestMethod.GET)
+		public void board_writeView(Model model) throws Exception{
+	
 		}
 		
 		// 새로 추가한 부분 (new code)
@@ -68,7 +67,7 @@ public class BoardController {
 			
 			service.write(BoardVo, mpRequest);
 			
-			return "redirect:board_list";
+			return "redirect:/board/board_list";
 		}
 		// 野껊슣�뻻占쎈솇 筌뤴뫖以� 鈺곌퀬�돳
 		@RequestMapping(value = "/board_list", method = RequestMethod.GET)

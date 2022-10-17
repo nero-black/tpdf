@@ -16,7 +16,7 @@
 	<main>
 		<div id="root" class="container">
 			<c:if test="${member_grade == 2}">
-			<a href="/notice/notice_writeView"><button class="notice_insert">글쓰기</button></a>
+			<a href="${pageContext.request.contextPath}/notice/notice_writeView"><button class="notice_insert">글쓰기</button></a>
 			</c:if>
 			<section id="container">
 				<form role="form" method="get" id="notice">
