@@ -17,7 +17,7 @@ import com.tpdf.shoot.vo.NoticeVo;
 @Component("fileUtil2")
 public class FileUtil2 {
 	//깃허브용
-    private static final String filePath = "C:\\Users\\71100\\git\\tpdf\\tpdf\\src\\main\\webapp\\resources\\img\\notice\\"; 
+    private static final String filePath = "${pageContext.request.ContextPath}\\resources\\img\\notice\\"; 
 	//서버용
 	//private static final String filePath = "C:\\Users\\71100\\Desktop\\workspace\\tpdf\\src\\main\\webapp\\resources\\img\\notice\\";
 	

@@ -162,8 +162,10 @@
 				        <pre>&nbsp;> <textarea class="comment_input" style="border:none;">${replyList.content}</textarea></pre>
 				        
 				        <div>
-						  <button type="button" class="replyUpdateBtn btn btn-warning" data-board_reply_idx="${replyList.board_reply_idx}">수정</button>
-						  <button type="button" class="replyDeleteBtn btn btn-danger" data-board_reply_idx="${replyList.board_reply_idx}">삭제</button> 
+						  <%-- <button type="button" class="replyUpdateBtn btn btn-warning" data-board_reply_idx="${replyList.board_reply_idx}">수정</button> --%>
+						  <c:if test="${member_grade == 2}">
+						  <button type="button" class="replyDeleteBtn btn btn-danger" data-board_reply_idx="${replyList.board_reply_idx}">댓글 삭제</button> 
+						  </c:if>
 						</div>
 				      </li>
 				      <hr style="width:1200px; border:solid 0.5px rgb(220, 220, 220); margin-top:10px;" />
