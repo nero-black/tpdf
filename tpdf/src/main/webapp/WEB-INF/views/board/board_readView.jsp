@@ -110,12 +110,7 @@
 					<!-- <label for="regDate" class="col-sm-2 control-label">작성날짜</label> -->
 					<fmt:formatDate value="${read.regDate}" pattern="yyyy-MM-dd" />	
 				</div>
-					<span>파일 목록</span>
-					<div class="form-group" style="border: 1px solid #dbdbdb;">
-						<c:forEach var="file" items="${file}">
-							${file.origin_file_name}(${file.file_size}kb)<br>
-						</c:forEach>
-					</div>
+					
 				
 				
 				<div class="form-group" >
@@ -131,6 +126,12 @@
 					<pre><!-- <textarea id="content" name="content" class="form-control" readonly="readonly"> --><c:out value="${read.content}" /><!-- </textarea> --></pre>
 					</div>
 				</div>
+				<span>파일 목록</span>
+					<div class="form-group" style="border: 1px solid #dbdbdb;">
+						<c:forEach var="file" items="${file}">
+							${file.origin_file_name}(${file.file_size}kb)<br>
+						</c:forEach>
+					</div>
 				
 				<hr style="width:1200px; margin-top:10px; margin-left:0px;" /> <!-- margin-left:100px; -->
 				

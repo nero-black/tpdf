@@ -90,7 +90,7 @@
 							</tr>			
 						</tbody>			
 					</table>
-				</form>
+				</form> 
 			</section>
 		</div>
 	</main>
