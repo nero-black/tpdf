@@ -49,5 +49,6 @@
 			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 			ORDER BY hit DESC limit 8
 		</select>
+
   </mapper>
   

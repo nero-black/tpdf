@@ -69,7 +69,7 @@ $(document).ready(function () {
 		       });
 		       
 	    
-		       $("#rank_tbl").html("<table>"
+		       $("#rank_tbl").html("<table id='todaymatch'>"
 		  				 +"<thead><tr>"
 		   				 +"<th class='time' scope='col' width='10%' align='center'>시간</th>"
 		   				 +"<th scope='col' width='30%'' align='right'><!-- HOME --></th>"
@@ -131,9 +131,9 @@ $(document).ready(function () {
 			    	  }   
 			       });
 			      
-			    	  $("#schedule_tbl").html("<table width=100%  border-collapse: collapse; >"
+			    	  $("#schedule_tbl").html("<table>"
 			    			  		+"<th>순위</th>"
-			    			  		+"<th align='left'>팀</th>"
+			    			  		+"<th>팀</th>"
 			    			  		+"<th>경기수</th>"
 			    			  		+"<th>승점</th>"
 			    			  		+"<th>승</th>"
@@ -195,9 +195,9 @@ $("#PL_league").click(function () {
 		    	  }   
 		       });
 		      
-		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    	  $("#schedule_tbl").html("<table>"
 		    			  		+"<th>순위</th>"
-		    			  		+"<th align='left'>팀</th>"
+		    			  		+"<th>팀</th>"
 		    			  		+"<th>경기수</th>"
 		    			  		+"<th>승점</th>"
 		    			  		+"<th>승</th>"
@@ -264,7 +264,7 @@ $("#PD_league").click(function () {
 		    	  }   
 		       });
 		      
-		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    	  $("#schedule_tbl").html("<table >"
 		    			  		+"<th>순위</th>"
 		    			  		+"<th align='left'>팀</th>"
 		    			  		+"<th>경기수</th>"
@@ -331,7 +331,7 @@ $("#BL1_league").click(function () {
 		    	  }   
 		       });
 		      
-		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    	  $("#schedule_tbl").html("<table  >"
 		    			  		+"<th>순위</th>"
 		    			  		+"<th align='left'>팀</th>"
 		    			  		+"<th>경기수</th>"
@@ -399,7 +399,7 @@ $("#SA_league").click(function () {
 		    	  }   
 		       });
 		      
-		    	  $("#schedule_tbl").html("<table border='6' width=100%  border-collapse: collapse; >"
+		    	  $("#schedule_tbl").html("<table >"
 		    			  		+"<th>순위</th>"
 		    			  		+"<th align='left'>팀</th>"
 		    			  		+"<th>경기수</th>"
@@ -530,31 +530,29 @@ $("#SA_league").click(function () {
 		</div>
 	</div>
     <hr class="clear_line">
-
-   <div id="rank">
-      <a id="font" href="${pageContext.request.contextPath}/rank.do">오늘의  경기일정</a>
-      <!-- <a id="more" href="${pageContext.request.contextPath}/rank.do">더보기</a> -->
-      <div id="rank_tbl">
-      
-      </div>
-    </div>
-
-    <div id="schedule">
-      <a id="font"  href="${pageContext.request.contextPath}/schedule.do">리그 순위표</a>
-      <!-- <a id="more" href="${pageContext.request.contextPath}/schedule.do">더보기</a> -->
-      <br>
-      <div>
-      <!-- <a href="#" id="PL_league"  onclick="return false;" >프리미어리그</a>
-      <a href="#" id="PD_league"  onclick="return false;">라리가</a>
-      <a href="#" id="BL1_league" onclick="return false;">분데스리가</a>
-      <a href="#" id="SA_league"  onclick="return false;">세리에 A</a>  -->
-      </div>
-      
-      <div id="schedule_tbl">
-      </div>
-      
-    </div>
-    <br><br><br>
+	<div id="soccer_line">
+	   <div id="rank">
+	      <a id="font" href="${pageContext.request.contextPath}/rank.do">오늘의  경기일정</a>
+	      <div id="rank_tbl">
+	      </div>
+	    </div>
+	
+	    <div id="schedule">
+	      <a id="font"  href="${pageContext.request.contextPath}/schedule.do">리그 순위표</a>
+	      <br>
+	      <div id="schedule_icon">
+		      <a href="#" id="PL_league"  onclick="return false;" >프리미어리그</a>
+		      <a href="#" id="PD_league"  onclick="return false;">라리가</a>
+		      <a href="#" id="BL1_league" onclick="return false;">분데스리가</a>
+		      <a href="#" id="SA_league"  onclick="return false;">세리에 A</a> 
+	      </div>
+	      
+	      <div id="schedule_tbl">
+	      </div>
+	      
+	    </div>
+	    <br><br><br>
+	    </div>
 <hr class="clear_line">
   </main>
 

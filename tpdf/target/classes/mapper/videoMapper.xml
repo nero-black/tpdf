@@ -50,6 +50,7 @@
 	<delete id="video_delete" parameterType="videoVo">
 	delete from video_tbl where video_idx=#{video_idx}
 	</delete>
+	
 
 </mapper>	
 

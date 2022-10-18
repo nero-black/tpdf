@@ -2,8 +2,6 @@ package com.tpdf.shoot.service.video;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.tpdf.shoot.vo.VideoVo;
 
 public interface VideoService {

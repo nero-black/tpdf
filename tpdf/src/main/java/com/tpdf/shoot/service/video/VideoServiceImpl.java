@@ -2,11 +2,8 @@ package com.tpdf.shoot.service.video;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartRequest;
 
 import com.tpdf.shoot.dao.VideoDao;
 import com.tpdf.shoot.vo.VideoVo;

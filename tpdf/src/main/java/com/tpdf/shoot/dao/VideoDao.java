@@ -2,12 +2,10 @@ package com.tpdf.shoot.dao;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartRequest;
+
 import com.tpdf.shoot.vo.VideoVo;
 
 @Repository
