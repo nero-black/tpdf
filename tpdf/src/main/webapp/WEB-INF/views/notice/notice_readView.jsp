@@ -125,7 +125,12 @@
 					</div>
 					
 				</div>
-				
+				<span>파일 목록</span>
+					<div class="form-group" style="border: 1px solid #dbdbdb;">
+						<c:forEach var="file" items="${file}">
+							${file.origin_file_name}(${file.file_size}kb)<br>
+						</c:forEach>
+					</div>
 				<hr class="clear_line" />
 				
 				<hr style="width:1200px; margin-top:10px; margin-left:0px;" /> <!-- margin-left:100px; -->
