@@ -16,7 +16,7 @@
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/notice/notice_readView?notice_idx=${replyUpdate.notice_idx}"
+				location.href = "${pageContext.request.contextPath}/notice/notice_readView?notice_idx=${replyUpdate.notice_idx}"
 					   + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
@@ -40,7 +40,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/notice/notice_replyUpdate">
+				<form name="updateForm" role="form" method="post" action="${pageContext.request.contextPath}/notice/notice_replyUpdate">
 					<input type="hidden" name="notice_idx" value="${replyUpdate.notice_idx}" readonly="readonly"/>
 					<input type="hidden" id=notice_reply_idx name="notice_reply_idx" value="${replyUpdate.notice_reply_idx}" />
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 

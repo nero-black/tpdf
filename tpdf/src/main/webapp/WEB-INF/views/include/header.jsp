@@ -17,7 +17,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>ShooT :: 비상하는 해외축구 커뮤니티</title></title>
+  <title>ShooT :: 비상하는 해외축구 커뮤니티</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
   <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 </head>

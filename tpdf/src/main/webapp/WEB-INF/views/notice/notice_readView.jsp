@@ -15,7 +15,7 @@
 			
 			// 수정 
 			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/notice/notice_updateView");
+				formObj.attr("action", "${pageContext.request.contextPath}/notice/notice_updateView");
 				formObj.attr("method", "get");
 				formObj.submit();				
 			})
@@ -27,7 +27,7 @@
 				var deleteYN = confirm("삭제하시겠습니가?");
 				if(deleteYN == true){
 					
-				formObj.attr("action", "/notice/notice_delete");
+				formObj.attr("action", "${pageContext.request.contextPath}/notice/notice_delete");
 				formObj.attr("method", "post");
 				formObj.submit();
 					
@@ -37,13 +37,13 @@
 			// 취소
 			$(".list_btn").on("click", function(){
 				
-				location.href = "/notice/notice_list";
+				location.href = "${pageContext.request.contextPath}/notice/notice_list";
 			})
 			
 			// 목록
 			$(".list_btn").on("click", function(){
 			
-			location.href = "/notice/notice_list?page=${scri.page}"
+			location.href = "${pageContext.request.contextPath}/notice/notice_list?page=${scri.page}"
 			+"&perPageNum=${scri.perPageNum}"
 			+"&searchType=${scri.searchType}&keyword=${scri.keyword}";
 			})

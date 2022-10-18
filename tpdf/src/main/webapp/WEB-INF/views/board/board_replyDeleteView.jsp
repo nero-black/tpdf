@@ -16,7 +16,7 @@
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/board/board_readView?board_idx=${replyDelete.board_idx}"
+				location.href = "${pageContext.request.contextPath}/board/board_readView?board_idx=${replyDelete.board_idx}"
 					   + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
@@ -40,7 +40,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/board_replyDelete">
+				<form name="updateForm" role="form" method="post" action="${pageContext.request.contextPath}/board/board_replyDelete">
 					<input type="hidden" name="board_idx" value="${replyDelete.board_idx}" readonly="readonly"/>
 					<input type="hidden" id="board_reply_idx" name="board_reply_idx" value="${replyDelete.board_reply_idx}" />
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 

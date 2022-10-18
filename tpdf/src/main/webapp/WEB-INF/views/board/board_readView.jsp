@@ -19,7 +19,7 @@
 			
 			// 수정 
 			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/board/board_updateView");
+				formObj.attr("action", "${pageContext.request.contextPath}/board/board_updateView");
 				formObj.attr("method", "get");
 				formObj.submit();				
 			})
@@ -31,7 +31,7 @@
 				var deleteYN = confirm("삭제하시겠습니까?");
 				if(deleteYN == true){
 					
-				formObj.attr("action", "/board/board_delete");
+				formObj.attr("action", "${pageContext.request.contextPath}/board/board_delete");
 				formObj.attr("method", "post");
 				formObj.submit();
 					
@@ -60,7 +60,7 @@
 			
 			//댓글 수정 View
 			$(".replyUpdateBtn").on("click", function(){
-				location.href = "/board/board_replyUpdateView?board_idx=${read.board_idx}"
+				location.href = "${pageContext.request.contextPath}/board/board_replyUpdateView?board_idx=${read.board_idx}"
 								+ "&page=${scri.page}"
 								+ "&perPageNum=${scri.perPageNum}"
 								+ "&searchType=${scri.searchType}"
@@ -70,7 +70,7 @@
 					
 			//댓글 삭제 View
 			$(".replyDeleteBtn").on("click", function(){
-				location.href = "/board/board_replyDeleteView?board_idx=${read.board_idx}"
+				location.href = "${pageContext.request.contextPath}/board/board_replyDeleteView?board_idx=${read.board_idx}"
 								+ "&page=${scri.page}"
 								+ "&perPageNum=${scri.perPageNum}"
 								+ "&searchType=${scri.searchType}"
@@ -110,20 +110,19 @@
 					<!-- <label for="regDate" class="col-sm-2 control-label">작성날짜</label> -->
 					<fmt:formatDate value="${read.regDate}" pattern="yyyy-MM-dd" />	
 				</div>
+					<span>파일 목록</span>
+					<div class="form-group" style="border: 1px solid #dbdbdb;">
+						<c:forEach var="file" items="${file}">
+							${file.origin_file_name}(${file.file_size}kb)<br>
+						</c:forEach>
+					</div>
 				
-				<!-- <span>파일 목록</span>
-				<div class="form-group" style="border: 1px solid #dbdbdb;">
-					<c:forEach var="file" items="${file}">
-						${file.origin_file_name}(${file.file_size}kb)<br>
-					</c:forEach>
-				</div>
-				 -->
 				
 				<div class="form-group" >
 					
 					<!-- <label for="content" class="col-sm-2 control-label">내용</label> -->
 					<c:forEach var="file" items="${file}">
-					<img id="file" src="${pageContext.request.contextPath}/resources/img/board/${file.origin_file_name}" width="300px;" height="200px;"> 
+					<img id="file" src="/resources/img/board/${file.origin_file_name}" width="300px;" height="200px;"> 
 					</c:forEach>
 					<div id="ex">
 					사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시)
@@ -162,8 +161,8 @@
 				        <pre>&nbsp;> <textarea class="comment_input" style="border:none;">${replyList.content}</textarea></pre>
 				        
 				        <div>
-						  <!-- <button type="button" class="replyUpdateBtn btn btn-warning" data-board_reply_idx="${replyList.board_reply_idx}">수정</button>
-						  <button type="button" class="replyDeleteBtn btn btn-danger" data-board_reply_idx="${replyList.board_reply_idx}">삭제</button> -->
+						  <button type="button" class="replyUpdateBtn btn btn-warning" data-board_reply_idx="${replyList.board_reply_idx}">수정</button>
+						  <button type="button" class="replyDeleteBtn btn btn-danger" data-board_reply_idx="${replyList.board_reply_idx}">삭제</button> 
 						</div>
 				      </li>
 				      <hr style="width:1200px; border:solid 0.5px rgb(220, 220, 220); margin-top:10px;" />

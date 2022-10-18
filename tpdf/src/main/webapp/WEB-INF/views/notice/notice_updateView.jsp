@@ -26,7 +26,7 @@
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/notice/notice_readView?notice_idx=${update.notice_idx}"
+				location.href = "${pageContext.request.contextPath}/notice/notice_readView?notice_idx=${update.notice_idx}"
 					   + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
@@ -37,7 +37,7 @@
 				if(fn_valiChk()){
 					return false;
 				}
-				formObj.attr("action", "/notice/notice_update");
+				formObj.attr("action", "${pageContext.request.contextPath}/notice/notice_update");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
@@ -81,7 +81,7 @@
 		<div id="root">
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/notice/notice_update">
+				<form name="updateForm" role="form" method="post" action="${pageContext.request.contextPath}/notice/notice_update">
 					<input type="hidden" name="notice_idx" value="${update.notice_idx}" readonly="readonly"/>
 					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
 					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">

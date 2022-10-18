@@ -27,7 +27,7 @@
 							<tr>
 								<td><c:out value="${list.notice_idx}" /></td>
 								<td>
-									<a href="/notice/notice_readView?notice_idx=${list.notice_idx}&
+									<a href="${pageContext.request.contextPath}/notice/notice_readView?notice_idx=${list.notice_idx}&
 																		page=${scri.page}&
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&
@@ -69,16 +69,16 @@
 						<div id="page">
 						<ul class="pagination">
 					    <c:if test="${Paging.prev}">
-					    	<li><a href="notice_list${Paging.makeSearch(Paging.startPage - 1)}">이전</a></li>
+					    	<li><a href="${pageContext.request.contextPath}notice_list${Paging.makeSearch(Paging.startPage - 1)}">이전</a></li>
 					    </c:if> 
 					
 					    <c:forEach begin="${Paging.startPage}" end="${Paging.endPage}" var="idx">
 					    	<li <c:out value="${Paging.cri.page == idx ? 'class=info' : ''}" />>
-					    	<li><a href="notice_list${Paging.makeSearch(idx)}">${idx}</a></li>
+					    	<li><a href="${pageContext.request.contextPath}notice_list${Paging.makeSearch(idx)}">${idx}</a></li>
 					    </c:forEach>
 					
 					    <c:if test="${Paging.next && Paging.endPage > 0}">
-					    	<li><a href="notice_list${Paging.makeSearch(Paging.endPage + 1)}">다음</a></li>
+					    	<li><a href="${pageContext.request.contextPath}notice_list${Paging.makeSearch(Paging.endPage + 1)}">다음</a></li>
 					    </c:if> 
 					  </ul>
 					  </div>
