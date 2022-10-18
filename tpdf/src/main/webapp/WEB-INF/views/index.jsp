@@ -428,26 +428,10 @@ $("#SA_league").click(function () {
 </script>
 <body>
   <main>
-      <a id="hot_video" href="#">
-        <span>핫비디오 제목입니다</span>
-        <img src="${pageContext.request.contextPath}/resources/img/hot_video.png" alt="하이라이트 영상"  class="main_video">
-      </a>
-      <a class="issue_video" href="#">
-        <img src="${pageContext.request.contextPath}/resources/img/video.png" alt="영상" class="sub_video">
-        <span>영상 제목입니다. </span>
-        <p>출처</p>
-      </a>
-      <a class="issue_video" href="#">
-        <img src="${pageContext.request.contextPath}/resources/img/video.png" alt="영상" class="sub_video">
-        <span>영상 제목입니다.</span>
-        <p>출처</p>
-      </a>
-      <a class="issue_video" href="#">
-        <img src="${pageContext.request.contextPath}/resources/img/video.png" alt="영상" class="sub_video">
-        <span>영상 제목입니다.</span>
-        <p>출처</p>
-      </a>
-            
+    <div id="main_banner">
+    <a href="https://baltimoresportsandlife.com/english-premier-league-2022-2023-preview/" target="_blank"><img src="${pageContext.request.contextPath}/resources/img/main.jpeg" alt="메인 배너" /></a>
+    </div>
+    
     <hr class="clear_line">
     <hr class="mid_line">
     

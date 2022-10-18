@@ -15,9 +15,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/tpdf?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
-		<property name="username" value="tpdf" />
-		<property name="password" value="1234" />
+		<property name="url" value="jdbc:mysql://jjezen.cafe24.com:3307/devteam?&amp;verifyServerCertificate=false&amp;useSSL=false&amp;serverTimezone=UTC"/>
+		<property name="username" value="devteam" />
+		<property name="password" value="devteam1234!!" />
 	</bean>
 	
 	<!-- mybatis 연동을 위한 SqlSessionFactoryBean, SqlSessionTemplate 빈 등록 -->

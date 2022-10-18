@@ -6,6 +6,9 @@ a {color:black;}
 main {width:1200px; margin:0 auto 0;}
 hr.clear_line {clear:both; border:0;}
 
+#main_banner {float:left; padding-left:150px;}
+#main_banner img {width:900px; height:450px;}
+
 #hot_video {float:left; width:598px; height:450px; text-decoration:none;}
 #hot_video span {display:inline-block; position:relative; z-index:1; width:550px; height:100px;
 				 font-size:20px; text-decoration:none; margin:10px 0 0 10px;}
