@@ -22,17 +22,20 @@ hr.clear_line {clear:both; border:0;}
 #notice {float:left; width:598px; height:330px;}
 #notice span {display:inline-block; height:40px; font-size:25px; font-weight:bold;}
 #notice span:hover {text-decoration:underline;}
+#notice #notice_d{font-size:20px; color:red; font-weight:normal; height:27px;}
 #notice table {width:588px; font-size:20px; border-collapse: collapse;}
 #notice td {text-align:left;}
 #notice table tr:first-child {border:none; border-top:solid 2px gray;}
-#notice table td {border:none; border-bottom:solid 1px rgb(240,240,240); padding-left:10px;}
+#notice table td {border:none; border-bottom:solid 1px rgb(240,240,240); padding-left:10px; }
 #notice table td:hover {background:rgb(240, 240, 240);}
 #notice table td a {color:black; text-decoration:none;}
 #notice table td a:hover {text-decoration:underline;}
+#notice_title {color:#0099FF; font-weight:bold;}
 
 #board {float:left; width:598px; height:330px;}
-#board span {display:inline-block; height:40px; font-size:25px; font-weight:bold;}
+#board span {display:inline-block; height:40px; font-size:25px; font-weight:bold; }
 #board span:hover {text-decoration:underline;}
+#board #board_d{font-size:20px; color:red; font-weight:normal; height:27px;}
 #board table {width:588px; font-size:20px; border-collapse: collapse;}
 #board td {text-align:left;}
 #board table tr:first-child {border:none; border-top:solid 2px gray;}
@@ -40,6 +43,8 @@ hr.clear_line {clear:both; border:0;}
 #board table td:hover {background:rgb(240, 240, 240);}
 #board table td a {color:black; text-decoration:none;}
 #board table td a:hover {text-decoration:underline;}
+#board_title {color:#0099FF; font-weight:bold;}
+#title_inner {color:red;}
 
 #mid_banner {width:1200px; height:150px; text-align:center; margin:10px 0 10px 0;}
 #banner00 {max-width:1000px; max-height:150px;}

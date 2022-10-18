@@ -24,7 +24,7 @@
 			         	
 			                       ) MP
 			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-			ORDER BY hit DESC limit 5
+			ORDER BY hit DESC limit 8
 		</select>
 	
 	<select id="list2" resultType="com.tpdf.shoot.vo.NoticeVo" parameterType="com.tpdf.shoot.vo.SearchCriteria">
@@ -47,7 +47,7 @@
 			         	
 			                       ) MP
 			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-			ORDER BY hit DESC limit 5
+			ORDER BY hit DESC limit 8
 		</select>
   </mapper>
   

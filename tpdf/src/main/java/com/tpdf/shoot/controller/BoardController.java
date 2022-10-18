@@ -60,7 +60,7 @@ public class BoardController {
 		return request_mapping;
 		}
 		
-		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐
+		// 글 작성
 		@RequestMapping(value = "/board_write", method = RequestMethod.POST)
 		public String write(BoardVo BoardVo, MultipartHttpServletRequest mpRequest) throws Exception{
 			

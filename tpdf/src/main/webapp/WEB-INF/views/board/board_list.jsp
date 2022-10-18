@@ -74,8 +74,8 @@
 					    </c:if> 
 					
 					    <c:forEach begin="${Paging.startPage}" end="${Paging.endPage}" var="idx">
-					    	<li <c:out value="${Paging.cri.page == idx ? 'class=info' : ''}" />>
-					    	<li><a href="board_list${Paging.makeSearch(idx)}">${idx}</a></li>
+					    	<li id="mainpage" <c:out value="${Paging.cri.page == idx ? 'class=info' : ''}" />>
+					    	<li><a href="board_list${Paging.makeSearch(idx)}"><b>${idx}</b></a></li>
 					    </c:forEach>
 					
 					    <c:if test="${Paging.next && Paging.endPage > 0}">

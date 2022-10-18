@@ -92,7 +92,7 @@ $(document).ready(function () {
 		  
 		        
 	      error:function(request,status,error){        
-	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    	alert("잠시 후 새로고침 뒤 다시 시도해주시기바랍니다");
 	    }
 	    
 	}); 
@@ -148,10 +148,7 @@ $(document).ready(function () {
 			        
 		     
 		    },
-		      error:function(request,status,error){        
-		    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		    }
-		    
+	
 		});   
 	 
 }); 
@@ -215,9 +212,7 @@ $("#PL_league").click(function () {
 		        
 	     
 	    },
-	      error:function(request,status,error){        
-	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	    }
+	    
 	    
 	});  
 		      
@@ -286,10 +281,7 @@ $("#PD_league").click(function () {
 		        
 	     
 	    },
-	      error:function(request,status,error){        
-	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	    }
-	    
+	   
 	});  
 		      
 	
@@ -356,10 +348,7 @@ $("#BL1_league").click(function () {
 		        
 	     
 	    },
-	      error:function(request,status,error){        
-	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	    }
-	    
+	   
 	});  
 		      
 	
@@ -427,9 +416,7 @@ $("#SA_league").click(function () {
 		        
 	     
 	    },
-	      error:function(request,status,error){        
-	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	    }
+	  
 	    
 	});  
 		      
@@ -466,24 +453,20 @@ $("#SA_league").click(function () {
     
     <div id="notice">
       <a href="${pageContext.request.contextPath}/notice/notice_list"><span>새로운 소식</span></a>
-      <<table>
-						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
+      <table>
+						<tr></tr>
 						
 						<c:forEach items="${list2}" var = "list2">
 							<tr>
-								<td><c:out value="${list2.notice_idx}" /></td>
-								<td>
+								<td width="10%" id="notice_title">소식</td>
+								<td width="60%">
 								<a href="/notice/notice_readView?notice_idx=${list2.notice_idx}&
 																		page=${scri.page}&
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&
 																		keyword=${scri.keyword}">
-																		<c:out value="${list2.title}" /></a>
+																		<c:out value="${list2.title}" /></a>&nbsp&nbsp<span id="notice_d">[<c:out value="${list2.hit}"/>]</span>
 																		</td>
-								<td><c:out value="${list2.writer}" /></td>
-								<td><fmt:formatDate value="${list2.regDate}" pattern="MM-dd"/></td>
-							
-								<td><c:out value="${list2.hit}"/></td>
 								</tr>
 						</c:forEach>
 						
@@ -492,23 +475,20 @@ $("#SA_league").click(function () {
     <div id="board">
       <a href="${pageContext.request.contextPath}/board/board_list""><span>자유 게시판</span></a>
       <table>
-						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
+						<tr></tr>
 						
 						<c:forEach items="${blist}" var = "blist">
 							<tr>
-								<td><c:out value="${blist.board_idx}" /></td>
-								<td>
+								<td width="10%" id="board_title" colspan='2'>자유</td>
+								<td width="60%" nowrap>
 								<a href="/board/board_readView?board_idx=${blist.board_idx}&
 																		page=${scri.page}&
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&
 																		keyword=${scri.keyword}">
-																		<c:out value="${blist.title}" /></a>
+																		<c:out value="${blist.title}" /></a>&nbsp&nbsp<span id="board_d">[<c:out value="${blist.hit}"/>]</span>
 																		</td>
-								<td><c:out value="${blist.writer}" /></td>
-								<td><fmt:formatDate value="${blist.regDate}" pattern="MM-dd"/></td>
 							
-								<td><c:out value="${blist.hit}"/></td>
 								</tr>
 						</c:forEach>
 						
