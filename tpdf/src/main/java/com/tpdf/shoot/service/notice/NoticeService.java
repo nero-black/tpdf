@@ -9,6 +9,8 @@ import com.tpdf.shoot.vo.NoticeVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 
 public interface NoticeService {
+	// 인덱스 게시물 목록 조회
+	public List<NoticeVo> list2(SearchCriteria scri) throws Exception;
 	//게시글작성
 	public void write(NoticeVo noticeVo, MultipartHttpServletRequest mpRequest) throws Exception;
 	// 게시물 목록 조회

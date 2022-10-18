@@ -466,16 +466,25 @@ $("#SA_league").click(function () {
     
     <div id="notice">
       <a href="${pageContext.request.contextPath}/notice/notice_list"><span>새로운 소식</span></a>
-      <table>
-						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th></tr>
+      <<table>
+						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
 						
-						<c:forEach items="${list}" var = "list">
+						<c:forEach items="${list2}" var = "list2">
 							<tr>
-								<td><c:out value="${list.board_idx}" /></td>
-								<td><c:out value="${list.title}" /></td>
-								<td><c:out value="${list.writer}" /></td>
-								<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd"/></td>
-							</tr>
+								<td><c:out value="${list2.notice_idx}" /></td>
+								<td>
+								<a href="/notice/notice_readView?notice_idx=${list2.notice_idx}&
+																		page=${scri.page}&
+																		perPageNum=${scri.perPageNum}&
+																		searchType=${scri.searchType}&
+																		keyword=${scri.keyword}">
+																		<c:out value="${list2.title}" /></a>
+																		</td>
+								<td><c:out value="${list2.writer}" /></td>
+								<td><fmt:formatDate value="${list2.regDate}" pattern="MM-dd"/></td>
+							
+								<td><c:out value="${list2.hit}"/></td>
+								</tr>
 						</c:forEach>
 						
 					</table>
@@ -483,37 +492,27 @@ $("#SA_league").click(function () {
     <div id="board">
       <a href="${pageContext.request.contextPath}/board/board_list""><span>자유 게시판</span></a>
       <table>
-        <tr>
-          <td><a href="#">자유 게시글 제목1</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목2</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목3</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목4</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목5</a></td>
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목6</a></td> 
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목7</a></td> 
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목8</a></td> 
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목9</a></td> 
-        </tr>
-        <tr>
-          <td><a href="#">자유 게시글 제목10</a></td> 
-        </tr>
-      </table>
+						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th></tr>
+						
+						<c:forEach items="${blist}" var = "blist">
+							<tr>
+								<td><c:out value="${blist.board_idx}" /></td>
+								<td>
+								<a href="/board/board_readView?board_idx=${blist.board_idx}&
+																		page=${scri.page}&
+																		perPageNum=${scri.perPageNum}&
+																		searchType=${scri.searchType}&
+																		keyword=${scri.keyword}">
+																		<c:out value="${blist.title}" /></a>
+																		</td>
+								<td><c:out value="${blist.writer}" /></td>
+								<td><fmt:formatDate value="${blist.regDate}" pattern="MM-dd"/></td>
+							
+								<td><c:out value="${blist.hit}"/></td>
+								</tr>
+						</c:forEach>
+						
+					</table>
     </div> 
        
     <hr class="clear_line">

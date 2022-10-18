@@ -7,6 +7,8 @@ import com.tpdf.shoot.vo.NoticeVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 
 public interface NoticeDAO {
+	// 인덱스 게시물
+	public List<NoticeVo> list2(SearchCriteria scri) throws Exception;
 	//게시글 작성
 	public void write(NoticeVo noticeVo) throws Exception;
 	//게시물 목록 조회

@@ -17,6 +17,13 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
+	
+	//인덱스 보
+	@Override
+		public List<BoardVo> blist(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+			return sqlSession.selectList("mainMapper.blist", scri);
+	}
 	//게시물작성
 	@Override
 	public void write(BoardVo boardVo) throws Exception {

@@ -9,6 +9,8 @@ import com.tpdf.shoot.vo.BoardVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 
 public interface BoardService {
+	// 인덱스 보드
+	public List<BoardVo> blist(SearchCriteria scri) throws Exception;
 	//게시글작성
 	public void write(BoardVo boardVo, MultipartHttpServletRequest mpRequest) throws Exception;
 	// 게시물 목록 조회

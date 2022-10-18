@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="mainMapper">
+ 
+		<select id="blist" resultType="com.tpdf.shoot.vo.BoardVo" parameterType="com.tpdf.shoot.vo.SearchCriteria">
+			SELECT  board_idx, 
+			        title, 
+			        content,
+			        writer, 
+			        regDate,
+			        hit
+			 FROM ( 
+			        SELECT board_idx, 
+			               title, 
+			               content, 
+			               writer, 
+			               regDate, 
+			               hit,
+			               ROW_NUMBER() OVER(ORDER BY hit DESC) AS RNUM
+			         FROM board_tbl
+			         WHERE 1=1 
+			         	
+			                       ) MP
+			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+			ORDER BY hit DESC limit 5
+		</select>
+	
+	<select id="list2" resultType="com.tpdf.shoot.vo.NoticeVo" parameterType="com.tpdf.shoot.vo.SearchCriteria">
+			SELECT  notice_idx, 
+			        title, 
+			        content,
+			        writer, 
+			        regDate,
+			        hit
+			 FROM ( 
+			        SELECT notice_idx, 
+			               title, 
+			               content, 
+			               writer, 
+			               regDate, 
+			               hit,
+			               ROW_NUMBER() OVER(ORDER BY hit DESC) AS RNUM
+			         FROM notice_tbl
+			         WHERE 1=1 
+			         	
+			                       ) MP
+			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+			ORDER BY hit DESC limit 5
+		</select>
+  </mapper>
+  

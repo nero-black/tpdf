@@ -25,6 +25,14 @@ public class NoticeServiceImpl implements NoticeService {
 	@Inject
 	private NoticeDAO dao;
 	
+	// 게시물 목록 조회
+	@Override
+	public List<NoticeVo> list2(SearchCriteria scri) throws Exception {
+
+		return dao.list2(scri);
+	}
+	
+	
 	// 寃뚯떆湲� �옉�꽦
 	@Override
 	public void write(NoticeVo noticeVo, MultipartHttpServletRequest mpRequest) throws Exception {

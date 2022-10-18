@@ -17,6 +17,16 @@ public class NoticeDAOImpl implements NoticeDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
+	
+	// 게시물 목록 조회
+	@Override
+	public List<NoticeVo> list2(SearchCriteria scri) throws Exception {
+			
+		return sqlSession.selectList("mainMapper.list2", scri);
+
+	}
+	
+	
 	//게시물작성
 	@Override
 	public void write(NoticeVo noticeVo) throws Exception {

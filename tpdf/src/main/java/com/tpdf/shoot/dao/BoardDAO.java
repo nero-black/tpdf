@@ -7,6 +7,8 @@ import com.tpdf.shoot.vo.BoardVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 
 public interface BoardDAO {
+	//인덱스 보드
+	public List<BoardVo> blist(SearchCriteria scri) throws Exception;
 	//게시글 작성
 	public void write(BoardVo boardVo) throws Exception;
 	//게시물 목록 조회

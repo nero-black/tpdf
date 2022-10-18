@@ -6,36 +6,69 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import javax.inject.Inject;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.tpdf.shoot.service.video.VideoService;
-import com.tpdf.shoot.vo.VideoVo;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.tpdf.shoot.service.board.BoardService;
+import com.tpdf.shoot.service.notice.NoticeService;
+import com.tpdf.shoot.service.video.VideoService;
+import com.tpdf.shoot.vo.Paging;
+import com.tpdf.shoot.vo.SearchCriteria;
+import com.tpdf.shoot.vo.VideoVo;
 
 @Controller
 public class MainController {
 	private VideoService videoService;
+	
+	
+	@Inject
+	BoardService service;
+	
+	@Inject
+	NoticeService service2;
+	
+	
+	
+	// 인덱스 조회목록
+		@RequestMapping(value = "/", method = RequestMethod.GET)
+		public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+			
+			
+			Paging Paging = new Paging();
+			Paging.setCri(scri);
+			Paging.setTotalCount(service.listCount(scri));
+			model.addAttribute("Paging", Paging);
+			model.addAttribute("blist",service.blist(scri));
+			model.addAttribute("list2",service2.list2(scri));		
+			/* model.addAttribute("list",service.list()); */
+			List<VideoVo> videoList = videoService.video_list_index();
+			model.addAttribute("videoList", videoList);		
+					
+			return "index";
+					
+		}
+	
+	
+	
 
 	@Autowired(required = false)
 	public void setVideoService(@Qualifier("v_service") VideoService videoService) { // void setVideoServie <<impl을 쓰는한 이름 딱히 상관x?
 		this.videoService = videoService;
 	}
 	
-	@GetMapping("/")
-	public String index(Model model) {
-		List<VideoVo> videoList = videoService.video_list_index();
-		model.addAttribute("videoList", videoList);
-		return "index";
-	}
 	
 	@GetMapping("/index.do")
 	public String index2(Model model) {

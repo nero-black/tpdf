@@ -24,6 +24,14 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 	
+	
+	// 인덱스보드
+	@Override
+	public List<BoardVo> blist(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.blist(scri);
+	}
+	
 	// 게시글 작성
 	@Override
 	public void write(BoardVo boardVo, MultipartHttpServletRequest mpRequest) throws Exception {
