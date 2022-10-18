@@ -98,7 +98,7 @@ public class MemberController {
 		
 		if (member_check != null) {
 			
-			request_mapping = "<script>location.href='index.do'</script>";
+			request_mapping = "<script>location.href='/'</script>";
 			
 			session.setAttribute("member_idx", member_check.getMember_idx());
 			session.setAttribute("member_id", member_check.getMember_id());
@@ -115,7 +115,7 @@ public class MemberController {
 	@RequestMapping("/log_out.do")
 	public String log_out(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>location.href='index.do'</script>";
+		String request_mapping = "<script>location.href='/'</script>";
 	
 	return request_mapping;
 	}
@@ -124,7 +124,7 @@ public class MemberController {
 	@RequestMapping("/dropped.do")
 	public String dropped(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='index.do'</script>";
+		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='/'</script>";
 	
 	return request_mapping;
 	}
@@ -286,7 +286,7 @@ public class MemberController {
 		memberService.member_drop(memberVo); // 회원 탈퇴처리
 		
 		session.invalidate();
-		String request_mapping = "<script>alert('정상적으로 회원 탈퇴 처리되었습니다.');"+ "location.href='index.do'</script>";
+		String request_mapping = "<script>alert('정상적으로 회원 탈퇴 처리되었습니다.');"+ "location.href='/'</script>";
 
 		return request_mapping;
 	}

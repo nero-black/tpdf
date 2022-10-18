@@ -50,7 +50,7 @@
 	
 	<header id="header">
 	<div id="header_div">
-	 <a href="${pageContext.request.contextPath}/index.do"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고" id="logo"></a>
+	 <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="로고" id="logo"></a>
 	
 	 <nav id="menu">
 	   <a href="${pageContext.request.contextPath}/notice/notice_list">뉴스</a> |
