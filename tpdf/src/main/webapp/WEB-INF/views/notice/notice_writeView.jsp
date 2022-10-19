@@ -20,8 +20,8 @@
 					$(".write_btn").on("click", function(){
 						if(fn_valiChk()){
 							return false;
-						}
-						formObj.attr("action", "${pageContext.request.ConptextPath}/notice/notice_write");
+						} 
+						formObj.attr("action", "${pageContext.request.contextPath}/notice/notice_write");
 						formObj.attr("method", "post");
 						formObj.submit();
 					});

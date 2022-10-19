@@ -46,7 +46,7 @@ public class BoardController {
 		@RequestMapping("/need_login.do")
 		public String need_login(HttpSession session) {
 			session.invalidate();
-			String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='board_list.do'</script>";
+			String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='/dogfoot/board_list.do'</script>";
 		
 		return request_mapping;
 		}
@@ -55,7 +55,7 @@ public class BoardController {
 		@ResponseBody
 		@RequestMapping("/invaid_update.do")
 		public String invaid_update(HttpSession session) {
-			String request_mapping = "<script>alert('비정상적인 접근입니다.');"+ "location.href='board_list.do'</script>";
+			String request_mapping = "<script>alert('비정상적인 접근입니다.');"+ "location.href='/dogfoot/board_list.do'</script>";
 		
 		return request_mapping;
 		}

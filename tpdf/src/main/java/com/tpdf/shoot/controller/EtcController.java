@@ -1067,7 +1067,7 @@ public class EtcController {
 	public String live_video() {
 		
 		String request_mapping = "<script>alert('진행중인 실시간 방송이 없습니다.');"
-				+ "location.href='/rank.do'</script>";
+				+ "location.href='/dogfoot/rank.do'</script>";
 		
 		return request_mapping;
 	}

@@ -56,7 +56,7 @@
 			
 			//댓글 수정 View
 			$(".replyUpdateBtn").on("click", function(){
-				location.href = "/notice/notice_replyUpdateView?notice_idx=${read.notice_idx}"
+				location.href = "${pageContext.request.contextPath}/notice/notice_replyUpdateView?notice_idx=${read.notice_idx}"
 								+ "&page=${scri.page}"
 								+ "&perPageNum=${scri.perPageNum}"
 								+ "&searchType=${scri.searchType}"
@@ -66,7 +66,7 @@
 					
 			//댓글 삭제 View
 			$(".replyDeleteBtn").on("click", function(){
-				location.href = "/notice/notice_replyDeleteView?notice_idx=${read.notice_idx}"
+				location.href = "${pageContext.request.contextPath}/notice/notice_replyDeleteView?notice_idx=${read.notice_idx}"
 								+ "&page=${scri.page}"
 								+ "&perPageNum=${scri.perPageNum}"
 								+ "&searchType=${scri.searchType}"

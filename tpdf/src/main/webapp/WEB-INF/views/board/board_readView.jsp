@@ -47,14 +47,14 @@
 			// 목록
 			$(".list_btn").on("click", function(){
 			
-			location.href = "/board/board_list?page=${scri.page}"
+			location.href = "${pageContext.request.contextPath}/board/board_list?page=${scri.page}"
 			+"&perPageNum=${scri.perPageNum}"
 			+"&searchType=${scri.searchType}&keyword=${scri.keyword}";
 			})
 			//댓글작성 
 			$(".replyWriteBtn").on("click", function(){
 				  var formObj = $("form[name='replyForm']");
-				  formObj.attr("action", "/board/board_replyWrite");
+				  formObj.attr("action", "${pageContext.request.contextPath}/board/board_replyWrite");
 				  formObj.submit();
 				});
 			

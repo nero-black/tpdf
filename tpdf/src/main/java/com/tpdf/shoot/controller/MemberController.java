@@ -79,7 +79,7 @@ public class MemberController {
 		+member_tel +"/"+ member_gender +"/"+ member_birth +"/"+ member_addr);
 		*/
 		
-		String request_mapping = "<script>alert('회원가입이 완료되었습니다.');"+ "location.href='${pageContext.request.contextPath}/login.do'</script>";
+		String request_mapping = "<script>alert('회원가입이 완료되었습니다.');"+ "location.href='/dogfoot/login.do'</script>";
 			memberService.join_process(memberVo); // 회원가입 처리
 			return request_mapping;
 	}
@@ -95,14 +95,14 @@ public class MemberController {
 		
 		MemberVo member_check = memberService.login_check(memberVo); // 회원 여부 확인
 
-		String request_mapping = "<script>alert('아이디 또는 비밀번호를 확인해주세요.');"+ "location.href='/login.do'</script>";
+		String request_mapping = "<script>alert('아이디 또는 비밀번호를 확인해주세요.');"+ "location.href='/dogfoot/login.do'</script>";
 		
 		int drop_check = memberService.drop_check(memberVo);
-		if (drop_check == 1) { request_mapping = "<script>location.href='/dropped.do'</script>"; }
+		if (drop_check == 1) { request_mapping = "<script>location.href='/dogfoot/dropped.do'</script>"; }
 		
 		if (member_check != null) {
 			
-			request_mapping = "<script>location.href='${pageContext.request.contextPath}/'</script>";
+			request_mapping = "<script>location.href='/dogfoot/'</script>";
 			
 			session.setAttribute("member_idx", member_check.getMember_idx());
 			session.setAttribute("member_id", member_check.getMember_id());
@@ -119,7 +119,7 @@ public class MemberController {
 	@RequestMapping("/log_out.do")
 	public String log_out(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>location.href='${pageContext.request.contextPath}/'</script>";
+		String request_mapping = "<script>location.href='/dogfoot/'</script>";
 	
 	return request_mapping;
 	}
@@ -128,7 +128,7 @@ public class MemberController {
 	@RequestMapping("/dropped.do")
 	public String dropped(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='${pageContext.request.contextPath}/'</script>";
+		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='/dogfoot/'</script>";
 	
 	return request_mapping;
 	}
@@ -137,7 +137,7 @@ public class MemberController {
 	@RequestMapping("/need_login.do")
 	public String need_login(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='${pageContext.request.contextPath}/login.do'</script>";
+		String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='/dogfoot/login.do'</script>";
 	
 	return request_mapping;
 	}
@@ -205,11 +205,11 @@ public class MemberController {
 	@PostMapping("/mypage_check_process.do")
 	public String mypage_check_process(MemberVo memberVo, HttpServletRequest request) {
 
-		String request_mapping = "<script>alert('비밀번호가 틀렸습니다.');"+ "location.href='mypage_check.do'</script>";
+		String request_mapping = "<script>alert('비밀번호가 틀렸습니다.');"+ "location.href='/dogfoot/mypage_check.do'</script>";
 		int result = memberService.member_check(memberVo); // 일치 여부 확인
 
 		if (result == 1) {
-			request_mapping = "<script>location.href='mypage.do'</script>";
+			request_mapping = "<script>location.href='/dogfoot/mypage.do'</script>";
 		}
 
 		return request_mapping;
@@ -263,7 +263,7 @@ public class MemberController {
 		
 		memberService.member_modify(memberVo);
 		
-		String request_mapping = "<script>alert('회원 정보가 수정되었습니다.');"+ "location.href='mypage.do'</script>";
+		String request_mapping = "<script>alert('회원 정보가 수정되었습니다.');"+ "location.href='/dogfoot/mypage.do'</script>";
 
 		return request_mapping;
 		
