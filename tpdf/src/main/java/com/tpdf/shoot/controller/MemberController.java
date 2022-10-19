@@ -28,10 +28,9 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
-	@GetMapping("/")
-	public String index() {
-		return "index";
-	}
+	/*
+	 * @GetMapping("/") public String index3() { return "index"; }
+	 */
 	
 	@GetMapping("/join.do")
 	public String join() {
