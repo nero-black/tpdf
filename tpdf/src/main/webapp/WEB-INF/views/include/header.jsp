@@ -26,22 +26,22 @@
 	<c:choose>
 		<c:when test = "${member_grade == 2 && member_drop == 'n'}">
 			<nav id="admin">
-			  <a><b style="color:red;">관리자</b></a>님 |
-			  <b style="color:black;"><a href="${pageContext.request.contextPath}/admin_index.do" style="color:black;">관리자 페이지</a></b> |
+			  <a><b style="color:red;">관리자</b></a>님
+			  <b style="color:black;"><a href="${pageContext.request.contextPath}/admin_index.do" style="color:black;">관리자 페이지</a></b>
 			  <a style="color:black;" href="${pageContext.request.contextPath}/log_out.do">로그아웃</a>
 			</nav>
 		</c:when>
 		<c:when test = "${member_grade == 1 && member_drop == 'n'}">
 			<nav id="member">
-			  <a><b>${member_name}</b></a>님 |
-			  <a style="color:#1DDB16"><b>${member_point}p</b></a> |
-			  <a style="color:black;"><a href="${pageContext.request.contextPath}/mypage_check.do">마이 페이지</a> |
+			  <a><b>${member_name}</b></a>님
+			  <a style="color:#1DDB16"><b>${member_point}p</b></a>
+			  <a style="color:black;" href="${pageContext.request.contextPath}/mypage_check.do">마이 페이지</a>
 			  <a style="color:black;" href="${pageContext.request.contextPath}/log_out.do">로그아웃</a>
 			</nav>
 		</c:when>
 		<c:otherwise>
 			<nav id="guest">
-			  <a href="${pageContext.request.contextPath}/login.do">로그인</a> |
+			  <a href="${pageContext.request.contextPath}/login.do">로그인</a>
 			  <a href="${pageContext.request.contextPath}/join.do">회원가입</a>
 			</nav>
 		</c:otherwise>

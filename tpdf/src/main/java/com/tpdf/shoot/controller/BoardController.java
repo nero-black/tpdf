@@ -87,8 +87,8 @@ public class BoardController {
 		
 		// 野껊슣�뻻占쎈솇 鈺곌퀬�돳
 		@RequestMapping(value = "/board_readView", method = RequestMethod.GET)
-		public String read(BoardVo boardVo, Model model, @ModelAttribute("scri") SearchCriteria scri, HttpSession session) throws Exception{
-			
+		public String read(BoardVo boardVo, int board_idx, Model model, @ModelAttribute("scri") SearchCriteria scri, HttpSession session) throws Exception{
+			service.updateReplyCount(board_idx);
 			// 새로 추가한 부분 (new code)
 			Object grade = session.getAttribute("member_grade");
 

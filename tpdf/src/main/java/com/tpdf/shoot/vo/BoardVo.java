@@ -10,8 +10,15 @@ public class BoardVo {
 	private Date regDate;
 	private int hit;
 	private String stored_file_name;
+	private String reply_count;
 	
 	
+	public String getReply_count() {
+		return reply_count;
+	}
+	public void setReply_count(String reply_count) {
+		this.reply_count = reply_count;
+	}
 	public String getStored_file_name() {
 		return stored_file_name;
 	}

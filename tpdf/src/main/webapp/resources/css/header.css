@@ -18,12 +18,12 @@ hr.clear_line {clear:both; border:0;}
 			 color:black; text-decoration:none;}
 
 #logo {float:left; width:250px; height:100px;}
-#guest {display:block; width:1200px; margin:0 auto; text-align:right;} /* 로그인 안함  */
-#guest a {text-decoration:none; color:black;}
-#member {display:block; width:1200px; margin:0 auto; text-align:right;} /* 일반 회원 */
-#member a {text-decoration:none;}
-#admin {display:block; width:1200px; margin:0 auto; text-align:right;} /* 관리자 */
-#admin a {text-decoration:none;}
+#guest {display:block; width:1200px; margin:10px auto 10px; text-align:right;} /* 로그인 안함  */
+#guest a {text-decoration:none; color:black; padding:0 10px 0;}
+#member {display:block; width:1200px; margin:10px auto 10px; text-align:right;} /* 일반 회원 */
+#member a {text-decoration:none;  padding:0 10px 0;}
+#admin {display:block; width:1200px; margin:10px auto 10px; text-align:right;} /* 관리자 */
+#admin a {text-decoration:none;  padding:0 10px 0;}
 
 
 #menu {display:inline-block; width:900px; height:100px; margin-left:50px;

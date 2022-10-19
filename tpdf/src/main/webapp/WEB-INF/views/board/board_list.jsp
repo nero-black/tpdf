@@ -35,6 +35,9 @@
 																		searchType=${scri.searchType}&
 																		keyword=${scri.keyword}">
 																		<c:out value="${list.title}" /></a>
+																		<c:if test="${list.reply_count ne 0}">
+																		<span id="board_d">[<c:out value="${list.reply_count}"/>]</span>
+																		</c:if>
 								</td>
 								<td><c:out value="${list.writer}" /></td>
 								<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd"/></td>

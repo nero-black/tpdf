@@ -14,11 +14,12 @@ hr.clear_line {clear:both; border:0;}
 
 #league_menu ul {text-align:center;}
 
+/* #table_th {background:black; color:white;} */
+
 table {border-collapse: collapse; text-align:center;}
-table th{background-color:#FFD700;}
-table td {border-bottom:solid 1px black; background:color:#FFFACD;}
+table td {border-bottom:solid 1px black;}
 table td:nth-child(2) {text-align:left;}
-table tr:first-child {background:rgb(255, 255, 255); border-bottom:double 2px black;}
+table tr:first-child {background:rgb(255, 255, 255); border-top:double 2px black; border-bottom:double 2px black;}
 table tr:first-child:hover {background:rgb(255, 255, 255);}
 table tr:hover {background:rgb(240, 240, 240);}
 

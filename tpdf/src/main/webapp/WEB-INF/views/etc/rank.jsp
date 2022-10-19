@@ -64,7 +64,7 @@ $(document).ready(function () {
 		    	  }   
 		       });
 		      
-		    	  $("#rank").html("<table width=100%  border-collapse: collapse; >"
+		    	  $("#rank").html("<table width=100% border-collapse: collapse; >"
 		    			  		+"<th>순위</th>"
 		    			  		+"<th align='left'>팀</th>"
 		    			  		+"<th>경기수</th>"
@@ -82,7 +82,7 @@ $(document).ready(function () {
 	     
 	    },
 	      error:function(request,status,error){        
-	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    	alert("잠시후 다시 시도해 주시기 바랍니다");
 	    }
 	    
 	});

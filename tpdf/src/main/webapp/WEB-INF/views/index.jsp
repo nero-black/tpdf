@@ -449,7 +449,7 @@ $("#SA_league").click(function () {
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&
 																		keyword=${scri.keyword}">
-																		<c:out value="${list2.title}" /></a>&nbsp&nbsp<span id="notice_d">[<c:out value="${list2.hit}"/>]</span>
+																		<c:out value="${list2.title}" /></a>&nbsp&nbsp
 																		</td>
 								</tr>
 						</c:forEach>
@@ -470,7 +470,10 @@ $("#SA_league").click(function () {
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&
 																		keyword=${scri.keyword}">
-																		<c:out value="${blist.title}" /></a>&nbsp&nbsp<span id="board_d">[<c:out value="${blist.hit}"/>]</span>
+																		<c:out value="${blist.title}" /></a>&nbsp&nbsp
+																		<c:if test="${blist.reply_count ne 0}">
+																		<span id="board_d">[<c:out value="${blist.reply_count}"/>]</span>
+																		</c:if>
 																		</td>
 							
 								</tr>

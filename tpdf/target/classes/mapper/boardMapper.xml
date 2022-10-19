@@ -11,13 +11,21 @@
 	                 VALUES(#{title}, #{content} , #{writer}  )
    
    </insert>
+   
+   <update id="countupdate" parameterType="int">
+		update board_tbl b
+		set b.reply_count = (select count(board_reply_idx) from board_reply_tbl where board_idx = #{board_idx})
+		where b.board_idx = #{board_idx}
+	</update>
+   
 		<select id="listPage" resultType="com.tpdf.shoot.vo.BoardVo" parameterType="com.tpdf.shoot.vo.SearchCriteria">
 			SELECT  board_idx, 
 			        title, 
 			        content,
 			        writer, 
 			        regDate,
-			        hit
+			        hit,
+			        reply_count
 			 FROM ( 
 			        SELECT board_idx, 
 			               title, 
@@ -25,6 +33,7 @@
 			               writer, 
 			               regDate, 
 			               hit,
+			               reply_count,
 			               ROW_NUMBER() OVER(ORDER BY board_idx DESC) AS RNUM
 			         FROM board_tbl
 			         WHERE 1=1 

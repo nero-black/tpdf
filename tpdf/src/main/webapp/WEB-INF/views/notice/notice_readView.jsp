@@ -96,7 +96,7 @@
 					<!-- <label for="title" class="col-sm-2 control-label">제목</label> -->
 					<pre><input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" /></pre>
 				</div>
-				<hr style="width:1010px; margin-top:10px; margin-left:100px;" />
+				<hr style="width:1200px; margin-top:10px; margin-left:0px;" />
 				
 				<div class="form-group">
 					<!-- <label for="writer" class="col-sm-2 control-label">작성자</label> -->
@@ -118,19 +118,19 @@
 					
 					<!-- <label for="content" class="col-sm-2 control-label">내용</label> -->
 					<c:forEach var="file" items="${file}">
-					<img src="${pageContext.request.contextPath}/resources/img/notice/${file.origin_file_name}" width="300px;" height="200px;"> 
+					<img id="file" src="${pageContext.request.contextPath}/resources/img/notice/${file.origin_file_name}"> 
 					</c:forEach>
 					<div id="content">
 					<pre style="font-size:15px;"><!-- <textarea id="content" class="form-control" style="border:none;"> --> <c:out value="${read.content}" /> <!-- </textarea> --></pre>
 					</div>
 					
 				</div>
-				<span>파일 목록</span>
+				<%-- <span>파일 목록</span>
 					<div class="form-group" style="border: 1px solid #dbdbdb;">
 						<c:forEach var="file" items="${file}">
 							${file.origin_file_name}(${file.file_size}kb)<br>
 						</c:forEach>
-					</div>
+					</div> --%>
 				<hr class="clear_line" />
 				
 				<hr style="width:1200px; margin-top:10px; margin-left:0px;" /> <!-- margin-left:100px; -->

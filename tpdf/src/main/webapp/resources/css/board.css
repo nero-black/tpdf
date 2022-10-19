@@ -24,7 +24,7 @@ hr.clear_line {clear:both; border:0;}
 #board td:nth-child(4) {width:180px;}
 #board td:nth-child(5) {width:90px;}
 #board td a:hover {text-decoration:underline;}
-
+#board #board_d{font-size:20px; color:red; font-weight:normal; height:27px;}
 
 #page {display:inline-block; width:630px; height:30px; margin-left:285px; text-align:center;
 	   font-size:18px; color:black; text-decoration:none;}

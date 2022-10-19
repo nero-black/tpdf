@@ -14,8 +14,11 @@ main {width:1200px; margin:0 auto; padding-bottom:50px; margin-bottom:50px;}
 		font-size:20px; line-height:25px; color:black; text-align:center; text-decoration:none;}
 .mid_line {border:solid 0.5px gray; margin:10px auto 10px auto;}
 #content {width:1000px; font-size:15px; padding:10px 0 200px 10px; margin:30px 0 0 100px;}
-#file {width:1000px; padding-left:10px; margin:30px 0 0 100px;}
-#file img {display:inline-block; max-width:1000px; max-height:500px;}
+
+#file {max-width:1200px; max-height:800px; margin:10px 0 0 10px;}
+
+#1file {width:1000px; padding-left:10px; margin:30px 0 0 100px;}
+#1file img {display:inline-block; max-width:1000px; max-height:500px;}
 
 #post_menu {margin-top:10px;}
 

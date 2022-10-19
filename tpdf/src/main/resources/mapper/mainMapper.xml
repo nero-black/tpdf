@@ -10,7 +10,8 @@
 			        content,
 			        writer, 
 			        regDate,
-			        hit
+			        hit,
+			        reply_count
 			 FROM ( 
 			        SELECT board_idx, 
 			               title, 
@@ -18,6 +19,7 @@
 			               writer, 
 			               regDate, 
 			               hit,
+			               reply_count,
 			               ROW_NUMBER() OVER(ORDER BY hit DESC) AS RNUM
 			         FROM board_tbl
 			         WHERE 1=1 

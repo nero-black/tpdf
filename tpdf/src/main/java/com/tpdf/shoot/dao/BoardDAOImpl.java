@@ -18,6 +18,11 @@ public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
+	
+	@Override
+	public void updateReplyCount(int board_idx) throws Exception {
+		sqlSession.update("boardMapper.countupdate", board_idx);
+	}
 	//인덱스 보
 	@Override
 		public List<BoardVo> blist(SearchCriteria scri) throws Exception {

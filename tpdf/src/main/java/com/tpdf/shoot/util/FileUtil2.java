@@ -17,14 +17,17 @@ import com.tpdf.shoot.vo.NoticeVo;
 @Component("fileUtil2")
 public class FileUtil2 {
 	//깃허브용
-    private static final String filePath = "${pageContext.request.ContextPath}\\resources\\img\\notice\\"; 
+	/*
+	 * private static final String filePath =
+	 * "${pageContext.request.ContextPath}\\resources\\img\\notice\\";
+	 */
 	//서버용
 	//private static final String filePath = "C:\\Users\\71100\\Desktop\\workspace\\tpdf\\src\\main\\webapp\\resources\\img\\notice\\";
 	
 	public List<Map<String, Object>> parseInsertFileInfo2(NoticeVo noticeVo, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
 	
-		
+		String filePath = mpRequest.getSession().getServletContext().getRealPath("/resources/img/notice/");
 		
 		Iterator<String> iterator = mpRequest.getFileNames();
 		

@@ -28,7 +28,7 @@ public class FileUtil {
 	
 	public List<Map<String, Object>> parseInsertFileInfo(BoardVo boardVo, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
-		String filePath = mpRequest.getSession().getServletContext().getRealPath("/resources/img/notice/");
+		String filePath = mpRequest.getSession().getServletContext().getRealPath("/resources/img/board/");
 		
 		System.out.println(filePath);
 		/*

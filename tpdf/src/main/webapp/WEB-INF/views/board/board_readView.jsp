@@ -100,7 +100,7 @@
 					<!-- <label for="title" class="col-sm-2 control-label">제목</label>  -->
 					<pre><input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" /></pre>
 				</div>
-				<hr style="width:1010px; margin-top:10px; margin-left:100px;" />
+				<hr style="width:1200px; margin-top:10px; margin-left:100px;" />
 				<div class="form-group">
 					<!-- <label for="writer" class="col-sm-2 control-label">작성자</label> -->
 					<input type="text" id="writer" name="writer" class="form-control" value="${read.writer}"  readonly="readonly"/>
@@ -117,7 +117,7 @@
 					
 					<!-- <label for="content" class="col-sm-2 control-label">내용</label> -->
 					<c:forEach var="file" items="${file}">
-					<img id="file" src="/resources/img/board/${file.origin_file_name}" width="300px;" height="200px;"> 
+					<img id="file" src="${pageContext.request.contextPath}/resources/img/board/${file.origin_file_name}">
 					</c:forEach>
 					<div id="ex">
 					사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시) 사진을 대신해 넣어본 div (임시)
@@ -126,12 +126,12 @@
 					<pre><!-- <textarea id="content" name="content" class="form-control" readonly="readonly"> --><c:out value="${read.content}" /><!-- </textarea> --></pre>
 					</div>
 				</div>
-				<span>파일 목록</span>
+				<%-- <span>파일 목록</span>
 					<div class="form-group" style="border: 1px solid #dbdbdb;">
 						<c:forEach var="file" items="${file}">
 							${file.origin_file_name}(${file.file_size}kb)<br>
 						</c:forEach>
-					</div>
+					</div> --%>
 				
 				<hr style="width:1200px; margin-top:10px; margin-left:0px;" /> <!-- margin-left:100px; -->
 				

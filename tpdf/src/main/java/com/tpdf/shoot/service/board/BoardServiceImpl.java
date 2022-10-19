@@ -24,7 +24,11 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 	
-	
+	//보드 댓글 갯수
+	@Override
+	public void updateReplyCount(int board_idx) throws Exception {
+		dao.updateReplyCount(board_idx);
+	}
 	// 인덱스보드
 	@Override
 	public List<BoardVo> blist(SearchCriteria scri) throws Exception {

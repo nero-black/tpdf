@@ -7,6 +7,8 @@ import com.tpdf.shoot.vo.BoardVo;
 import com.tpdf.shoot.vo.SearchCriteria;
 
 public interface BoardDAO {
+	//보드 댓글 갯수 
+	public void updateReplyCount(int board_idx) throws Exception;
 	//인덱스 보드
 	public List<BoardVo> blist(SearchCriteria scri) throws Exception;
 	//게시글 작성

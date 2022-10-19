@@ -7,22 +7,24 @@
 main {width:1200px; margin:0 auto; margin-bottom:50px;}
 .clear_line {clear:both; border:solid 2px red;}
 
-#title {display:inline-block; width:1000px; height:30px; padding-left:10px; margin:0 20px 0 100px; border:none;
+#title {display:inline-block; width:1000px; height:30px; padding-left:10px; margin:0 20px 0 10px; border:none;
 		font-size:20px; font-weight:bold; line-height:30px;}
-#writer {display:inline-block; width:200px; height:30px; margin:10px 0 0 100px; font-size:20px; padding-left:10px; border:none;}
+#writer {display:inline-block; width:200px; height:30px; margin:10px 0 0 10px; font-size:20px; padding-left:10px; border:none;}
 #wdate {display:inline-block; width:200px; height:30px; font-size:20px; text-align:center;}
 #hit {display:inline-block; width:200px; height:30px; margin:10px 20px 0 189px; font-size:20px; text-align:right;}
 #share {display:inline-block; width:184px; height:25px; margin:10px 0 0 20px; background:whitesmoke; border:solid 1px gray;
 		font-size:20px; line-height:25px; color:black; text-align:center; text-decoration:none;}
 .mid_line {border:solid 0.5px gray; margin:10px auto 10px auto;}
 
-#content {display:inline-block; width:1000px; font-size:15px; padding:10px 0 100px 10px; margin:30px 0 0 100px; border:none;}
+#content {display:inline-block; width:1000px; font-size:15px; padding:10px 0 100px 10px; margin:30px 0 0 10px; border:none;}
 
 #ex {display:none; max-width:1000px; max-height:500px; border:solid 1px red; padding-left:10px;  margin:30px 0 0 100px; text-align:center;}
 
 .replyList {list-style:none;}
 
 .form-group {display:inline-block;}
+
+#file {max-width:1200px; max-height:800px; margin:10px 0 0 10px;}
 
 #1file {width:1000px; padding-left:10px; margin:30px 0 0 100px;}
 #1file img {display:inline-block; max-width:1000px; max-height:500px;}
