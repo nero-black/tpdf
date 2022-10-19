@@ -21,7 +21,7 @@
 						if(fn_valiChk()){
 							return false;
 						}
-						formObj.attr("action", "/notice/notice_write");
+						formObj.attr("action", "${pageContext.request.ConptextPath}/notice/notice_write");
 						formObj.attr("method", "post");
 						formObj.submit();
 					});

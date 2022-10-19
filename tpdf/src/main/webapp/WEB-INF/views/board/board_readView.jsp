@@ -100,7 +100,7 @@
 					<!-- <label for="title" class="col-sm-2 control-label">제목</label>  -->
 					<pre><input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" /></pre>
 				</div>
-				<hr style="width:1200px; margin-top:10px; margin-left:100px;" />
+				<hr style="width:1200px; margin-top:10px; margin-left:0px;" />
 				<div class="form-group">
 					<!-- <label for="writer" class="col-sm-2 control-label">작성자</label> -->
 					<input type="text" id="writer" name="writer" class="form-control" value="${read.writer}"  readonly="readonly"/>

@@ -28,6 +28,11 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+	
 	@GetMapping("/join.do")
 	public String join() {
 		return "member/join";
@@ -75,7 +80,7 @@ public class MemberController {
 		+member_tel +"/"+ member_gender +"/"+ member_birth +"/"+ member_addr);
 		*/
 		
-		String request_mapping = "<script>alert('회원가입이 완료되었습니다.');"+ "location.href='/login.do'</script>";
+		String request_mapping = "<script>alert('회원가입이 완료되었습니다.');"+ "location.href='${pageContext.request.contextPath}/login.do'</script>";
 			memberService.join_process(memberVo); // 회원가입 처리
 			return request_mapping;
 	}
@@ -98,7 +103,7 @@ public class MemberController {
 		
 		if (member_check != null) {
 			
-			request_mapping = "<script>location.href='/'</script>";
+			request_mapping = "<script>location.href='${pageContext.request.contextPath}/'</script>";
 			
 			session.setAttribute("member_idx", member_check.getMember_idx());
 			session.setAttribute("member_id", member_check.getMember_id());
@@ -115,7 +120,7 @@ public class MemberController {
 	@RequestMapping("/log_out.do")
 	public String log_out(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>location.href='/'</script>";
+		String request_mapping = "<script>location.href='${pageContext.request.contextPath}/'</script>";
 	
 	return request_mapping;
 	}
@@ -124,7 +129,7 @@ public class MemberController {
 	@RequestMapping("/dropped.do")
 	public String dropped(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='/'</script>";
+		String request_mapping = "<script>alert('탈퇴된 회원입니다.');"+ "location.href='${pageContext.request.contextPath}/'</script>";
 	
 	return request_mapping;
 	}
@@ -133,7 +138,7 @@ public class MemberController {
 	@RequestMapping("/need_login.do")
 	public String need_login(HttpSession session) {
 		session.invalidate();
-		String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='login.do'</script>";
+		String request_mapping = "<script>alert('로그인 해야 합니다.');"+ "location.href='${pageContext.request.contextPath}/login.do'</script>";
 	
 	return request_mapping;
 	}

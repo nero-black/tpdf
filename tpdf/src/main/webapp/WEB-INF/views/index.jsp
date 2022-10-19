@@ -444,7 +444,7 @@ $("#SA_league").click(function () {
 							<tr>
 								<td width="10%" id="notice_title">소식</td>
 								<td width="60%">
-								<a href="/notice/notice_readView?notice_idx=${list2.notice_idx}&
+								<a href="${pageContext.request.contextPath}/notice/notice_readView?notice_idx=${list2.notice_idx}&
 																		page=${scri.page}&
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&
@@ -465,7 +465,7 @@ $("#SA_league").click(function () {
 							<tr>
 								<td width="10%" id="board_title" colspan='2'>자유</td>
 								<td width="60%" nowrap>
-								<a href="/board/board_readView?board_idx=${blist.board_idx}&
+								<a href="${pageContext.request.contextPath}/board/board_readView?board_idx=${blist.board_idx}&
 																		page=${scri.page}&
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&

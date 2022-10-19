@@ -29,7 +29,7 @@
 							<tr>
 								<td><c:out value="${list.board_idx}" /></td>
 								<td>
-									<a href="/board/board_readView?board_idx=${list.board_idx}&
+									<a href="${pageContext.request.contextPath}/board/board_readView?board_idx=${list.board_idx}&
 																		page=${scri.page}&
 																		perPageNum=${scri.perPageNum}&
 																		searchType=${scri.searchType}&

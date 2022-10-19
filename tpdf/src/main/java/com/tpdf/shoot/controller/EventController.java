@@ -28,6 +28,7 @@ public class EventController {
 		this.eventService = eventService;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/event_list.do")
 	public String event(Model model, HttpSession session, MemberVo memberVo, HttpServletRequest request) {
 		List<EventVo> eventList = eventService.event_list();
@@ -56,7 +57,9 @@ public class EventController {
 			// System.out.println("stop여부가 y입니다.");
 		}
 		
-		return "event/event";
+		String result_mapping = "<script>location.href='${pageContext.request.contextPath}/event_list.do'</script>";
+		
+		return result_mapping;
 	}
 	
 	@GetMapping("/event_add.do")
@@ -73,7 +76,7 @@ public class EventController {
 		
 		if (result == 1) { // 이벤트 추가 성공
 			
-			event_add_after = "event/event_add_process";
+			event_add_after = "${pageContext.request.contextPath}/event/event_add_process";
 			
 			List<EventVo> eventList = eventService.event_list();
 			model.addAttribute("eventList", eventList);
@@ -108,11 +111,11 @@ public class EventController {
 				int after_point = memberVo.getMember_point(); // 처리후 남은 포인트
 				session.setAttribute("member_point",after_point); // 세션에 대입
 				String result_mapping = "<script>alert('베팅이 완료되었습니다.');"
-						+ "location.href='/event_list.do'</script>";
+						+ "location.href='${pageContext.request.contextPath}/event_list.do'</script>";
 				return result_mapping;
 			} else {
 				String result_mapping = "<script>alert('베팅에 사용할 포인트가 부족합니다.');"
-										+ "location.href='/event_list.do'</script>";
+										+ "location.href='${pageContext.request.contextPath}/event_list.do'</script>";
 				return result_mapping;
 			}
 		}
@@ -122,7 +125,7 @@ public class EventController {
 			// System.out.println("event_check: "+event_check);
 		
 		String result_mapping = "<script>alert('이미 이벤트에 참여하셨습니다.');"
-				+ "location.href='/event_list.do'</script>";
+				+ "location.href='${pageContext.request.contextPath}/event_list.do'</script>";
 		return result_mapping;
 		}
 		
@@ -141,7 +144,7 @@ public class EventController {
 		// eventService.event_calc_percent_a(eventVo); // a항목 배당률 삽입
 		// eventService.event_calc_percent_b(eventVo); // b항목 배당률 삽입
 		String result_mapping = "<script>alert('이벤트 베팅이 종료되었습니다.');"
-				+ "location.href='/event_list.do'</script>";
+				+ "location.href='${pageContext.request.contextPath}/event_list.do'</script>";
 		return result_mapping;
 	}
 	
@@ -272,7 +275,7 @@ public class EventController {
 		eventService.event_end_c();
 		
 		String result_mapping = "<script>alert('포인트 지급이 완료되었습니다.');"
-				+ "location.href='/event_list.do'</script>";
+				+ "location.href='${pageContext.request.contextPath}/event_list.do'</script>";
 		return result_mapping;
 		// return "redirect:/event_list.do"; // redirect를 써주어야 오류없이 .do로 이동할 수 있다.
 	}
