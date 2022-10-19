@@ -35,7 +35,7 @@ public class NoticeController {
 		@RequestMapping("/notice_writeView")
 		public String writeView(Model model) throws Exception{
 			
-			String request_mapping = "notice/notice_writeView";
+			String request_mapping = "dogfoot/notice/notice_writeView";
 			
 			return request_mapping;
 			
