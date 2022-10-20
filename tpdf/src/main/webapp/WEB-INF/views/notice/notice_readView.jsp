@@ -121,7 +121,7 @@
 					<img id="file" src="${pageContext.request.contextPath}/resources/img/notice/${file.origin_file_name}"> 
 					</c:forEach>
 					<div id="content">
-					<pre style="font-size:15px;"><!-- <textarea id="content" class="form-control" style="border:none;"> --> <c:out value="${read.content}" /> <!-- </textarea> --></pre>
+					<pre style="font-size:15px;"><!-- <textarea id="content" class="form-control" style="border:none;"> --><c:out value="${read.content}" /> <!-- </textarea> --></pre>
 					</div>
 					
 				</div>
