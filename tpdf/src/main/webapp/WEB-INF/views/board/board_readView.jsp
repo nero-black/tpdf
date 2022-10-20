@@ -80,6 +80,7 @@
 			
 			
 		})
+		
 	</script>
 	
 	<body>
@@ -191,7 +192,8 @@
 					<div class="form-group">
 						<!-- <label for="content" class="col-sm-2 control-label">댓글 내용</label> -->
 						<div class="col-sm-10">
-							<input type="text" id="content_comment" name="content" maxlength="75" class="form-control"/>
+							<input hidden="hidden" /> <!-- 엔터키 전송(post오류) 방지 -->
+							<input type="text" id="content_comment" name="content" onsubmit="return false" maxlength="75" class="form-control"/>
 						</div>
 					</div>
 					
