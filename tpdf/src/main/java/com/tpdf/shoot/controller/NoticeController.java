@@ -32,12 +32,8 @@ public class NoticeController {
 		
 		
 		// 野껊슣�뻻占쎈솇 疫뀐옙 占쎌삂占쎄쉐 占쎌넅筌롳옙
-		@RequestMapping("/notice_writeView")
-		public String writeView(Model model) throws Exception{
-			
-			String request_mapping = "dogfoot/notice/notice_writeView";
-			
-			return request_mapping;
+		@RequestMapping(value="/notice_writeView",  method = RequestMethod.GET)
+		public void notice_writeView(Model model) throws Exception{
 			
 		}
 		
@@ -67,7 +63,7 @@ public class NoticeController {
 			
 			service.write(noticeVo, mpRequest);
 			
-			return "redirect:notice_list";
+			return "redirect:/notice/notice_list";
 		}
 		// 野껊슣�뻻占쎈솇 筌뤴뫖以� 鈺곌퀬�돳
 		@RequestMapping(value = "/notice_list", method = RequestMethod.GET)

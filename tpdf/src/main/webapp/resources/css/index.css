@@ -73,19 +73,19 @@ hr.clear_line {clear:both; border:0;}
 #rank {display:inline-block; width:595px; height:460px;}
 
 #rank table {height:380px; border-collapse: collapse; text-align:center; margin-top:8px;}
-#rank table th {border-top:solid 2px black; background-color:#FFD700; border-bottom:solid 2px black;}
+#rank table th {border-top:solid 2px black; border-bottom:solid 2px black;}
 #rank table thead {height:27px;}
 #rank table thead tr {border-bottom:solid 1px black;}
 #rank table thead tr:first-child:hover {background:rgb(255, 255, 255);}
 #rank table tr:hover {background:rgb(240, 240, 240);}
-#rank table td {border-bottom:solid 1px black; vertical-align:middle; background-color:#FFFACD;}
+#rank table td {border-bottom:solid 1px black; vertical-align:middle;}
 #rank table td:first-child {font-weight:bold;}
 
 #schedule_icon a{display:inline-block; padding: 14px 25px; border:solid 1px black; margin-top:5px; font-weight:bold; border-radius:5px; cursor:pointer; font-size:20px;}
 #schedule {width:595px; height:460px; float:right;}
 
 #schedule table {width:100%; max-height:450px; border-collapse: collapse; text-align:center; margin-top:8px;}
-#schedule table th {border-top:solid 2px black; background-color:#FFD700; height:25px; border-bottom:solid 2px black;}
+#schedule table th {border-top:solid 2px black; height:25px; border-bottom:solid 2px black;}
 #schedule table th {border-right:solid 1px rgb(200, 200, 200);}
 #schedule table th:nth-child(n+0):nth-child(-n+1) {border-right:none;}
 #schedule table th:last-child {border-right:none;}
@@ -93,7 +93,7 @@ hr.clear_line {clear:both; border:0;}
 
 #schedule table td {border-bottom:solid 1px black; height:28px;}
 #schedule table td:nth-child(2) {text-align:left;}
-#schedule table td {border-right:solid 1px rgb(200, 200, 200); background-color:#FFFACD;}
+#schedule table td {border-right:solid 1px rgb(200, 200, 200);}
 #schedule table td:nth-child(n+0):nth-child(-n+1) {border-right:none;}
 #schedule table td:last-child {border-right:none;}
 #schedule table tr:first-child {background:rgb(255, 255, 255); border-bottom:double 2px black;}
@@ -103,5 +103,11 @@ hr.clear_line {clear:both; border:0;}
 
 #font {border:none; font-size:25px; font-weight:bold;}
 #font:hover {text-decoration:underline;}
+
+#PL_league:hover {background:rgb(240,240,240); text-decoration:underline;}
+#PD_league:hover {background:rgb(240,240,240); text-decoration:underline;}
+#BL1_league:hover {background:rgb(240,240,240); text-decoration:underline;}
+#SA_league:hover {background:rgb(240,240,240); text-decoration:underline;}
+
 
 

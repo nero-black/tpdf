@@ -92,7 +92,7 @@ $(document).ready(function () {
 		  
 		        
 	      error:function(request,status,error){        
-	    	alert("잠시 후 새로고침 뒤 다시 시도해주시기바랍니다");
+	    	alert("리그 데이터 불러오기 실패.\n잠시 후 새로고침 해주시기바랍니다");
 	    }
 	    
 	}); 
