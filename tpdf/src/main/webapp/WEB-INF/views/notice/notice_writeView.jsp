@@ -21,7 +21,7 @@
 						if(fn_valiChk()){
 							return false;
 						} 
-						formObj.attr("action", "${pageContext.request.contextPath}/notice/notice_write");
+						formObj.attr("action", "${pageContext.request.contextPath}/dogfoot/notice/notice_write");
 						formObj.attr("method", "post");
 						formObj.submit();
 					});
@@ -51,7 +51,7 @@
 			</script>
 			
 			<section id="container">
-				<form name="writeFrom" role="form" method="post" action="/notice/notice_write" enctype="multipart/form-data">
+				<form name="writeFrom" role="form" method="post" action="${pageContext.request.contextPath}/dogfoot/notice/notice_write" enctype="multipart/form-data">
 					<table>
 						<tbody>
 							<tr>
