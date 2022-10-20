@@ -73,7 +73,7 @@ public class EventController {
 		
 		if (result == 1) { // 이벤트 추가 성공
 			
-			event_add_after = "dogfoot/event/event_add_process";
+			event_add_after = "event/event_add_process";
 			
 			List<EventVo> eventList = eventService.event_list();
 			model.addAttribute("eventList", eventList);

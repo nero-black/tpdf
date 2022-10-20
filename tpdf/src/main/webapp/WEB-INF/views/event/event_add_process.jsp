@@ -4,5 +4,5 @@
 <!-- 이벤트 추가완료 처리 -->
 
 <script>
-location.href='event_list.do';
+location.href='/dogfoot/event_list.do';
 </script>
